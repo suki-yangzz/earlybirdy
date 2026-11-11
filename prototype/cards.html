@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>图片认知卡 · 芽芽成长</title>
+<script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
+<script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.js"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; background: #FFF3E4; color: #3B2B22; }
+  .card-shadow { box-shadow: 0 10px 24px -10px rgba(160, 100, 40, 0.35); }
+  .flip-card { perspective: 1000px; }
+  .flip-inner { transition: transform .5s ease; transform-style: preserve-3d; position: relative; }
+  .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+  .flip-face { backface-visibility: hidden; position: absolute; inset: 0; }
+  .flip-back { transform: rotateY(180deg); }
+  .topic-btn.active { background: #FF6B4A; color: #fff; }
+</style>
+</head>
+<body class="w-full h-full m-0 overflow-hidden flex items-center justify-center">
+<div class="w-full h-full max-w-[393px] max-h-[852px] bg-[#FFF8EE] flex flex-col overflow-hidden relative">
+<!-- 顶部 -->
+<header class="shrink-0 px-5 pt-4 pb-2 flex items-center justify-between">
+<a class="w-10 h-10 rounded-2xl bg-white card-shadow flex items-center justify-center" href="home.html">
+<iconify-icon class="text-[18px] text-[#FF6B4A]" icon="ph:arrow-left-bold"></iconify-icon>
+</a>
+<div class="text-center">
+<p class="text-[15px] font-bold">图片认知卡</p>
+<p class="text-[10px] text-[#A08876]" id="progressText">第 1 / 10 张 · 点一点听发音</p>
+</div>
+<div class="flex items-center gap-1 bg-white rounded-full px-2.5 h-9 card-shadow">
+<span class="text-[15px]">⭐</span>
+<span class="text-[12px] font-bold" id="starCount">0</span>
+</div>
+</header>
+<main class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-5 pb-4 [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
+<!-- 主题 -->
+<div class="mt-1 flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden" id="topicRow">
+<button class="topic-btn active shrink-0 h-8 px-3 rounded-full bg-white text-[12px] font-bold text-[#6B5647] card-shadow" data-topic="animal">🐾 动物</button>
+<button class="topic-btn shrink-0 h-8 px-3 rounded-full bg-white text-[12px] font-bold text-[#6B5647] card-shadow" data-topic="fruit">🍎 水果</button>
+<button class="topic-btn shrink-0 h-8 px-3 rounded-full bg-white text-[12px] font-bold text-[#6B5647] card-shadow" data-topic="color">🎨 颜色</button>
+<button class="topic-btn shrink-0 h-8 px-3 rounded-full bg-white text-[12px] font-bold text-[#6B5647] card-shadow" data-topic="vehicle">🚗 车子</button>
+</div>
+<!-- 卡片主体 -->
+<section class="mt-3">
+<div class="flip-card h-[318px] relative" id="cardWrap">
+<div class="flip-inner w-full h-full">
+<!-- 正面 -->
+<div class="flip-face rounded-[28px] overflow-hidden card-shadow bg-white flex flex-col" id="cardFront">
+<div class="flex-1 flex items-center justify-center text-[112px] bg-[#FFF1D6]" id="cardArt">🐶</div>
+<div class="px-4 py-3 text-center">
+<p class="text-[30px] font-bold leading-none" id="cardWord">小狗</p>
+<p class="text-[13px] text-[#A08876] mt-1.5" id="cardPinyin">xiǎo gǒu</p>
+</div>
+</div>
+<!-- 背面 -->
+<div class="flip-face flip-back rounded-[28px] overflow-hidden card-shadow bg-white p-4 flex flex-col justify-between" id="cardBack">
+<div>
+<span class="text-[10px] font-bold bg-[#FFEFE8] text-[#E85A38] rounded-full px-2 py-1">给家长的小提示</span>
+<p class="text-[13px] font-bold mt-3 leading-relaxed" id="backTip">指着小狗的耳朵说："摸一摸，软软的。"</p>
+<p class="text-[11.5px] text-[#8A725F] mt-2 leading-relaxed" id="backFact">小狗会"汪汪"叫，是很多小朋友认识的第一个动物朋友。</p>
+</div>
+<div class="bg-[#FFF8EE] rounded-2xl p-3">
+<p class="text-[10px] font-semibold text-[#A08876]">跟着说一遍</p>
+<p class="text-[15px] font-bold mt-1" id="backSentence">小狗狗，汪——汪——</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 操作 -->
+<div class="mt-3 grid grid-cols-3 gap-2.5">
+<button class="h-12 rounded-2xl bg-white card-shadow flex items-center justify-center gap-1.5 text-[13px] font-bold text-[#5AA9F8]" id="speakBtn">
+<iconify-icon class="text-[19px]" icon="ph:speaker-high-fill"></iconify-icon>读给我听
+        </button>
+<button class="h-12 rounded-2xl bg-white card-shadow flex items-center justify-center gap-1.5 text-[13px] font-bold text-[#8B6BE0]" id="tipBtn">
+<iconify-icon class="text-[18px]" icon="ph:arrows-clockwise-bold"></iconify-icon>翻面看看
+        </button>
+<button class="h-12 rounded-2xl bg-[#3FC1A0] card-shadow flex items-center justify-center gap-1.5 text-[13px] font-bold text-white" id="knowBtn">
+<iconify-icon class="text-[19px]" icon="ph:check-circle-fill"></iconify-icon>学会啦
+        </button>
+</div>
+<!-- 进度 -->
+<div class="mt-3.5 bg-white rounded-2xl px-3.5 py-3 card-shadow">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[12px] font-bold">今天认了几张</span>
+<span class="text-[12px] font-bold text-[#FF6B4A]" id="learnedLabel">0 / 10</span>
+</div>
+<div class="h-2 rounded-full bg-[#F5EDE3] overflow-hidden">
+<div class="h-full rounded-full bg-gradient-to-r from-[#FFC53D] to-[#FF6B4A] transition-all duration-300" id="learnBar" style="width:0%"></div>
+</div>
+<div class="mt-2 flex items-center gap-1">
+<iconify-icon class="text-[13px] text-[#F5A623]" icon="ph:sparkle-fill"></iconify-icon>
+<span class="text-[10px] text-[#A08876]">每学 1 张得 1 颗星，集满 10 颗换小贴纸</span>
+</div>
+</div>
+<!-- 卡片缩略 -->
+<div class="mt-3 flex items-center justify-between">
+<h2 class="text-[14px] font-bold">这一组卡片</h2>
+<a class="text-[11px] font-semibold text-[#FF6B4A]" href="tasks.html">去打卡任务 →</a>
+</div>
+<div class="mt-2 flex gap-2 overflow-x-auto pb-2 [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden" id="thumbRow"></div>
+<div class="h-1"></div>
+</main>
+<!-- 底部导航 -->
+<nav class="shrink-0 bg-white border-t border-[#F2E5D7] px-3 pt-1.5 pb-3">
+<div class="flex items-center justify-around">
+<a class="flex flex-col items-center gap-0.5 w-16" href="home.html">
+<iconify-icon class="text-[23px] text-[#B6A18E]" icon="ph:house-duotone"></iconify-icon>
+<span class="text-[10px] font-semibold text-[#B6A18E]">首页</span>
+</a>
+<a class="flex flex-col items-center gap-0.5 w-16" href="tasks.html">
+<iconify-icon class="text-[23px] text-[#B6A18E]" icon="ph:check-circle-duotone"></iconify-icon>
+<span class="text-[10px] font-semibold text-[#B6A18E]">任务</span>
+</a>
+<a class="flex flex-col items-center gap-0.5 w-16" href="shop.html">
+<iconify-icon class="text-[23px] text-[#B6A18E]" icon="ph:storefront-duotone"></iconify-icon>
+<span class="text-[10px] font-semibold text-[#B6A18E]">商城</span>
+</a>
+<a class="flex flex-col items-center gap-0.5 w-16" href="cards.html">
+<iconify-icon class="text-[23px] text-[#FF6B4A]" icon="ph:cards-fill"></iconify-icon>
+<span class="text-[10px] font-bold text-[#FF6B4A]">认卡片</span>
+</a>
+</div>
+</nav>
+<div class="hidden absolute left-1/2 -translate-x-1/2 bottom-24 z-30 bg-[#3B2B22] text-white text-[12px] font-semibold px-4 py-2.5 rounded-full shadow-lg" id="toast"></div>
+</div>
+<script>
+  const topics = {
+    animal: {
+      bg: 'bg-[#FFF1D6]',
+      cards: [
+        { emoji: '🐶', word: '小狗', pinyin: 'xiǎo gǒu', tip: '指着小狗的耳朵说："摸一摸，软软的。"', fact: '小狗会"汪汪"叫，是很多小朋友认识的第一个动物朋友。', sentence: '小狗狗，汪——汪——' },
+        { emoji: '🐱', word: '小猫', pinyin: 'xiǎo māo', tip: '学猫叫，让宝宝跟着"喵"一声。', fact: '小猫走路轻轻的，脚上有软软的肉垫。', sentence: '小猫咪，喵——喵——' },
+        { emoji: '🐰', word: '小兔', pinyin: 'xiǎo tù', tip: '用手比两只长耳朵放在头顶。', fact: '小兔爱吃胡萝卜，跳起来一蹦一蹦的。', sentence: '小兔子，蹦——蹦——跳。' },
+        { emoji: '🐼', word: '熊猫', pinyin: 'xióng māo', tip: '问宝宝："熊猫身上哪里是黑的？"', fact: '熊猫最爱吃竹子，睡觉也抱着竹子。', sentence: '大熊猫，抱竹子。' },
+        { emoji: '🦁', word: '狮子', pinyin: 'shī zi', tip: '一起张开手做出"大狮子"的样子。', fact: '狮子头上有长长的毛，叫声很响亮。', sentence: '大狮子，吼——' },
+        { emoji: '🐟', word: '小鱼', pinyin: 'xiǎo yú', tip: '双手合起来游一游，学小鱼摆尾巴。', fact: '小鱼用鳃呼吸，在水里摇着尾巴游。', sentence: '小鱼小鱼，游呀游。' },
+        { emoji: '🐘', word: '大象', pinyin: 'dà xiàng', tip: '一只手放在鼻子前，学大象甩鼻子。', fact: '大象的鼻子很长，可以卷起树上的叶子。', sentence: '大象鼻子，长又长。' },
+        { emoji: '🐸', word: '青蛙', pinyin: 'qīng wā', tip: '和宝宝一起蹲下"呱呱"跳两下。', fact: '青蛙住在池塘边，爱吃小虫子。', sentence: '小青蛙，呱呱呱。' },
+        { emoji: '🐔', word: '小鸡', pinyin: 'xiǎo jī', tip: '用手指当小鸡的尖嘴巴啄一啄。', fact: '小鸡从蛋里孵出来，身上的毛黄黄的。', sentence: '小鸡小鸡，叽叽叽。' },
+        { emoji: '🐮', word: '奶牛', pinyin: 'nǎi niú', tip: '问宝宝："牛奶是从哪里来的呀？"', fact: '奶牛身上有黑白的花，能产出好喝的牛奶。', sentence: '奶牛奶牛，哞——' }
+      ]
+    },
+    fruit: {
+      bg: 'bg-[#FFEFE8]',
+      cards: [
+        { emoji: '🍎', word: '苹果', pinyin: 'píng guǒ', tip: '摸摸苹果，说"圆圆的、滑滑的"。', fact: '苹果有红色和绿色，洗干净可以直接吃。', sentence: '红苹果，甜又香。' },
+        { emoji: '🍌', word: '香蕉', pinyin: 'xiāng jiāo', tip: '让宝宝练习"剥"的动作。', fact: '香蕉弯弯像小船，剥开皮就能吃。', sentence: '香蕉弯弯，像小船。' },
+        { emoji: '🍓', word: '草莓', pinyin: 'cǎo méi', tip: '数数草莓上有几颗小籽。', fact: '草莓红红的，头顶还有一片小叶子。', sentence: '草莓红红，酸又甜。' },
+        { emoji: '🍉', word: '西瓜', pinyin: 'xī guā', tip: '拍一拍，听听"咚咚"的声音。', fact: '西瓜外面是绿色的，切开里面是红色的。', sentence: '大西瓜，圆滚滚。' },
+        { emoji: '🍇', word: '葡萄', pinyin: 'pú tao', tip: '一颗一颗数给宝宝听。', fact: '葡萄一串串长在藤上，有紫色也有绿色。', sentence: '葡萄一串串，甜甜的。' },
+        { emoji: '🍊', word: '橘子', pinyin: 'jú zi', tip: '闻一闻橘子的香味。', fact: '橘子皮一剥开，满手都是香香的味。', sentence: '小橘子，香喷喷。' },
+        { emoji: '🥕', word: '胡萝卜', pinyin: 'hú luó bo', tip: '说"小兔子最爱吃这个"。', fact: '胡萝卜长在土里，是脆脆的橙色。', sentence: '胡萝卜，脆生生。' },
+        { emoji: '🌽', word: '玉米', pinyin: 'yù mǐ', tip: '用手指数一排排玉米粒。', fact: '玉米粒一排排，煮熟了又香又甜。', sentence: '黄玉米，一排排。' },
+        { emoji: '🍐', word: '梨', pinyin: 'lí', tip: '告诉宝宝梨水甜甜的很好喝。', fact: '梨的水分很多，秋天吃很舒服。', sentence: '小香梨，水汪汪。' },
+        { emoji: '🍞', word: '面包', pinyin: 'miàn bāo', tip: '一起做"啊呜"咬一口的动作。', fact: '面包软软的，早餐吃一块有力气。', sentence: '软面包，啊呜一口。' }
+      ]
+    },
+    color: {
+      bg: 'bg-[#E7F8F3]',
+      cards: [
+        { emoji: '🔴', word: '红色', pinyin: 'hóng sè', tip: '在家里找一件红色的东西。', fact: '红灯亮了要停下来，红色提醒我们注意安全。', sentence: '红红的，像小苹果。' },
+        { emoji: '🟡', word: '黄色', pinyin: 'huáng sè', tip: '指指香蕉和太阳，都是黄色。', fact: '黄色亮亮的，看着让人心情很好。', sentence: '黄黄的，像小太阳。' },
+        { emoji: '🔵', word: '蓝色', pinyin: 'lán sè', tip: '看看窗外，天空是什么颜色？', fact: '蓝色像大海和天空，安安静静的。', sentence: '蓝蓝的，像小天空。' },
+        { emoji: '🟢', word: '绿色', pinyin: 'lǜ sè', tip: '摸摸家里的绿叶盆栽。', fact: '绿色是树叶和小草的颜色，春天最多。', sentence: '绿绿的，像小叶子。' },
+        { emoji: '🟠', word: '橙色', pinyin: 'chéng sè', tip: '拿出一个橘子对照着看。', fact: '橙色是红色和黄色混在一起变出来的。', sentence: '橙橙的，像小橘子。' },
+        { emoji: '🟣', word: '紫色', pinyin: 'zǐ sè', tip: '一起找找紫色的衣服。', fact: '紫色像葡萄，也像傍晚的天空。', sentence: '紫紫的，像小葡萄。' },
+        { emoji: '⚪', word: '白色', pinyin: 'bái sè', tip: '摸摸白白的小毛巾。', fact: '白色像云朵和牛奶，干净又柔软。', sentence: '白白的，像小云朵。' },
+        { emoji: '⚫', word: '黑色', pinyin: 'hēi sè', tip: '关灯前说一句"天黑啦"。', fact: '黑色像夜晚，安静地等我们睡觉。', sentence: '黑黑的，像小夜晚。' },
+        { emoji: '🟤', word: '棕色', pinyin: 'zōng sè', tip: '摸摸小木桌的颜色。', fact: '棕色像大树和小熊，暖暖的。', sentence: '棕棕的，像小树皮。' },
+        { emoji: '🌈', word: '彩色', pinyin: 'cǎi sè', tip: '一起数一数彩虹有几种颜色。', fact: '彩色的东西放在一起，看起来热热闹闹。', sentence: '彩色的，真好看。' }
+      ]
+    },
+    vehicle: {
+      bg: 'bg-[#E9F3FF]',
+      cards: [
+        { emoji: '🚗', word: '汽车', pinyin: 'qì chē', tip: '学一学汽车"嘀嘀"的声音。', fact: '汽车有四个轮子，坐车要系好安全带。', sentence: '小汽车，嘀嘀嘀。' },
+        { emoji: '🚌', word: '公交车', pinyin: 'gōng jiāo chē', tip: '问宝宝："我们在哪里坐过它？"', fact: '公交车停站上下人，要拉好扶手。', sentence: '大公交，慢慢开。' },
+        { emoji: '🚲', word: '自行车', pinyin: 'zì xíng chē', tip: '手转圈，学车轮转起来。', fact: '骑自行车要戴头盔，慢慢骑。', sentence: '自行车，转呀转。' },
+        { emoji: '✈️', word: '飞机', pinyin: 'fēi jī', tip: '张开手臂当翅膀飞一飞。', fact: '飞机在天上飞，云在它的下面。', sentence: '小飞机，飞高高。' },
+        { emoji: '🚂', word: '火车', pinyin: 'huǒ chē', tip: '一起发出"呜——"的声音。', fact: '火车在铁轨上跑，一节连着一节。', sentence: '小火车，呜呜呜。' },
+        { emoji: '🚑', word: '救护车', pinyin: 'jiù hù chē', tip: '告诉宝宝它去帮助生病的人。', fact: '救护车是白色的，会发出"呜哇呜哇"的声音。', sentence: '救护车，快帮忙。' },
+        { emoji: '🚒', word: '消防车', pinyin: 'xiāo fáng chē', tip: '学一学水枪喷水的样子。', fact: '消防车是红色的，能喷很长的水柱。', sentence: '消防车，红彤彤。' },
+        { emoji: '🚢', word: '轮船', pinyin: 'lún chuán', tip: '用手做波浪，让宝宝摇一摇。', fact: '轮船在水上走，会拉长长的汽笛。', sentence: '大轮船，嘟嘟嘟。' },
+        { emoji: '🚕', word: '出租车', pinyin: 'chū zū chē', tip: '指一指车顶的小灯牌。', fact: '出租车招手就停，可以带我们去很多地方。', sentence: '小出租，招招手。' },
+        { emoji: '🚁', word: '直升机', pinyin: 'zhí shēng jī', tip: '手指转圈，学螺旋桨转。', fact: '直升机不用跑道，可以在空中停住。', sentence: '直升机，转圈圈。' }
+      ]
+    }
+  };
+
+  let topicKey = 'animal';
+  let index = 0;
+  let learned = {};
+  const total = 10;
+
+  const cardWrap = document.getElementById('cardWrap');
+  const cardArt = document.getElementById('cardArt');
+  const cardWord = document.getElementById('cardWord');
+  const cardPinyin = document.getElementById('cardPinyin');
+  const progressText = document.getElementById('progressText');
+  const starCount = document.getElementById('starCount');
+  const learnedLabel = document.getElementById('learnedLabel');
+  const learnBar = document.getElementById('learnBar');
+  const thumbRow = document.getElementById('thumbRow');
+  const toast = document.getElementById('toast');
+
+  let toastTimer = null;
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.remove('hidden');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.add('hidden'); }, 1500);
+  }
+
+  function cards() { return topics[topicKey].cards; }
+
+  function learnedCount() {
+    return cards().filter(function (c, i) { return learned[topicKey + '-' + i]; }).length;
+  }
+
+  function render() {
+    const c = cards()[index];
+    cardArt.textContent = c.emoji;
+    cardArt.className = 'flex-1 flex items-center justify-center text-[112px] ' + topics[topicKey].bg;
+    cardWord.textContent = c.word;
+    cardPinyin.textContent = c.pinyin;
+    document.getElementById('backTip').textContent = c.tip;
+    document.getElementById('backFact').textContent = c.fact;
+    document.getElementById('backSentence').textContent = c.sentence;
+    progressText.textContent = '第 ' + (index + 1) + ' / ' + total + ' 张 · 点一点听发音';
+    cardWrap.classList.remove('flipped');
+
+    const count = learnedCount();
+    starCount.textContent = count;
+    learnedLabel.textContent = count + ' / ' + total;
+    learnBar.style.width = (count / total) * 100 + '%';
+
+    thumbRow.innerHTML = cards().map(function (c2, i) {
+      const isLearned = learned[topicKey + '-' + i];
+      return '<button data-i="' + i + '" class="thumb-btn shrink-0 w-[54px] h-[64px] rounded-2xl flex flex-col items-center justify-center gap-0.5 ' + (i === index ? 'ring-2 ring-[#FF6B4A]' : '') + ' bg-white card-shadow">'
+        + '<span class="text-[22px]">' + c2.emoji + '</span>'
+        + '<span class="text-[9px] font-bold ' + (isLearned ? 'text-[#3FC1A0]' : 'text-[#8A725F]') + '">' + (isLearned ? '✓ ' : '') + c2.word + '</span>'
+        + '</button>';
+    }).join('');
+
+    thumbRow.querySelectorAll('.thumb-btn').forEach(function (b) {
+      b.addEventListener('click', function () {
+        index = Number(b.dataset.i);
+        render();
+      });
+    });
+  }
+
+  document.querySelectorAll('.topic-btn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      topicKey = b.dataset.topic;
+      index = 0;
+      document.querySelectorAll('.topic-btn').forEach(function (x) { x.classList.toggle('active', x === b); });
+      render();
+      showToast('换成「' + b.textContent.trim() + '」卡片');
+    });
+  });
+
+  document.getElementById('speakBtn').addEventListener('click', function () {
+    const c = cards()[index];
+    const label = document.getElementById('speakBtn');
+    label.classList.add('bg-[#E9F3FF]');
+    setTimeout(function () { label.classList.remove('bg-[#E9F3FF]'); }, 600);
+    showToast('🔊 ' + c.word + ' · ' + c.pinyin);
+    if (window.speechSynthesis) {
+      try {
+        const u = new SpeechSynthesisUtterance(c.word);
+        u.lang = 'zh-CN';
+        u.rate = 0.8;
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(u);
+      } catch (err) {}
+    }
+  });
+
+  document.getElementById('tipBtn').addEventListener('click', function () {
+    cardWrap.classList.toggle('flipped');
+  });
+
+  document.getElementById('knowBtn').addEventListener('click', function () {
+    const key = topicKey + '-' + index;
+    if (learned[key]) {
+      showToast('这一张已经学会啦，往后翻翻看');
+      return;
+    }
+    learned[key] = true;
+    const count = learnedCount();
+    if (count === total) {
+      showToast('🎉 10 张全部学会！小贴纸已放进口袋');
+    } else {
+      showToast('学会啦 +1 颗星 ⭐ 记得去任务页打卡');
+    }
+    if (index < total - 1) {
+      index = index + 1;
+    }
+    render();
+  });
+
+  document.getElementById('cardWrap').addEventListener('click', function () {
+    cardWrap.classList.toggle('flipped');
+  });
+
+  render();
+</script>
+</body>
+</html>

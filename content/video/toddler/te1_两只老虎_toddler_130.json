@@ -1,0 +1,39 @@
+{
+  "id": "te1",
+  "title": "两只老虎",
+  "emoji": "🐯",
+  "sec": 130,
+  "value": 15,
+  "line": "“两只老虎，两只老虎，跑得快”",
+  "scenes": [
+    {
+      "emoji": "🐯",
+      "line": "“两只老虎跑得快”"
+    },
+    {
+      "emoji": "🎵",
+      "line": "“一只没有耳朵”"
+    },
+    {
+      "emoji": "🎶",
+      "line": "“一只没有尾巴”"
+    },
+    {
+      "emoji": "👏",
+      "line": "“真奇怪，真奇怪”"
+    }
+  ],
+  "quiz": {
+    "q": "歌里唱的是几只老虎？",
+    "options": [
+      "一只",
+      "两只",
+      "三只",
+      "四只"
+    ],
+    "answer": 1
+  },
+  "src": "https://media.w3.org/2010/05/bunny/trailer.mp4",
+  "stage": "toddler",
+  "order": 1
+}

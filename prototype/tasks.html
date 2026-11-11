@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>今日任务 · 芽芽成长</title>
+<script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
+<script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.js"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; background: #F3E9DC; color: #3B2B22; }
+  .card-shadow { box-shadow: 0 8px 20px -8px rgba(120, 80, 40, 0.25); }
+  .task-card.done { background: #F3FBF7; border-color: #C9EFE1; }
+  .task-card.done .task-title { color: #A08876; text-decoration: line-through; }
+</style>
+</head>
+<body class="w-full h-full m-0 overflow-hidden flex items-center justify-center">
+<div class="w-full h-full max-w-[393px] max-h-[852px] bg-[#FFF8EE] flex flex-col overflow-hidden relative">
+<!-- 顶部 -->
+<header class="shrink-0 px-5 pt-4 pb-2">
+<div class="flex items-center justify-between">
+<a class="w-10 h-10 rounded-2xl bg-white card-shadow flex items-center justify-center" href="home.html">
+<iconify-icon class="text-[18px] text-[#FF6B4A]" icon="ph:arrow-left-bold"></iconify-icon>
+</a>
+<h1 class="text-[17px] font-bold">今日任务</h1>
+<div class="w-10 h-10 rounded-2xl bg-white card-shadow flex items-center justify-center">
+<iconify-icon class="text-[19px] text-[#FF8A4C]" icon="ph:calendar-heart-fill"></iconify-icon>
+</div>
+</div>
+</header>
+<main class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-5 pb-6 [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
+<!-- 阶段 + 日期 -->
+<div class="mt-2 flex items-center gap-2">
+<span class="inline-flex items-center gap-1 text-[11px] font-bold bg-[#FFEFE8] text-[#E85A38] rounded-full px-2.5 py-1" id="stageTag">
+          🧸 6个月-3岁
+        </span>
+<span class="text-[11px] text-[#A08876]">11月4日 星期三 · 共 5 个任务</span>
+</div>
+<!-- 打卡进度卡 -->
+<section class="mt-3 rounded-[26px] relative overflow-hidden card-shadow">
+<div class="absolute inset-0 bg-gradient-to-br from-[#FFB347] via-[#FF8A4C] to-[#FF6B4A]"></div>
+<div class="relative p-4 text-white">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-[11px] text-white/85">今日已完成</p>
+<p class="mt-1"><span class="text-[34px] font-bold leading-none" id="doneCount">2</span><span class="text-[14px] font-semibold text-white/90"> / <span id="totalCount">5</span> 个任务</span></p>
+</div>
+<div class="text-right bg-white/20 rounded-2xl px-3 py-1.5">
+<p class="text-[10px] text-white/90">连续打卡</p>
+<p class="text-[20px] font-bold leading-tight">🔥 6 天</p>
+</div>
+</div>
+<div class="mt-3 h-2.5 rounded-full bg-white/25 overflow-hidden">
+<div class="h-full rounded-full bg-white transition-all duration-300" id="progressBar" style="width:40%"></div>
+</div>
+<div class="mt-2 flex items-center justify-between text-[10px] text-white/90">
+<span id="progressHint">再做 3 个，今天就圆满啦</span>
+<span>今日成长值 +<span id="earnedValue">40</span></span>
+</div>
+</div>
+</section>
+<!-- 连续打卡激励 -->
+<section class="mt-3 bg-white rounded-[22px] p-3.5 card-shadow">
+<div class="flex items-center justify-between">
+<h2 class="text-[14px] font-bold">连续打卡奖励</h2>
+<span class="text-[10px] font-semibold text-[#E8A22A] bg-[#FFF1D6] rounded-full px-2 py-0.5">明天第 7 天 · 大奖励</span>
+</div>
+<div class="mt-3 flex items-center justify-between">
+<div class="flex flex-col items-center gap-1 w-[42px]">
+<div class="w-9 h-9 rounded-full bg-[#FFF1D6] flex items-center justify-center text-[15px]">⭐</div>
+<span class="text-[9px] text-[#A08876]">第1天</span>
+</div>
+<div class="flex flex-col items-center gap-1 w-[42px]">
+<div class="w-9 h-9 rounded-full bg-[#FFF1D6] flex items-center justify-center text-[15px]">⭐</div>
+<span class="text-[9px] text-[#A08876]">第2天</span>
+</div>
+<div class="flex flex-col items-center gap-1 w-[42px]">
+<div class="w-9 h-9 rounded-full bg-[#FFF1D6] flex items-center justify-center text-[15px]">🎵</div>
+<span class="text-[9px] text-[#A08876]">第3天</span>
+</div>
+<div class="flex flex-col items-center gap-1 w-[42px]">
+<div class="w-9 h-9 rounded-full bg-[#FFF1D6] flex items-center justify-center text-[15px]">⭐</div>
+<span class="text-[9px] text-[#A08876]">第4天</span>
+</div>
+<div class="flex flex-col items-center gap-1 w-[42px]">
+<div class="w-9 h-9 rounded-full bg-[#FFF1D6] flex items-center justify-center text-[15px]">⭐</div>
+<span class="text-[9px] text-[#A08876]">第5天</span>
+</div>
+<div class="flex flex-col items-center gap-1 w-[42px]">
+<div class="w-9 h-9 rounded-full bg-[#FFD9C8] ring-2 ring-[#FF6B4A] flex items-center justify-center text-[15px]">🔥</div>
+<span class="text-[9px] font-bold text-[#FF6B4A]">今天</span>
+</div>
+<div class="flex flex-col items-center gap-1 w-[42px]">
+<div class="w-9 h-9 rounded-full border-2 border-dashed border-[#F0D9B8] flex items-center justify-center text-[15px] opacity-60">🎁</div>
+<span class="text-[9px] text-[#C0A98F]">第7天</span>
+</div>
+</div>
+</section>
+<!-- 任务清单 -->
+<section class="mt-4">
+<div class="flex items-center justify-between mb-2">
+<h2 class="text-[15px] font-bold">今天的任务清单</h2>
+<span class="text-[11px] text-[#A08876]">点圆圈即可打卡</span>
+</div>
+<div class="space-y-2.5" id="taskList"></div>
+</section>
+<!-- 家长设置 -->
+<section class="mt-4 bg-white rounded-[22px] p-3.5 card-shadow">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<iconify-icon class="text-[18px] text-[#8B6BE0]" icon="ph:sliders-horizontal-fill"></iconify-icon>
+<div>
+<p class="text-[13px] font-bold">家长小设置</p>
+<p class="text-[10px] text-[#A08876] mt-0.5">任务太多？让孩子自己挑重点</p>
+</div>
+</div>
+<button class="h-9 px-3 rounded-full bg-[#F1EBFF] text-[12px] font-bold text-[#8B6BE0]" id="shuffleBtn">换个组合</button>
+</div>
+</section>
+<div class="h-2"></div>
+</main>
+<!-- 底部导航 -->
+<nav class="shrink-0 bg-white border-t border-[#F2E5D7] px-3 pt-1.5 pb-3">
+<div class="flex items-center justify-around">
+<a class="flex flex-col items-center gap-0.5 w-16" href="home.html">
+<iconify-icon class="text-[23px] text-[#B6A18E]" icon="ph:house-duotone"></iconify-icon>
+<span class="text-[10px] font-semibold text-[#B6A18E]">首页</span>
+</a>
+<a class="flex flex-col items-center gap-0.5 w-16" href="tasks.html">
+<iconify-icon class="text-[23px] text-[#FF6B4A]" icon="ph:check-circle-fill"></iconify-icon>
+<span class="text-[10px] font-bold text-[#FF6B4A]">任务</span>
+</a>
+<a class="flex flex-col items-center gap-0.5 w-16" href="shop.html">
+<iconify-icon class="text-[23px] text-[#B6A18E]" icon="ph:storefront-duotone"></iconify-icon>
+<span class="text-[10px] font-semibold text-[#B6A18E]">商城</span>
+</a>
+<a class="flex flex-col items-center gap-0.5 w-16" href="tasks.html">
+<iconify-icon class="text-[23px] text-[#B6A18E]" icon="ph:user-circle-duotone"></iconify-icon>
+<span class="text-[10px] font-semibold text-[#B6A18E]">我的</span>
+</a>
+</div>
+</nav>
+<!-- 打卡成功提示 -->
+<div class="hidden absolute left-1/2 -translate-x-1/2 bottom-24 z-30 bg-[#3B2B22] text-white text-[12px] font-semibold px-4 py-2.5 rounded-full shadow-lg" id="toast"></div>
+</div>
+<script>
+  const stageLabels = {
+    pregnancy: '🤰 孕期',
+    baby: '👶 0-6个月',
+    toddler: '🧸 6个月-3岁',
+    preschool: '🎨 3-6岁',
+    kid: '🚀 6岁以上'
+  };
+
+  const stageTasks = {
+    pregnancy: [
+      { id: 'p1', emoji: '🎧', title: '听胎教音乐 15 分钟', sub: '安抚情绪 · 推荐《小星星摇篮曲》', value: 20, done: false, href: 'music.html' },
+      { id: 'p2', emoji: '🚶‍♀️', title: '散步 2000 步', sub: '饭后慢走，注意保暖', value: 20, done: false },
+      { id: 'p3', emoji: '📖', title: '给宝宝读一个小故事', sub: '爸爸也可以来读一段', value: 15, done: true, href: 'music.html' },
+      { id: 'p4', emoji: '💧', title: '喝够 8 杯水', sub: '每次点一下，记录一杯', value: 10, done: false },
+      { id: 'p5', emoji: '😴', title: '睡前 10 分钟放松呼吸', sub: '跟着音频做，更好入睡', value: 15, done: true, href: 'music.html' }
+    ],
+    baby: [
+      { id: 'b1', emoji: '🖤', title: '黑白卡追视 3 分钟', sub: '距离 20-30 厘米，左右慢慢移动', value: 20, done: true, href: 'cards.html' },
+      { id: 'b2', emoji: '🧸', title: '趴一趴练抬头', sub: '每次 1 分钟，做 3 次', value: 20, done: false, href: 'video.html' },
+      { id: 'b3', emoji: '🎶', title: '听摇篮曲哄睡', sub: '固定一首，宝宝会记住', value: 15, done: false, href: 'music.html' },
+      { id: 'b4', emoji: '🤱', title: '抚触按摩 5 分钟', sub: '手捂热了再轻轻按', value: 15, done: false },
+      { id: 'b5', emoji: '🗣️', title: '和宝宝说说话', sub: '做什么就说什么', value: 10, done: true }
+    ],
+    toddler: [
+      { id: 't1', emoji: '🐶', title: '图片认物卡 10 张', sub: '点一点会发音，宝宝自己也能玩', value: 20, done: true, href: 'cards.html' },
+      { id: 't2', emoji: '🎵', title: '亲子儿歌律动', sub: '《两只老虎》边唱边拍手', value: 20, done: true, href: 'music.html' },
+      { id: 't3', emoji: '🌳', title: '户外活动 15 分钟', sub: '晒晒太阳，摸摸树叶', value: 20, done: false },
+      { id: 't4', emoji: '🥕', title: '自己吃完一顿饭', sub: '弄脏也没关系，鼓励为主', value: 15, done: false },
+      { id: 't5', emoji: '📚', title: '睡前故事一本', sub: '《小熊宝宝》系列任意一本', value: 15, done: false, href: 'video.html' }
+    ],
+    preschool: [
+      { id: 'k1', emoji: '🎬', title: '看一集成长动画', sub: '《小种子旅行记》每集 8 分钟', value: 20, done: false, href: 'video.html' },
+      { id: 'k2', emoji: '🔤', title: '认识 5 个字词卡', sub: '带拼音，跟着读一遍', value: 20, done: true, href: 'cards.html' },
+      { id: 'k3', emoji: '✏️', title: '画一幅今天的画', sub: '画完拍照存进成长册', value: 15, done: false },
+      { id: 'k4', emoji: '🧹', title: '帮忙做一件小事', sub: '收玩具或摆碗筷', value: 15, done: false },
+      { id: 'k5', emoji: '💬', title: '复述今天的故事', sub: '问问"谁最勇敢"', value: 20, done: true }
+    ],
+    kid: [
+      { id: 'g1', emoji: '🌋', title: '做火山喷发小实验', sub: '小苏打 + 白醋，大人陪着', value: 25, done: false, href: 'video.html' },
+      { id: 'g2', emoji: '📖', title: '自己读 10 分钟书', sub: '选一本想看的，不用家长陪', value: 20, done: true },
+      { id: 'g3', emoji: '🔤', title: '识字闯关 1 关', sub: '今天的新字：春 雨 花 草 树', value: 20, done: false, href: 'cards.html' },
+      { id: 'g4', emoji: '🏃', title: '户外运动 30 分钟', sub: '跳绳或骑车都可以', value: 15, done: false },
+      { id: 'g5', emoji: '✍️', title: '写三句话日记', sub: '今天最高兴的一件事', value: 15, done: true }
+    ]
+  };
+
+  let stageKey = 'toddler';
+  try { stageKey = localStorage.getItem('yayaStage') || 'toddler'; } catch (err) {}
+  if (!stageTasks[stageKey]) stageKey = 'toddler';
+  let tasks = stageTasks[stageKey].map(function (t) { return Object.assign({}, t); });
+
+  const listEl = document.getElementById('taskList');
+  const doneCountEl = document.getElementById('doneCount');
+  const totalCountEl = document.getElementById('totalCount');
+  const progressBar = document.getElementById('progressBar');
+  const progressHint = document.getElementById('progressHint');
+  const earnedValue = document.getElementById('earnedValue');
+  const toast = document.getElementById('toast');
+  document.getElementById('stageTag').textContent = stageLabels[stageKey];
+
+  let toastTimer = null;
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.remove('hidden');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.add('hidden'); }, 1600);
+  }
+
+  function render() {
+    const total = tasks.length;
+    const done = tasks.filter(function (t) { return t.done; }).length;
+    const value = tasks.reduce(function (sum, t) { return t.done ? sum + t.value : sum; }, 0);
+    doneCountEl.textContent = done;
+    totalCountEl.textContent = total;
+    earnedValue.textContent = value;
+    progressBar.style.width = Math.round((done / total) * 100) + '%';
+    if (done === total) {
+      progressHint.textContent = '全部完成！今天真棒 🎉';
+    } else {
+      progressHint.textContent = '再做 ' + (total - done) + ' 个，今天就圆满啦';
+    }
+
+    listEl.innerHTML = tasks.map(function (t, i) {
+      return '<div class="task-card ' + (t.done ? 'done' : 'bg-white') + ' border-2 ' + (t.done ? 'border-[#C9EFE1]' : 'border-transparent') + ' rounded-[20px] p-3 flex items-center gap-3 card-shadow">'
+        + '<button data-index="' + i + '" class="toggle-btn w-11 h-11 rounded-full shrink-0 flex items-center justify-center ' + (t.done ? 'bg-[#3FC1A0]' : 'bg-[#FFF1E8] ring-2 ring-inset ring-[#FFD9C8]') + '">'
+        + (t.done
+          ? '<iconify-icon icon="ph:check-bold" class="text-[20px] text-white"></iconify-icon>'
+          : '<span class="text-[19px]">' + t.emoji + '</span>')
+        + '</button>'
+        + '<div class="flex-1 min-w-0">'
+        + '<p class="task-title text-[13.5px] font-bold leading-tight">' + t.title + '</p>'
+        + '<p class="text-[10.5px] text-[#A08876] mt-1 leading-snug">' + t.sub + '</p>'
+        + '</div>'
+        + '<div class="text-right shrink-0">'
+        + (t.href
+          ? '<a href="' + t.href + '" class="inline-flex items-center gap-0.5 text-[10.5px] font-bold text-[#5AA9F8] mb-1">去玩 <iconify-icon icon="ph:caret-right-bold"></iconify-icon></a>'
+          : '<div class="h-[14px]"></div>')
+        + '<p class="text-[11px] font-bold ' + (t.done ? 'text-[#3FC1A0]' : 'text-[#E8A22A]') + '">' + (t.done ? '+' + t.value : '可得 ' + t.value) + '</p>'
+        + '</div></div>';
+    }).join('');
+
+    document.querySelectorAll('.toggle-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const idx = Number(btn.dataset.index);
+        const t = tasks[idx];
+        t.done = !t.done;
+        showToast(t.done ? '打卡成功 +' + t.value + ' 成长值 🌟' : '已取消这一项');
+        render();
+      });
+    });
+  }
+
+  document.getElementById('shuffleBtn').addEventListener('click', function () {
+    tasks = tasks.slice().reverse();
+    showToast('已换成新的任务顺序');
+    render();
+  });
+
+  render();
+</script>
+</body>
+</html>

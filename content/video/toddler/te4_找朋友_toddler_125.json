@@ -1,0 +1,29 @@
+{
+  "id": "te4",
+  "title": "找朋友",
+  "emoji": "🤝",
+  "sec": 125,
+  "value": 15,
+  "line": "“找呀找呀找朋友，敬个礼呀握握手”",
+  "scenes": [
+    {
+      "emoji": "🧒",
+      "line": "“找呀找呀找朋友”"
+    },
+    {
+      "emoji": "👋",
+      "line": "“敬个礼，握握手”"
+    },
+    {
+      "emoji": "🤗",
+      "line": "“你是我的好朋友”"
+    },
+    {
+      "emoji": "🌈",
+      "line": "“再见，下次再玩”"
+    }
+  ],
+  "src": "https://media.w3.org/2010/05/bunny/trailer.mp4",
+  "stage": "toddler",
+  "order": 4
+}

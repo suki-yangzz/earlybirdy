@@ -1,0 +1,39 @@
+{
+  "id": "pe1",
+  "title": "小种子旅行记",
+  "emoji": "🌱",
+  "sec": 252,
+  "value": 15,
+  "line": "“我好想看看外面的世界呀”",
+  "scenes": [
+    {
+      "emoji": "🌱",
+      "line": "“春天醒来，种子伸了个懒腰”"
+    },
+    {
+      "emoji": "🌧️",
+      "line": "“下雨啦，种子喝饱了水”"
+    },
+    {
+      "emoji": "🌻",
+      "line": "“长成黄色的小花”"
+    },
+    {
+      "emoji": "🦋",
+      "line": "“蝴蝶来做客，一起喝花蜜”"
+    }
+  ],
+  "quiz": {
+    "q": "小种子是谁帮它搬家的？",
+    "options": [
+      "风",
+      "小鱼",
+      "小狗",
+      "汽车"
+    ],
+    "answer": 0
+  },
+  "src": "https://media.w3.org/2010/05/bunny/trailer.mp4",
+  "stage": "preschool",
+  "order": 1
+}

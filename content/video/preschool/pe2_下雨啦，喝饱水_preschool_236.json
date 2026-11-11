@@ -1,0 +1,39 @@
+{
+  "id": "pe2",
+  "title": "下雨啦，喝饱水",
+  "emoji": "🌧️",
+  "sec": 236,
+  "value": 15,
+  "line": "“咕嘟咕嘟，我喝饱啦”",
+  "scenes": [
+    {
+      "emoji": "🌱",
+      "line": "“种子在土里等雨”"
+    },
+    {
+      "emoji": "🌧️",
+      "line": "“雨滴落在泥土上”"
+    },
+    {
+      "emoji": "💧",
+      "line": "“咕嘟咕嘟喝饱水”"
+    },
+    {
+      "emoji": "🌿",
+      "line": "“小芽冒出来了”"
+    }
+  ],
+  "quiz": {
+    "q": "小种子长大需要什么？",
+    "options": [
+      "糖果",
+      "水和阳光",
+      "电视",
+      "玩具"
+    ],
+    "answer": 1
+  },
+  "src": "https://media.w3.org/2010/05/bunny/trailer.mp4",
+  "stage": "preschool",
+  "order": 2
+}

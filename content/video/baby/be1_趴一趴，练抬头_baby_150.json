@@ -1,0 +1,29 @@
+{
+  "id": "be1",
+  "title": "趴一趴，练抬头",
+  "emoji": "🐣",
+  "sec": 150,
+  "value": 15,
+  "line": "“小脖子有力气，慢慢抬起来”",
+  "scenes": [
+    {
+      "emoji": "🐣",
+      "line": "“趴在软软的垫子上”"
+    },
+    {
+      "emoji": "👶",
+      "line": "“小脑袋抬起来一点点”"
+    },
+    {
+      "emoji": "🌟",
+      "line": "“看到妈妈的笑脸啦”"
+    },
+    {
+      "emoji": "💪",
+      "line": "“每天练三次，越来越有力气”"
+    }
+  ],
+  "src": "https://media.w3.org/2010/05/bunny/trailer.mp4",
+  "stage": "baby",
+  "order": 1
+}

@@ -1,0 +1,39 @@
+{
+  "id": "pe6",
+  "title": "小种子又出发",
+  "emoji": "🌿",
+  "sec": 231,
+  "value": 15,
+  "line": "“明年春天，我们再见面哦”",
+  "scenes": [
+    {
+      "emoji": "❄️",
+      "line": "“冬天种子睡在土里”"
+    },
+    {
+      "emoji": "🌱",
+      "line": "“春天又醒过来”"
+    },
+    {
+      "emoji": "🌞",
+      "line": "“新一轮旅行开始”"
+    },
+    {
+      "emoji": "🌻",
+      "line": "“明年春天，我们再见面”"
+    }
+  ],
+  "quiz": {
+    "q": "故事讲的是什么？",
+    "options": [
+      "小种子的成长",
+      "修房子",
+      "做蛋糕",
+      "踢足球"
+    ],
+    "answer": 0
+  },
+  "src": "https://media.w3.org/2010/05/bunny/trailer.mp4",
+  "stage": "preschool",
+  "order": 6
+}

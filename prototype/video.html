@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>成长动画 · 芽芽成长</title>
+<script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
+<script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.js"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; background: #E7F4EF; color: #3B2B22; }
+  .card-shadow { box-shadow: 0 8px 20px -8px rgba(30, 100, 80, 0.25); }
+  .scene-sky { background: linear-gradient(180deg, #A9E7D9 0%, #D9F5EA 60%, #FFF3D6 100%); }
+  .cloud { animation: drift 9s ease-in-out infinite alternate; }
+  .cloud-2 { animation: drift 12s ease-in-out infinite alternate-reverse; }
+  @keyframes drift { from { transform: translateX(-8px); } to { transform: translateX(12px); } }
+  .bounce-soft { animation: bob 2.4s ease-in-out infinite; }
+  @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+  .ep-item.active { background: #E7F8F3; }
+  .scene-chip.active { background: #3FC1A0; color: #fff; }
+</style>
+</head>
+<body class="w-full h-full m-0 overflow-hidden flex items-center justify-center">
+<div class="w-full h-full max-w-[393px] max-h-[852px] bg-[#FBFDFC] flex flex-col overflow-hidden relative">
+<!-- 顶部 -->
+<header class="shrink-0 px-5 pt-4 pb-2 flex items-center justify-between">
+<a class="w-10 h-10 rounded-2xl bg-white card-shadow flex items-center justify-center" href="home.html">
+<iconify-icon class="text-[18px] text-[#3FC1A0]" icon="ph:arrow-left-bold"></iconify-icon>
+</a>
+<div class="text-center">
+<p class="text-[15px] font-bold">成长动画</p>
+<p class="text-[10px] text-[#9AAFA7]" id="epSub">第 3 集 · 共 12 集 · 适合 3-6 岁</p>
+</div>
+<button class="w-10 h-10 rounded-2xl bg-white card-shadow flex items-center justify-center" id="favBtn">
+<iconify-icon class="text-[18px] text-[#C7D8D2]" icon="ph:bookmark-simple-fill"></iconify-icon>
+</button>
+</header>
+<main class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-5 pb-4 [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
+<!-- 播放器 -->
+<section class="mt-1 rounded-[26px] overflow-hidden card-shadow relative">
+<div class="scene-sky relative h-[214px] overflow-hidden" id="stage">
+<!-- 云 -->
+<div class="cloud absolute top-4 left-5 w-16 h-7 bg-white/85 rounded-full"></div>
+<div class="cloud-2 absolute top-9 left-24 w-10 h-5 bg-white/70 rounded-full"></div>
+<div class="cloud absolute top-3 right-8 w-12 h-6 bg-white/80 rounded-full"></div>
+<!-- 舞台内容 -->
+<div class="absolute inset-0 flex flex-col items-center justify-center" id="sceneArt">
+<div class="bounce-soft text-[76px] leading-none">🌱</div>
+<p class="mt-2 text-[13px] font-bold text-[#3E7A63] bg-white/70 rounded-full px-3 py-1" id="sceneLine">"我好想看看外面的世界呀"</p>
+</div>
+<!-- 太阳 -->
+<div class="absolute top-3 right-2 text-[26px] opacity-90">☀️</div>
+<!-- 草地 -->
+<div class="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-[#8FD9B8] to-transparent"></div>
+<!-- 播放控制层 -->
+<div class="absolute inset-x-0 bottom-0 px-3 pb-2.5 pt-6 bg-gradient-to-t from-black/45 to-transparent">
+<div class="h-1.5 rounded-full bg-white/40 relative" id="seekBar">
+<div class="h-full rounded-full bg-[#FFC53D]" id="seekFill" style="width:0%"></div>
+</div>
+<div class="mt-2 flex items-center justify-between">
+<span class="text-[10px] font-semibold text-white" id="timeNow">00:00 / 04:12</span>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-full bg-white/25 flex items-center justify-center" id="backBtn">
+<iconify-icon class="text-[15px] text-white" icon="ph:rewind-fill"></iconify-icon>
+</button>
+<button class="w-11 h-11 rounded-full bg-white flex items-center justify-center" id="playBtn">
+<iconify-icon class="text-[20px] text-[#2E9E82]" icon="ph:play-fill" id="playIcon"></iconify-icon>
+</button>
+<button class="w-8 h-8 rounded-full bg-white/25 flex items-center justify-center" id="nextBtn">
+<iconify-icon class="text-[15px] text-white" icon="ph:fast-forward-fill"></iconify-icon>
+</button>
+</div>
+<button class="text-[9px] font-semibold text-white/90 border border-white/50 rounded-full px-2 py-0.5" id="fullBtn">护眼模式</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 剧集标题 -->
+<section class="mt-3 flex items-start justify-between gap-2">
+<div class="min-w-0">
+<h1 class="text-[18px] font-bold leading-snug" id="epTitle">小种子旅行记</h1>
+<p class="text-[11px] text-[#8A9E97] mt-1">每集 8 分钟以内 · 看完记得聊一聊</p>
+</div>
+<span class="shrink-0 text-[10px] font-bold bg-[#FFF1D6] text-[#B4761F] rounded-full px-2.5 py-1">+15 成长值</span>
+</section>
+<!-- 故事互动 -->
+<section class="mt-3 bg-white rounded-[20px] p-3.5 card-shadow">
+<div class="flex items-center justify-between">
+<h2 class="text-[13.5px] font-bold">看完想一想</h2>
+<span class="text-[10px] text-[#9AAFA7]">答对得 ⭐</span>
+</div>
+<p class="text-[12.5px] mt-2 leading-relaxed" id="quizQuestion">小种子是谁帮它搬家的？</p>
+<div class="mt-2.5 grid grid-cols-2 gap-2" id="quizOptions"></div>
+<p class="hidden mt-2 text-[11px] font-semibold text-[#2E9E82]" id="quizResult"></p>
+</section>
+<!-- 场景切换 -->
+<section class="mt-3">
+<h2 class="text-[14px] font-bold">故事进行到哪啦</h2>
+<div class="mt-2 flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden" id="sceneRow">
+<button class="scene-chip active shrink-0 h-8 px-3 rounded-full bg-white text-[11.5px] font-bold text-[#6B8A80] card-shadow" data-scene="0">🌱 春天醒来</button>
+<button class="scene-chip shrink-0 h-8 px-3 rounded-full bg-white text-[11.5px] font-bold text-[#6B8A80] card-shadow" data-scene="1">🌧️ 下雨啦</button>
+<button class="scene-chip shrink-0 h-8 px-3 rounded-full bg-white text-[11.5px] font-bold text-[#6B8A80] card-shadow" data-scene="2">🌻 长成小花</button>
+<button class="scene-chip shrink-0 h-8 px-3 rounded-full bg-white text-[11.5px] font-bold text-[#6B8A80] card-shadow" data-scene="3">🦋 蝴蝶来做客</button>
+</div>
+</section>
+<!-- 剧集列表 -->
+<section class="mt-3">
+<div class="flex items-center justify-between">
+<h2 class="text-[14px] font-bold">同系列动画</h2>
+<span class="text-[10px] text-[#9AAFA7]">共 12 集 · 每日更新</span>
+</div>
+<div class="mt-2 space-y-2" id="epList"></div>
+</section>
+<div class="mt-3 bg-[#FFF1E8] rounded-[18px] p-3 flex items-start gap-2">
+<iconify-icon class="text-[15px] text-[#FF6B4A] shrink-0 mt-0.5" icon="ph:eye-fill"></iconify-icon>
+<p class="text-[10.5px] leading-relaxed text-[#8A5E48]">今天已看 8 分钟，再看完这一集就到 30 分钟上限啦。看完记得让孩子望望远处，眼睛休息一下。</p>
+</div>
+<div class="h-1"></div>
+</main>
+<!-- 底部导航 -->
+<nav class="shrink-0 bg-white border-t border-[#E4F1EC] px-3 pt-1.5 pb-3">
+<div class="flex items-center justify-around">
+<a class="flex flex-col items-center gap-0.5 w-16" href="home.html">
+<iconify-icon class="text-[23px] text-[#B6A18E]" icon="ph:house-duotone"></iconify-icon>
+<span class="text-[10px] font-semibold text-[#B6A18E]">首页</span>
+</a>
+<a class="flex flex-col items-center gap-0.5 w-16" href="tasks.html">
+<iconify-icon class="text-[23px] text-[#B6A18E]" icon="ph:check-circle-duotone"></iconify-icon>
+<span class="text-[10px] font-semibold text-[#B6A18E]">任务</span>
+</a>
+<a class="flex flex-col items-center gap-0.5 w-16" href="shop.html">
+<iconify-icon class="text-[23px] text-[#B6A18E]" icon="ph:storefront-duotone"></iconify-icon>
+<span class="text-[10px] font-semibold text-[#B6A18E]">商城</span>
+</a>
+<a class="flex flex-col items-center gap-0.5 w-16" href="video.html">
+<iconify-icon class="text-[23px] text-[#3FC1A0]" icon="ph:play-circle-fill"></iconify-icon>
+<span class="text-[10px] font-bold text-[#3FC1A0]">看动画</span>
+</a>
+</div>
+</nav>
+<div class="hidden absolute left-1/2 -translate-x-1/2 bottom-24 z-30 bg-[#3B2B22] text-white text-[12px] font-semibold px-4 py-2.5 rounded-full shadow-lg" id="toast"></div>
+</div>
+<script>
+  const episodes = [
+    { title: '小种子旅行记', emoji: '🌱', bg: 'scene-sky', line: '"我好想看看外面的世界呀"', sec: 252,
+      quiz: { q: '小种子是谁帮它搬家的？', options: ['风', '小鱼', '小狗', '汽车'], answer: 0 } },
+    { title: '下雨啦，喝饱水', emoji: '🌧️', bg: 'scene-sky', line: '"咕嘟咕嘟，我喝饱啦"', sec: 236,
+      quiz: { q: '小种子长大需要什么？', options: ['糖果', '水和阳光', '电视', '玩具'], answer: 1 } },
+    { title: '我变成一朵小花', emoji: '🌻', bg: 'scene-sky', line: '"快看，我开出黄色的小花啦"', sec: 228,
+      quiz: { q: '小种子最后变成了什么？', options: ['一棵大树', '一朵花', '一块石头', '一只蝴蝶'], answer: 1 } },
+    { title: '蝴蝶来做客', emoji: '🦋', bg: 'scene-sky', line: '"你好呀，小蝴蝶，来喝点花蜜吧"', sec: 244,
+      quiz: { q: '谁来找小花玩？', options: ['小蝴蝶', '小螃蟹', '小蚂蚁', '小乌龟'], answer: 0 } },
+    { title: '秋天的礼物', emoji: '🍂', bg: 'scene-sky', line: '"我把种子送给风，让它去旅行"', sec: 218,
+      quiz: { q: '种子是怎么去旅行的？', options: ['坐火车', '被风吹走', '游过去', '跳过去'], answer: 1 } },
+    { title: '小种子又出发', emoji: '🌿', bg: 'scene-sky', line: '"明年春天，我们再见面哦"', sec: 231,
+      quiz: { q: '故事讲的是什么？', options: ['小种子的成长', '修房子', '做蛋糕', '踢足球'], answer: 0 } }
+  ];
+
+  const scenes = [
+    { emoji: '🌱', line: '"我好想看看外面的世界呀"' },
+    { emoji: '🌧️', line: '"咕嘟咕嘟，我喝饱啦"' },
+    { emoji: '🌻', line: '"快看，我开出黄色的小花啦"' },
+    { emoji: '🦋', line: '"你好呀，小蝴蝶，来喝点花蜜吧"' }
+  ];
+
+  let epIndex = 0;
+  let sceneIndex = 0;
+  let playing = false;
+  let elapsed = 0;
+  let answered = false;
+  let faved = false;
+
+  const playIcon = document.getElementById('playIcon');
+  const seekFill = document.getElementById('seekFill');
+  const timeNow = document.getElementById('timeNow');
+  const sceneArt = document.getElementById('sceneArt');
+  const toast = document.getElementById('toast');
+  const quizOptions = document.getElementById('quizOptions');
+  const quizResult = document.getElementById('quizResult');
+
+  let toastTimer = null;
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.remove('hidden');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.add('hidden'); }, 1500);
+  }
+
+  function fmt(s) {
+    const m = Math.floor(s / 60);
+    const r = s % 60;
+    return (m < 10 ? '0' : '') + m + ':' + (r < 10 ? '0' : '') + r;
+  }
+
+  function renderEpisode() {
+    const ep = episodes[epIndex];
+    document.getElementById('epTitle').textContent = ep.title;
+    document.getElementById('epSub').textContent = '第 ' + (epIndex + 1) + ' 集 · 共 12 集 · 适合 3-6 岁';
+    document.getElementById('sceneLine').textContent = ep.line;
+    document.getElementById('sceneArt').querySelector('.bounce-soft').textContent = ep.emoji;
+    timeNow.textContent = '00:00 / ' + fmt(ep.sec);
+    elapsed = 0;
+    answered = false;
+    quizResult.classList.add('hidden');
+    document.getElementById('quizQuestion').textContent = ep.quiz.q;
+    quizOptions.innerHTML = ep.quiz.options.map(function (o, i) {
+      return '<button data-opt="' + i + '" class="quiz-btn h-9 rounded-xl bg-[#F3FAF7] text-[11.5px] font-semibold text-[#3E7A63]">' + o + '</button>';
+    }).join('');
+    quizOptions.querySelectorAll('.quiz-btn').forEach(function (b) {
+      b.addEventListener('click', function () { answer(Number(b.dataset.opt)); });
+    });
+    renderEpList();
+    updateProgress();
+  }
+
+  function answer(opt) {
+    if (answered) return;
+    const ep = episodes[epIndex];
+    answered = true;
+    const btns = quizOptions.querySelectorAll('.quiz-btn');
+    btns.forEach(function (b, i) {
+      if (i === ep.quiz.answer) {
+        b.className = 'quiz-btn h-9 rounded-xl bg-[#3FC1A0] text-[11.5px] font-bold text-white';
+      } else if (i === opt) {
+        b.className = 'quiz-btn h-9 rounded-xl bg-[#FFE3DA] text-[11.5px] font-bold text-[#D25638]';
+      }
+    });
+    quizResult.classList.remove('hidden');
+    if (opt === ep.quiz.answer) {
+      quizResult.textContent = '答对啦！+1 颗星，顺手去任务页打个卡 ⭐';
+    } else {
+      quizResult.textContent = '没关系，再陪孩子看一遍就记住啦 🌱';
+    }
+  }
+
+  function renderEpList() {
+    document.getElementById('epList').innerHTML = episodes.map(function (ep, i) {
+      return '<button data-ep="' + i + '" class="ep-item w-full text-left rounded-2xl p-2 flex items-center gap-2.5 ' + (i === epIndex ? 'active' : 'bg-white') + ' card-shadow">'
+        + '<div class="w-[54px] h-[42px] rounded-xl ' + (i === epIndex ? 'bg-[#C9EFE1]' : 'bg-[#F1F8F5]') + ' flex items-center justify-center text-[21px] shrink-0">' + ep.emoji + '</div>'
+        + '<div class="flex-1 min-w-0"><p class="text-[12px] font-bold truncate">第 ' + (i + 1) + ' 集 · ' + ep.title + '</p>'
+        + '<p class="text-[9.5px] text-[#9AAFA7] mt-0.5">' + fmt(ep.sec) + ' · 亲子共看</p></div>'
+        + '<iconify-icon icon="' + (i === epIndex ? 'ph:play-circle-fill' : 'ph:play-circle-duotone') + '" class="text-[21px] ' + (i === epIndex ? 'text-[#3FC1A0]' : 'text-[#C7D8D2]') + ' shrink-0"></iconify-icon>'
+        + '</button>';
+    }).join('');
+
+    document.querySelectorAll('.ep-item').forEach(function (b) {
+      b.addEventListener('click', function () {
+        epIndex = Number(b.dataset.ep);
+        playing = false;
+        playIcon.setAttribute('icon', 'ph:play-fill');
+        renderEpisode();
+        showToast('已选择第 ' + (epIndex + 1) + ' 集');
+      });
+    });
+  }
+
+  function updateProgress() {
+    const ep = episodes[epIndex];
+    const pct = Math.min(100, (elapsed / ep.sec) * 100);
+    seekFill.style.width = pct + '%';
+    timeNow.textContent = fmt(elapsed) + ' / ' + fmt(ep.sec);
+    playIcon.setAttribute('icon', playing ? 'ph:pause-fill' : 'ph:play-fill');
+  }
+
+  function tick() {
+    if (!playing) return;
+    const ep = episodes[epIndex];
+    elapsed = elapsed + 1;
+    if (elapsed >= ep.sec) {
+      playing = false;
+      elapsed = ep.sec;
+      updateProgress();
+      showToast('这一集看完啦，来回答小问题吧 🎉');
+      return;
+    }
+    updateProgress();
+    const seg = Math.floor((elapsed / ep.sec) * scenes.length);
+    const safeSeg = Math.min(scenes.length - 1, seg);
+    if (safeSeg !== sceneIndex) {
+      sceneIndex = safeSeg;
+      renderScene();
+    }
+  }
+
+  function renderScene() {
+    const s = scenes[sceneIndex];
+    document.getElementById('sceneArt').querySelector('.bounce-soft').textContent = s.emoji;
+    document.getElementById('sceneLine').textContent = s.line;
+    document.querySelectorAll('.scene-chip').forEach(function (c) {
+      c.classList.toggle('active', Number(c.dataset.scene) === sceneIndex);
+    });
+  }
+
+  document.getElementById('playBtn').addEventListener('click', function () {
+    playing = !playing;
+    updateProgress();
+    showToast(playing ? '动画开始啦 🎬' : '已暂停');
+  });
+  document.getElementById('backBtn').addEventListener('click', function () {
+    elapsed = Math.max(0, elapsed - 10);
+    updateProgress();
+  });
+  document.getElementById('nextBtn').addEventListener('click', function () {
+    elapsed = Math.min(episodes[epIndex].sec, elapsed + 10);
+    updateProgress();
+  });
+  document.getElementById('fullBtn').addEventListener('click', function () {
+    showToast('护眼模式已开启：亮度柔和，距离提醒开启');
+  });
+  document.getElementById('favBtn').addEventListener('click', function () {
+    faved = !faved;
+    document.querySelector('#favBtn iconify-icon').className = 'text-[18px] ' + (faved ? 'text-[#FF8A4C]' : 'text-[#C7D8D2]');
+    showToast(faved ? '已收藏到「我的动画」' : '已取消收藏');
+  });
+  document.querySelectorAll('.scene-chip').forEach(function (c) {
+    c.addEventListener('click', function () {
+      sceneIndex = Number(c.dataset.scene);
+      renderScene();
+    });
+  });
+  document.getElementById('seekBar').addEventListener('click', function (e) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const ratio = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
+    elapsed = Math.floor(ratio * episodes[epIndex].sec);
+    updateProgress();
+  });
+
+  renderEpisode();
+
+  // 播放进度计时：只在播放中累加，既不用无效变量，也不会重复叠加定时器
+  window.setInterval(tick, 1000);
+</script>
+</body>
+</html>

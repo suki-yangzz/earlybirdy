@@ -1,0 +1,39 @@
+{
+  "id": "te2",
+  "title": "小星星",
+  "emoji": "⭐",
+  "sec": 160,
+  "value": 15,
+  "line": "“一闪一闪亮晶晶，满天都是小星星”",
+  "scenes": [
+    {
+      "emoji": "🌙",
+      "line": "“天黑了，星星出来了”"
+    },
+    {
+      "emoji": "⭐",
+      "line": "“一闪一闪亮晶晶”"
+    },
+    {
+      "emoji": "✨",
+      "line": "“挂在天空放光明”"
+    },
+    {
+      "emoji": "🌟",
+      "line": "“好像许多小眼睛”"
+    }
+  ],
+  "quiz": {
+    "q": "小星星像什么？",
+    "options": [
+      "小眼睛",
+      "小嘴巴",
+      "小耳朵",
+      "小脚丫"
+    ],
+    "answer": 0
+  },
+  "src": "https://media.w3.org/2010/05/bunny/trailer.mp4",
+  "stage": "toddler",
+  "order": 2
+}

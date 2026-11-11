@@ -1,0 +1,52 @@
+{
+  "id": "c-checkup-01",
+  "category": "checkup",
+  "categoryLabel": "产检",
+  "title": "产检时间表与准备清单",
+  "subtitle": "每次去医院前，先看这一页",
+  "coverEmoji": "🩺",
+  "coverColor": "#5AA9F8",
+  "coverBg": "#E9F3FF",
+  "lessons": 4,
+  "duration": "约 24 分钟",
+  "intro": "按孕周梳理常见产检节点、需要带的材料和容易被忽略的问题。各地医院流程不同，具体以建档医院安排为准。",
+  "status": "published",
+  "chapters": [
+    {
+      "id": "ch1",
+      "title": "孕早期：建档与基础检查",
+      "kind": "article",
+      "duration": "6 分钟",
+      "locked": false,
+      "body": "确认宫内妊娠后，按医院要求建档。常见项目包括血常规、尿常规、肝肾功能、血型、传染病筛查和超声。提前问清是否需要空腹、是否要带夫妻双方证件。",
+      "type": "article"
+    },
+    {
+      "id": "ch2",
+      "title": "孕中期：筛查与排畸",
+      "kind": "article",
+      "duration": "7 分钟",
+      "locked": false,
+      "body": "孕中期通常会有唐氏筛查或无创 DNA、系统超声等节点。检查有严格孕周窗口，建议提前预约。拿到报告先看结论和复查建议，有疑问直接问产检医生，不要只靠搜索。",
+      "type": "article"
+    },
+    {
+      "id": "ch3",
+      "title": "孕晚期：胎心监护与待产评估",
+      "kind": "article",
+      "duration": "6 分钟",
+      "locked": false,
+      "body": "孕晚期产检频率增加，可能包含胎心监护、超声评估和骨盆测量。每次记录血压、体重和胎动变化。出现出血、破水、规律宫缩或胎动明显减少，应立即就医，不要等下一次产检。",
+      "type": "article"
+    },
+    {
+      "id": "ch4",
+      "title": "产检包里放什么",
+      "kind": "article",
+      "duration": "5 分钟",
+      "locked": false,
+      "body": "建议常备：产检本、医保卡/就诊卡、既往报告、水和小零食、纸巾、充电宝。需要空腹的项目，提前准备检查后能立刻吃的食物。把下次产检时间当场记进日历。",
+      "type": "article"
+    }
+  ]
+}

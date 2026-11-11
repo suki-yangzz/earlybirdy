@@ -1,0 +1,96 @@
+{
+  "id": "c-taijiao-01",
+  "category": "taijiao",
+  "categoryLabel": "胎教",
+  "title": "胎教音乐怎么听才有效",
+  "subtitle": "每天 15 分钟，和宝宝建立声音联结",
+  "coverEmoji": "🎵",
+  "coverColor": "#8B6BE0",
+  "coverBg": "#F1EBFF",
+  "lessons": 5,
+  "duration": "约 28 分钟",
+  "intro": "胎教不是把耳机贴在肚子上。课程从声音传导、时段选择和曲目节奏三个角度，讲清安全、有效的听法。",
+  "status": "published",
+  "chapters": [
+    {
+      "id": "ch1",
+      "title": "宝宝什么时候能听见",
+      "kind": "article",
+      "duration": "6 分钟",
+      "locked": false,
+      "body": "孕 16～20 周左右，胎儿的听觉器官开始具备接收声音的能力；到孕 24 周后，对熟悉的声音会出现更稳定的反应。声音会经过腹壁、羊水衰减，真正到达宝宝耳朵的音量比外界低很多，所以不需要把音量开大，更不要把耳机或音箱直接贴在肚皮上。",
+      "type": "article",
+      "pages": [
+        {
+          "title": "声音怎么到宝宝耳朵",
+          "body": "孕 16～20 周左右，胎儿的听觉器官开始具备接收声音的能力；到孕 24 周后，对熟悉的声音会出现更稳定的反应。",
+          "image": "/courses/images/taijiao-ch1.png"
+        },
+        {
+          "title": "声音会被衰减",
+          "body": "声音会经过腹壁、羊水衰减，真正到达宝宝耳朵的音量比外界低很多。所以不需要把音量开大，更不要把耳机或音箱直接贴在肚皮上。"
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "每天什么时候听",
+      "kind": "article",
+      "duration": "5 分钟",
+      "locked": false,
+      "body": "建议固定在宝宝胎动较活跃、你相对放松的时段，例如晚饭后或睡前。每天 1～2 次、每次 10～15 分钟即可。避免在你疲惫、饥饿或情绪波动很大时进行，胎教首先是让你自己安定下来。",
+      "type": "article",
+      "pages": [
+        {
+          "title": "固定在胎动活跃的时段",
+          "body": "建议固定在宝宝胎动较活跃、你相对放松的时段，例如晚饭后或睡前。每天 1～2 次、每次 10～15 分钟即可。",
+          "image": "/courses/images/taijiao-ch2.png"
+        },
+        {
+          "title": "先让自己安定下来",
+          "body": "避免在你疲惫、饥饿或情绪波动很大时进行，胎教首先是让你自己安定下来。"
+        }
+      ]
+    },
+    {
+      "id": "ch3",
+      "title": "选曲：慢一点、简单一点",
+      "kind": "article",
+      "duration": "7 分钟",
+      "locked": false,
+      "body": "优先选择节奏平稳、旋律重复、动态范围不大的曲目，音量以正常交谈声略低为宜。不必追求“名曲清单”，你和宝宝都舒服比曲目名气更重要。同一首曲子重复播放，更容易形成声音记忆。",
+      "type": "article",
+      "pages": [
+        {
+          "title": "慢一点、简单一点",
+          "body": "优先选择节奏平稳、旋律重复、动态范围不大的曲目，音量以正常交谈声略低为宜。"
+        },
+        {
+          "title": "重复比名气重要",
+          "body": "不必追求“名曲清单”，你和宝宝都舒服比曲目名气更重要。同一首曲子重复播放，更容易形成声音记忆。"
+        }
+      ]
+    },
+    {
+      "id": "ch4",
+      "title": "音频精讲：三段式胎教流程",
+      "kind": "audio",
+      "duration": "45 秒试听",
+      "locked": false,
+      "type": "audio",
+      "src": "/courses/audio/taijiao-flow.wav",
+      "sec": 45
+    },
+    {
+      "id": "ch5",
+      "title": "视频跟练：胎教实操示范",
+      "kind": "video",
+      "duration": "22 秒样片",
+      "locked": false,
+      "type": "video",
+      "src": "/video/courses/taijiao-demo.mp4",
+      "sec": 22
+    }
+  ],
+  "cover": "/images/covers/course-taijiao-01.png"
+}

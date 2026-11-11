@@ -1,0 +1,29 @@
+{
+  "id": "te3",
+  "title": "数鸭子",
+  "emoji": "🦆",
+  "sec": 145,
+  "value": 15,
+  "line": "“门前大桥下，游过一群鸭”",
+  "scenes": [
+    {
+      "emoji": "🦆",
+      "line": "“游过一群小鸭子”"
+    },
+    {
+      "emoji": "🌉",
+      "line": "“桥下水面真热闹”"
+    },
+    {
+      "emoji": "🔢",
+      "line": "“快来快来数一数”"
+    },
+    {
+      "emoji": "🐤",
+      "line": "“二四六七八”"
+    }
+  ],
+  "src": "https://media.w3.org/2010/05/bunny/trailer.mp4",
+  "stage": "toddler",
+  "order": 3
+}

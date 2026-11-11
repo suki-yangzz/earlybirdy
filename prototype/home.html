@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>芽芽成长 · 早教内容</title>
+<script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
+<script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.js"></script>
+<style>
+  :root {
+    --cream: #FFF8EE;
+    --ink: #3B2B22;
+    --coral: #FF6B4A;
+    --sun: #FFC53D;
+    --mint: #3FC1A0;
+    --sky: #5AA9F8;
+    --grape: #9B7BEA;
+  }
+  body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; background: #F3E9DC; color: var(--ink); }
+  .card-shadow { box-shadow: 0 8px 20px -8px rgba(120, 80, 40, 0.25); }
+  .stage-chip.active { background: #FF6B4A; color: #fff; border-color: #FF6B4A; box-shadow: 0 6px 14px -6px rgba(255,107,74,.9); }
+  .dots-bg {
+    background-image: radial-gradient(rgba(255,255,255,.55) 1.5px, transparent 1.5px);
+    background-size: 14px 14px;
+  }
+</style>
+</head>
+<body class="w-full h-full m-0 overflow-hidden flex items-center justify-center">
+<div class="w-full h-full max-w-[393px] max-h-[852px] bg-[#FFF8EE] flex flex-col overflow-hidden relative">
+<!-- 顶部 -->
+<header class="shrink-0 px-5 pt-5 pb-2">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-[11px] text-[#A08876]">2026年11月4日 · 星期三</p>
+<h1 class="text-[22px] font-bold leading-tight mt-0.5">早上好呀，小芽妈妈 🌱</h1>
+</div>
+<a class="relative w-11 h-11 rounded-2xl bg-white card-shadow flex items-center justify-center" href="tasks.html">
+<iconify-icon class="text-[22px] text-[#FF6B4A]" icon="ph:bell-ringing-duotone"></iconify-icon>
+<span class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-[#FF6B4A] text-white text-[10px] font-bold flex items-center justify-center">3</span>
+</a>
+</div>
+<!-- 成长值条 -->
+<div class="mt-3 bg-white rounded-2xl px-3.5 py-2.5 flex items-center gap-3 card-shadow">
+<div class="w-9 h-9 rounded-xl bg-[#FFF1D0] flex items-center justify-center">
+<iconify-icon class="text-[20px] text-[#F5A623]" icon="ph:star-four-fill"></iconify-icon>
+</div>
+<div class="flex-1">
+<div class="flex items-end justify-between">
+<span class="text-[12px] font-semibold">小星星成长值 <span class="text-[#FF6B4A]">860</span></span>
+<span class="text-[10px] text-[#A08876]">还差 140 换礼物</span>
+</div>
+<div class="mt-1.5 h-2 rounded-full bg-[#F5EDE3] overflow-hidden">
+<div class="h-full w-[86%] rounded-full bg-gradient-to-r from-[#FFC53D] to-[#FF8A3D]"></div>
+</div>
+</div>
+</div>
+</header>
+<!-- 主滚动区 -->
+<main class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-5 pb-6 [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
+<!-- 阶段选择 -->
+<section class="mt-3">
+<div class="flex items-center justify-between mb-2">
+<h2 class="text-[15px] font-bold">宝宝现在几个月啦？</h2>
+<span class="text-[11px] text-[#A08876]">选一个，马上换内容</span>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden" id="stageChips">
+<button class="stage-chip shrink-0 px-3.5 h-9 rounded-full bg-white border-2 border-[#F0E3D3] text-[13px] font-semibold text-[#6B5647]" data-stage="pregnancy">🤰 孕期</button>
+<button class="stage-chip shrink-0 px-3.5 h-9 rounded-full bg-white border-2 border-[#F0E3D3] text-[13px] font-semibold text-[#6B5647]" data-stage="baby">👶 0-6个月</button>
+<button class="stage-chip active shrink-0 px-3.5 h-9 rounded-full bg-white border-2 border-[#F0E3D3] text-[13px] font-semibold text-[#6B5647]" data-stage="toddler">🧸 6个月-3岁</button>
+<button class="stage-chip shrink-0 px-3.5 h-9 rounded-full bg-white border-2 border-[#F0E3D3] text-[13px] font-semibold text-[#6B5647]" data-stage="preschool">🎨 3-6岁</button>
+<button class="stage-chip shrink-0 px-3.5 h-9 rounded-full bg-white border-2 border-[#F0E3D3] text-[13px] font-semibold text-[#6B5647]" data-stage="kid">🚀 6岁以上</button>
+</div>
+<div class="mt-2 flex items-center gap-1.5 text-[11px] text-[#8A725F]" id="stageNote">
+<iconify-icon class="text-[#FF6B4A]" icon="ph:info-fill"></iconify-icon>
+<span>当前阶段：6个月-3岁 · 正在学认图、学发音</span>
+</div>
+</section>
+<!-- 主视觉 -->
+<section class="mt-3 rounded-[26px] overflow-hidden relative card-shadow" id="hero">
+<div class="absolute inset-0 bg-gradient-to-br from-[#FFB347] via-[#FF8A4C] to-[#FF6B4A] dots-bg"></div>
+<div class="relative p-4 pb-4 text-white">
+<div class="flex items-start justify-between">
+<div class="max-w-[210px]">
+<span class="inline-block text-[10px] font-bold bg-white/25 rounded-full px-2 py-0.5">今日专属 · 6个月-3岁</span>
+<h3 class="text-[21px] font-bold leading-snug mt-2" id="heroTitle">认一认小动物<br/>亲子卡片时间</h3>
+<p class="text-[11px] mt-1.5 text-white/90 leading-relaxed" id="heroDesc">20张高频认知卡，点一下就有声音</p>
+<a class="mt-3 inline-flex items-center gap-1.5 h-10 px-4 rounded-full bg-white text-[#E85A38] text-[13px] font-bold" href="cards.html" id="heroBtn">
+                开始玩一玩
+                <iconify-icon icon="ph:arrow-right-bold"></iconify-icon>
+</a>
+</div>
+<div class="w-[86px] h-[86px] rounded-3xl bg-white/25 flex items-center justify-center text-[46px] shrink-0">🧸</div>
+</div>
+</div>
+</section>
+<!-- 今日任务入口 -->
+<a class="mt-3 block bg-white rounded-[22px] p-3.5 card-shadow" href="tasks.html">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-xl bg-[#FFEFE8] flex items-center justify-center">
+<iconify-icon class="text-[18px] text-[#FF6B4A]" icon="ph:check-circle-fill"></iconify-icon>
+</div>
+<span class="text-[14px] font-bold">今天的任务</span>
+</div>
+<div class="flex items-center gap-1 text-[11px] font-semibold text-[#FF6B4A]">
+            去看看 <iconify-icon icon="ph:caret-right-bold"></iconify-icon>
+</div>
+</div>
+<div class="mt-3 flex items-center gap-2">
+<div class="flex-1 flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-[#3FC1A0] flex items-center justify-center"></span>
+<span class="text-[11px] text-[#8A725F]">卡片认物</span>
+</div>
+<div class="flex-1 flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-[#3FC1A0] flex items-center justify-center"></span>
+<span class="text-[11px] text-[#8A725F]">亲子儿歌</span>
+</div>
+<div class="flex-1 flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full border-2 border-[#E6D7C7]"></span>
+<span class="text-[11px] text-[#A08876]">户外 15 分钟</span>
+</div>
+</div>
+<div class="mt-3 flex items-center gap-2 bg-[#FFF7E8] rounded-xl px-3 py-2">
+<iconify-icon class="text-[16px] text-[#FF8A3D]" icon="ph:fire-fill"></iconify-icon>
+<span class="text-[11px] font-semibold text-[#B4761F]">已连续打卡 6 天，今天完成再拿 30 成长值</span>
+</div>
+</a>
+<!-- 内容入口 -->
+<section class="mt-4">
+<div class="flex items-center justify-between">
+<h2 class="text-[15px] font-bold" id="entryTitle">6个月-3岁 · 玩中学</h2>
+<span class="text-[11px] text-[#A08876]">共 4 个入口</span>
+</div>
+<div class="mt-2.5 grid grid-cols-2 gap-2.5" id="entryGrid"></div>
+</section>
+<!-- 推荐 -->
+<section class="mt-4">
+<h2 class="text-[15px] font-bold">给家长的小推荐</h2>
+<div class="mt-2.5 space-y-2" id="tips"></div>
+</section>
+<div class="h-2"></div>
+</main>
+<!-- 底部导航 -->
+<nav class="shrink-0 bg-white border-t border-[#F2E5D7] px-3 pt-1.5 pb-3">
+<div class="flex items-center justify-around">
+<a class="flex flex-col items-center gap-0.5 w-16" href="home.html">
+<iconify-icon class="text-[23px] text-[#FF6B4A]" icon="ph:house-fill"></iconify-icon>
+<span class="text-[10px] font-bold text-[#FF6B4A]">首页</span>
+</a>
+<a class="flex flex-col items-center gap-0.5 w-16" href="tasks.html">
+<iconify-icon class="text-[23px] text-[#B6A18E]" icon="ph:check-circle-duotone"></iconify-icon>
+<span class="text-[10px] font-semibold text-[#B6A18E]">任务</span>
+</a>
+<a class="flex flex-col items-center gap-0.5 w-16" href="shop.html">
+<iconify-icon class="text-[23px] text-[#B6A18E]" icon="ph:storefront-duotone"></iconify-icon>
+<span class="text-[10px] font-semibold text-[#B6A18E]">商城</span>
+</a>
+<a class="flex flex-col items-center gap-0.5 w-16" href="tasks.html">
+<iconify-icon class="text-[23px] text-[#B6A18E]" icon="ph:user-circle-duotone"></iconify-icon>
+<span class="text-[10px] font-semibold text-[#B6A18E]">我的</span>
+</a>
+</div>
+</nav>
+</div>
+<script>
+  const stages = {
+    pregnancy: {
+      note: '当前阶段：孕期 · 给肚子里的小宝宝听的温柔时光',
+      heroTitle: '给宝宝听的第一首<br />胎教音乐',
+      heroDesc: '12首舒缓胎教曲，每天听 15 分钟',
+      heroBtn: 'music.html',
+      heroIcon: '🎧',
+      heroBg: 'from-[#9B7BEA] via-[#B18FF0] to-[#E27FC0]',
+      entryTitle: '孕期 · 温柔陪伴',
+      entries: [
+        { icon: 'ph:music-notes-fill', color: 'text-[#8B6BE0]', bg: 'bg-[#F1EBFF]', title: '胎教音乐', sub: '安抚 · 12 首', href: 'music.html' },
+        { icon: 'ph:heart-fill', color: 'text-[#FF6B4A]', bg: 'bg-[#FFEFE8]', title: '孕妈小课堂', sub: '每周 3 课', href: 'tasks.html' },
+        { icon: 'ph:moon-stars-fill', color: 'text-[#5AA9F8]', bg: 'bg-[#E9F3FF]', title: '睡前故事', sub: '爸爸的声音', href: 'music.html' },
+        { icon: 'ph:storefront-fill', color: 'text-[#3FC1A0]', bg: 'bg-[#E7F8F3]', title: '待产好物', sub: '成长值兑换', href: 'shop.html' }
+      ],
+      tips: [
+        { icon: 'ph:speaker-high-fill', bg: 'bg-[#F1EBFF]', color: 'text-[#8B6BE0]', title: '声音别开太大', text: '放在离肚子 1 米左右，音量像平常聊天就好。' },
+        { icon: 'ph:clock-fill', bg: 'bg-[#FFF1D6]', color: 'text-[#E8A22A]', title: '每天固定时间听', text: '晚饭后或睡前，宝宝更容易记住这个节奏。' }
+      ]
+    },
+    baby: {
+      note: '当前阶段：0-6个月 · 看黑白卡、追视小玩具',
+      heroTitle: '黑白卡追视<br />眼睛动起来',
+      heroDesc: '高对比卡片，练追视和注视',
+      heroBtn: 'cards.html',
+      heroIcon: '👶',
+      heroBg: 'from-[#5AA9F8] via-[#6FC5F5] to-[#3FC1A0]',
+      entryTitle: '0-6个月 · 感官启蒙',
+      entries: [
+        { icon: 'ph:cards-fill', color: 'text-[#5AA9F8]', bg: 'bg-[#E9F3FF]', title: '黑白卡', sub: '追视练习', href: 'cards.html' },
+        { icon: 'ph:music-note-fill', color: 'text-[#8B6BE0]', bg: 'bg-[#F1EBFF]', title: '白噪音摇篮曲', sub: '哄睡神器', href: 'music.html' },
+        { icon: 'ph:hand-heart-fill', color: 'text-[#FF8A4C]', bg: 'bg-[#FFEFE8]', title: '翻身小练习', sub: '每天 3 次', href: 'video.html' },
+        { icon: 'ph:storefront-fill', color: 'text-[#3FC1A0]', bg: 'bg-[#E7F8F3]', title: '安抚好物', sub: '成长值兑换', href: 'shop.html' }
+      ],
+      tips: [
+        { icon: 'ph:eye-fill', bg: 'bg-[#E9F3FF]', color: 'text-[#5AA9F8]', title: '距离 20-30 厘米', text: '这个距离宝宝看得最清楚，慢慢左右移动卡片。' },
+        { icon: 'ph:timer-fill', bg: 'bg-[#FFF1D6]', color: 'text-[#E8A22A]', title: '一次别超过 3 分钟', text: '宝宝转头或打哈欠，就说明想休息啦。' }
+      ]
+    },
+    toddler: {
+      note: '当前阶段：6个月-3岁 · 正在学认图、学发音',
+      heroTitle: '认一认小动物<br />亲子卡片时间',
+      heroDesc: '20张高频认知卡，点一下就有声音',
+      heroBtn: 'cards.html',
+      heroIcon: '🧸',
+      heroBg: 'from-[#FFB347] via-[#FF8A4C] to-[#FF6B4A]',
+      entryTitle: '6个月-3岁 · 玩中学',
+      entries: [
+        { icon: 'ph:image-square-fill', color: 'text-[#FF6B4A]', bg: 'bg-[#FFEFE8]', title: '图片认物卡', sub: '20 张 · 会说话', href: 'cards.html' },
+        { icon: 'ph:play-circle-fill', color: 'text-[#5AA9F8]', bg: 'bg-[#E9F3FF]', title: '儿歌动画', sub: '8 分钟一集', href: 'video.html' },
+        { icon: 'ph:music-notes-simple-fill', color: 'text-[#8B6BE0]', bg: 'bg-[#F1EBFF]', title: '亲子律动', sub: '跟着拍手', href: 'music.html' },
+        { icon: 'ph:storefront-fill', color: 'text-[#3FC1A0]', bg: 'bg-[#E7F8F3]', title: '成长商城', sub: '积分换礼', href: 'shop.html' }
+      ],
+      tips: [
+        { icon: 'ph:hand-pointing-fill', bg: 'bg-[#FFEFE8]', color: 'text-[#FF6B4A]', title: '先指再读', text: '手指着卡片，说一遍名称，等 3 秒再让宝宝跟。' },
+        { icon: 'ph:smiley-wink-fill', bg: 'bg-[#FFF1D6]', color: 'text-[#E8A22A]', title: '答错也没关系', text: '说"我们再看一次"，别急着纠正，保护小兴趣。' }
+      ]
+    },
+    preschool: {
+      note: '当前阶段：3-6岁 · 看动画、听故事、学表达',
+      heroTitle: '动画小剧场<br />今天讲小种子',
+      heroDesc: '每集 8 分钟，看完还能复述故事',
+      heroBtn: 'video.html',
+      heroIcon: '🎨',
+      heroBg: 'from-[#3FC1A0] via-[#4FCBAE] to-[#2F9E9B]',
+      entryTitle: '3-6岁 · 探索小世界',
+      entries: [
+        { icon: 'ph:play-circle-fill', color: 'text-[#3FC1A0]', bg: 'bg-[#E7F8F3]', title: '成长动画', sub: '每集 8 分钟', href: 'video.html' },
+        { icon: 'ph:image-square-fill', color: 'text-[#FF6B4A]', bg: 'bg-[#FFEFE8]', title: '字词认知卡', sub: '50 张 · 拼音', href: 'cards.html' },
+        { icon: 'ph:book-open-text-fill', color: 'text-[#8B6BE0]', bg: 'bg-[#F1EBFF]', title: '睡前故事', sub: '主播朗读', href: 'music.html' },
+        { icon: 'ph:storefront-fill', color: 'text-[#F5A623]', bg: 'bg-[#FFF1D6]', title: '文具兑换', sub: '积分换礼', href: 'shop.html' }
+      ],
+      tips: [
+        { icon: 'ph:chat-circle-dots-fill', bg: 'bg-[#E7F8F3]', color: 'text-[#3FC1A0]', title: '看完聊三句', text: '问问"故事里谁最勇敢"，锻炼表达能力。' },
+        { icon: 'ph:screen-duotone', bg: 'bg-[#E9F3FF]', color: 'text-[#5AA9F8]', title: '屏幕时间守住', text: '一天不超过 30 分钟，看完远眺窗外。' }
+      ]
+    },
+    kid: {
+      note: '当前阶段：6岁以上 · 科学小实验与自主阅读',
+      heroTitle: '小小科学家<br />火山喷发实验',
+      heroDesc: '4 分钟看懂，材料家里都有',
+      heroBtn: 'video.html',
+      heroIcon: '🚀',
+      heroBg: 'from-[#5AA9F8] via-[#6E8BF5] to-[#9B7BEA]',
+      entryTitle: '6岁以上 · 自己也能玩',
+      entries: [
+        { icon: 'ph:flask-fill', color: 'text-[#5AA9F8]', bg: 'bg-[#E9F3FF]', title: '科学小实验', sub: '每周 2 个', href: 'video.html' },
+        { icon: 'ph:spellcheck-fill', color: 'text-[#FF6B4A]', bg: 'bg-[#FFEFE8]', title: '识字闯关', sub: '100 张字卡', href: 'cards.html' },
+        { icon: 'ph:headphones-fill', color: 'text-[#8B6BE0]', bg: 'bg-[#F1EBFF]', title: '百科音频', sub: '每天 1 集', href: 'music.html' },
+        { icon: 'ph:gift-fill', color: 'text-[#3FC1A0]', bg: 'bg-[#E7F8F3]', title: '心愿商店', sub: '自己攒积分', href: 'shop.html' }
+      ],
+      tips: [
+        { icon: 'ph:list-checks-fill', bg: 'bg-[#E9F3FF]', color: 'text-[#5AA9F8]', title: '让孩子自己排任务', text: '家长只做提醒，自主感更容易坚持。' },
+        { icon: 'ph:lightbulb-fill', bg: 'bg-[#FFF1D6]', color: 'text-[#E8A22A]', title: '实验要有大人陪', text: '涉及热水和小苏打，记得陪着一起做。' }
+      ]
+    }
+  };
+
+  const chips = document.querySelectorAll('.stage-chip');
+  const noteEl = document.getElementById('stageNote');
+  const hero = document.getElementById('hero');
+  const heroTitle = document.getElementById('heroTitle');
+  const heroDesc = document.getElementById('heroDesc');
+  const heroBtn = document.getElementById('heroBtn');
+  const entryTitle = document.getElementById('entryTitle');
+  const entryGrid = document.getElementById('entryGrid');
+  const tipsEl = document.getElementById('tips');
+
+  function renderHeroIcon(s) {
+    const box = hero.querySelector('.relative .shrink-0');
+    if (box) box.textContent = s.heroIcon;
+    const bg = hero.querySelector('.absolute');
+    if (bg) {
+      bg.className = 'absolute inset-0 bg-gradient-to-br ' + s.heroBg + ' dots-bg';
+    }
+  }
+
+  function renderStage(key) {
+    const s = stages[key];
+    if (!s) return;
+    chips.forEach(c => c.classList.toggle('active', c.dataset.stage === key));
+    const chipLabel = document.querySelector('.stage-chip[data-stage="' + key + '"]').textContent.trim();
+    noteEl.innerHTML = '<iconify-icon icon="ph:info-fill" class="text-[#FF6B4A]"></iconify-icon><span>' + s.note + '</span>';
+    heroTitle.innerHTML = s.heroTitle;
+    heroDesc.textContent = s.heroDesc;
+    heroBtn.setAttribute('href', s.heroBtn);
+    hero.querySelector('span.inline-block').textContent = '今日专属 · ' + chipLabel;
+    renderHeroIcon(s);
+    entryTitle.textContent = s.entryTitle;
+
+    entryGrid.innerHTML = s.entries.map(function (e) {
+      return '<a href="' + e.href + '" class="bg-white rounded-[20px] p-3 card-shadow flex flex-col justify-between h-[104px]">'
+        + '<div class="w-9 h-9 rounded-xl ' + e.bg + ' flex items-center justify-center">'
+        + '<iconify-icon icon="' + e.icon + '" class="text-[19px] ' + e.color + '"></iconify-icon></div>'
+        + '<div><p class="text-[13px] font-bold leading-tight">' + e.title + '</p>'
+        + '<p class="text-[10px] text-[#A08876] mt-0.5">' + e.sub + '</p></div></a>';
+    }).join('');
+
+    tipsEl.innerHTML = s.tips.map(function (t) {
+      return '<div class="bg-white rounded-2xl p-3 flex gap-2.5 card-shadow">'
+        + '<div class="w-8 h-8 rounded-xl ' + t.bg + ' flex items-center justify-center shrink-0">'
+        + '<iconify-icon icon="' + t.icon + '" class="text-[17px] ' + t.color + '"></iconify-icon></div>'
+        + '<div><p class="text-[12.5px] font-bold">' + t.title + '</p>'
+        + '<p class="text-[11px] text-[#8A725F] leading-relaxed mt-0.5">' + t.text + '</p></div></div>';
+    }).join('');
+
+    try { localStorage.setItem('yayaStage', key); } catch (err) {}
+  }
+
+  chips.forEach(function (c) {
+    c.addEventListener('click', function () { renderStage(c.dataset.stage); });
+  });
+
+  let saved = 'toddler';
+  try { saved = localStorage.getItem('yayaStage') || 'toddler'; } catch (err) {}
+  renderStage(saved);
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{
+  "id": "pe5",
+  "title": "秋天的礼物",
+  "emoji": "🍂",
+  "sec": 218,
+  "value": 15,
+  "line": "“我把种子送给风，让它去旅行”",
+  "scenes": [
+    {
+      "emoji": "🍂",
+      "line": "“秋天到了，叶子黄了”"
+    },
+    {
+      "emoji": "🌰",
+      "line": "“小花结出了种子”"
+    },
+    {
+      "emoji": "🌬️",
+      "line": "“风把种子带走”"
+    },
+    {
+      "emoji": "🍁",
+      "line": "“种子去很远的地方旅行”"
+    }
+  ],
+  "quiz": {
+    "q": "种子是怎么去旅行的？",
+    "options": [
+      "坐火车",
+      "被风吹走",
+      "游过去",
+      "跳过去"
+    ],
+    "answer": 1
+  },
+  "src": "https://media.w3.org/2010/05/bunny/trailer.mp4",
+  "stage": "preschool",
+  "order": 5
+}

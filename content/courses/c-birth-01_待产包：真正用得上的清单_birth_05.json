@@ -1,0 +1,43 @@
+{
+  "id": "c-birth-01",
+  "category": "birth",
+  "categoryLabel": "分娩准备",
+  "title": "待产包：真正用得上的清单",
+  "subtitle": "按场景分袋，家属也能找到",
+  "coverEmoji": "🧳",
+  "coverColor": "#FF6B4A",
+  "coverBg": "#FFEFE8",
+  "lessons": 3,
+  "duration": "约 15 分钟",
+  "intro": "待产包不是越多越好。按“产房、住院、出院”三个场景分袋，贴上标签，让陪产家属也能快速找到。",
+  "status": "published",
+  "chapters": [
+    {
+      "id": "ch1",
+      "title": "产房袋",
+      "kind": "article",
+      "duration": "5 分钟",
+      "locked": false,
+      "body": "产房阶段通常只需要：产检资料、证件、手机和充电线、水杯、吸管、纸巾、一次性内裤和产褥垫（按医院要求）、少量补充能量的小零食。贵重物品交给家属保管。",
+      "type": "article"
+    },
+    {
+      "id": "ch2",
+      "title": "住院袋",
+      "kind": "article",
+      "duration": "5 分钟",
+      "locked": false,
+      "body": "住院期间准备：哺乳内衣、宽松睡衣、防滑拖鞋、洗漱用品、毛巾、餐具、出院衣物。宝宝用品先按医院提供情况准备，不必一次囤太多尺码。",
+      "type": "article"
+    },
+    {
+      "id": "ch3",
+      "title": "出院与回家",
+      "kind": "article",
+      "duration": "5 分钟",
+      "locked": false,
+      "body": "出院当天需要大人和宝宝的衣物、包被、证件和结算材料。回家前确认路线、电梯和家里温度，提前让家人把床品和待清洗衣物准备好。",
+      "type": "article"
+    }
+  ]
+}

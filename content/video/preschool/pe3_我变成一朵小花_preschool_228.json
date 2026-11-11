@@ -1,0 +1,39 @@
+{
+  "id": "pe3",
+  "title": "我变成一朵小花",
+  "emoji": "🌻",
+  "sec": 228,
+  "value": 15,
+  "line": "“快看，我开出黄色的小花啦”",
+  "scenes": [
+    {
+      "emoji": "🌿",
+      "line": "“小芽一天天长高”"
+    },
+    {
+      "emoji": "🌞",
+      "line": "“太阳照得暖暖的”"
+    },
+    {
+      "emoji": "🌻",
+      "line": "“开出黄色的小花”"
+    },
+    {
+      "emoji": "💛",
+      "line": "“花儿对着太阳笑”"
+    }
+  ],
+  "quiz": {
+    "q": "小种子最后变成了什么？",
+    "options": [
+      "一棵大树",
+      "一朵花",
+      "一块石头",
+      "一只蝴蝶"
+    ],
+    "answer": 1
+  },
+  "src": "https://media.w3.org/2010/05/bunny/trailer.mp4",
+  "stage": "preschool",
+  "order": 3
+}

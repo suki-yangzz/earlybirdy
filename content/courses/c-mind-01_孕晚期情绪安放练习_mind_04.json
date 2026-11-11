@@ -1,0 +1,43 @@
+{
+  "id": "c-mind-01",
+  "category": "mind",
+  "categoryLabel": "心理",
+  "title": "孕晚期情绪安放练习",
+  "subtitle": "给反复担心一个落脚点",
+  "coverEmoji": "🌙",
+  "coverColor": "#F5A623",
+  "coverBg": "#FFF1D6",
+  "lessons": 3,
+  "duration": "约 16 分钟",
+  "intro": "孕晚期的担心很常见。课程提供三个可以在家完成的小练习：身体扫描、担心清单和睡前降速。严重焦虑或持续失眠请及时寻求专业帮助。",
+  "status": "published",
+  "chapters": [
+    {
+      "id": "ch1",
+      "title": "三分钟身体扫描",
+      "kind": "article",
+      "duration": "5 分钟",
+      "locked": false,
+      "body": "找一个有支撑的坐姿或侧躺姿势，从额头开始，依次把注意力移到肩颈、胸口、腹部、双腿。每到一处，只描述感觉（紧、热、沉），不急着改变。三分钟后睁开眼睛，记录身体最放松的部位。",
+      "type": "article"
+    },
+    {
+      "id": "ch2",
+      "title": "把担心写成清单",
+      "kind": "article",
+      "duration": "5 分钟",
+      "locked": false,
+      "body": "每天固定 10 分钟，把担心的事逐条写下，分成“现在能做的”和“现在做不了的”。能做的写一个最小动作，做不了的标记“等产检问医生”。写完后合上本子，不在睡前反复推演。",
+      "type": "article"
+    },
+    {
+      "id": "ch3",
+      "title": "睡前降速",
+      "kind": "article",
+      "duration": "6 分钟",
+      "locked": false,
+      "body": "睡前一小时调暗灯光，减少刷手机。可以做 4 秒吸气、6 秒呼气的缓慢呼吸，重复 10 轮。如果 20 分钟仍睡不着，起身到暗处做安静的事，困了再回床，避免把床和焦虑绑定。",
+      "type": "article"
+    }
+  ]
+}

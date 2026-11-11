@@ -1,0 +1,750 @@
+{
+  "version": 1,
+  "updatedAt": "2026-11-10T12:38:21.629Z",
+  "note": "素材稳定 id 注册表：由 content/server.js 自动维护；重命名请用 node content/registry.js rename <kind:old> <new>",
+  "items": {
+    "track:b1": {
+      "uid": "e298dd93-06c1-49d0-8987-4caf90b18630",
+      "slug": "b1",
+      "kind": "track",
+      "title": "白噪音 · 小雨",
+      "path": "/audio/baby/b1_白噪音 · 小雨_baby_300.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.720Z"
+    },
+    "track:b2": {
+      "uid": "98f36b15-ef3a-41f7-84d9-40b6652b74f7",
+      "slug": "b2",
+      "kind": "track",
+      "title": "摇篮曲 · 勃拉姆斯",
+      "path": "/audio/baby/b2_摇篮曲 · 勃拉姆斯_baby_190.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.722Z"
+    },
+    "track:b3": {
+      "uid": "fa42c994-6119-400e-ab99-1a8e1c8a5545",
+      "slug": "b3",
+      "kind": "track",
+      "title": "小星星摇篮曲",
+      "path": "/audio/baby/b3_小星星摇篮曲_baby_204.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.726Z"
+    },
+    "track:b4": {
+      "uid": "b1c97f17-22ad-45d9-8ff4-7b45d3cdbafb",
+      "slug": "b4",
+      "kind": "track",
+      "title": "心跳与呼吸",
+      "path": "/audio/baby/b4_心跳与呼吸_baby_260.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.730Z"
+    },
+    "track:g1": {
+      "uid": "5e199c64-c080-4345-ae0d-24d0176034df",
+      "slug": "g1",
+      "kind": "track",
+      "title": "恐龙时代",
+      "path": "/audio/kid/g1_恐龙时代_kid_430.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.731Z"
+    },
+    "track:g2": {
+      "uid": "f8a7052c-baa9-4fea-ba88-29abcf6a5660",
+      "slug": "g2",
+      "kind": "track",
+      "title": "星星为什么会发光",
+      "path": "/audio/kid/g2_星星为什么会发光_kid_330.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.731Z"
+    },
+    "track:g3": {
+      "uid": "b307fd95-3387-4a35-856b-948483d248d7",
+      "slug": "g3",
+      "kind": "track",
+      "title": "古诗吟唱 · 静夜思",
+      "path": "/audio/kid/g3_古诗吟唱 · 静夜思_kid_200.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.732Z"
+    },
+    "track:g4": {
+      "uid": "badc37d9-32cc-4852-8122-557ded6e7190",
+      "slug": "g4",
+      "kind": "track",
+      "title": "森林探险日记",
+      "path": "/audio/kid/g4_森林探险日记_kid_375.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.733Z"
+    },
+    "track:g5": {
+      "uid": "f3e3fab0-bc45-49c6-ac91-83d2e03eb454",
+      "slug": "g5",
+      "kind": "track",
+      "title": "宇宙的声音",
+      "path": "/audio/kid/g5_宇宙的声音_kid_280.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.733Z"
+    },
+    "track:p1": {
+      "uid": "45253d62-bef2-45db-8de8-0a37ae987f97",
+      "slug": "p1",
+      "kind": "track",
+      "title": "小星星摇篮曲",
+      "path": "/audio/pregnancy/p1_小星星摇篮曲_pregnancy_204.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.734Z"
+    },
+    "track:p2": {
+      "uid": "f63f6721-8254-4f15-85c7-b512b20af66d",
+      "slug": "p2",
+      "kind": "track",
+      "title": "摇篮曲 · 勃拉姆斯",
+      "path": "/audio/pregnancy/p2_摇篮曲 · 勃拉姆斯_pregnancy_190.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.735Z"
+    },
+    "track:p3": {
+      "uid": "549ca83e-b77b-4242-b985-8b518c352802",
+      "slug": "p3",
+      "kind": "track",
+      "title": "雨滴与妈妈的呼吸",
+      "path": "/audio/pregnancy/p3_雨滴与妈妈的呼吸_pregnancy_245.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.735Z"
+    },
+    "track:p4": {
+      "uid": "a2991a31-959c-4c65-aa3f-e44d80f6316c",
+      "slug": "p4",
+      "kind": "track",
+      "title": "森林清晨",
+      "path": "/audio/pregnancy/p4_森林清晨_pregnancy_212.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.736Z"
+    },
+    "track:p6": {
+      "uid": "4243150e-26fb-4f94-826a-972875fd2961",
+      "slug": "p6",
+      "kind": "track",
+      "title": "海浪轻轻摇",
+      "path": "/audio/pregnancy/p6_海浪轻轻摇_pregnancy_170.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.737Z"
+    },
+    "track:k1": {
+      "uid": "a8d60684-afbc-4aab-ac02-fa9c9a059dfa",
+      "slug": "k1",
+      "kind": "track",
+      "title": "睡前故事 · 小熊宝宝",
+      "path": "/audio/preschool/k1_睡前故事 · 小熊宝宝_preschool_380.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.737Z"
+    },
+    "track:k2": {
+      "uid": "a40fc361-7689-4553-a8ba-77497e28ca51",
+      "slug": "k2",
+      "kind": "track",
+      "title": "三只小猪",
+      "path": "/audio/preschool/k2_三只小猪_preschool_340.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.738Z"
+    },
+    "track:k3": {
+      "uid": "52d926df-b51c-480d-85d6-95759ecf8e61",
+      "slug": "k3",
+      "kind": "track",
+      "title": "小雨滴答",
+      "path": "/audio/preschool/k3_小雨滴答_preschool_245.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.743Z"
+    },
+    "track:k4": {
+      "uid": "5517e3f0-68e5-43f3-9cb7-f76173bd576f",
+      "slug": "k4",
+      "kind": "track",
+      "title": "月亮船",
+      "path": "/audio/preschool/k4_月亮船_preschool_178.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.746Z"
+    },
+    "track:k5": {
+      "uid": "a97f22f6-8e7c-40b3-9cee-ccd0df8cadd4",
+      "slug": "k5",
+      "kind": "track",
+      "title": "森林音乐会",
+      "path": "/audio/preschool/k5_森林音乐会_preschool_225.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.747Z"
+    },
+    "track:t1": {
+      "uid": "0885786c-2a63-48bd-85cd-a514f8e2fa6b",
+      "slug": "t1",
+      "kind": "track",
+      "title": "两只老虎",
+      "path": "/audio/toddler/t1_两只老虎_toddler_130.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.747Z"
+    },
+    "track:t2": {
+      "uid": "b80c7f5a-18c9-4059-bf0b-66d5f1ac153a",
+      "slug": "t2",
+      "kind": "track",
+      "title": "小星星",
+      "path": "/audio/toddler/t2_小星星_toddler_160.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.748Z"
+    },
+    "track:t3": {
+      "uid": "a8c1ca4e-3446-461a-be81-c2fec8a43bd8",
+      "slug": "t3",
+      "kind": "track",
+      "title": "拍手律动",
+      "path": "/audio/toddler/t3_拍手律动_toddler_185.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.748Z"
+    },
+    "track:t4": {
+      "uid": "2bcc7bb1-7a77-439b-a191-3903a382885c",
+      "slug": "t4",
+      "kind": "track",
+      "title": "摇篮曲 · 晚安",
+      "path": "/audio/toddler/t4_摇篮曲 · 晚安_toddler_190.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.749Z"
+    },
+    "track:t5": {
+      "uid": "3ab38c65-5c15-41af-b7eb-030e2969a45e",
+      "slug": "t5",
+      "kind": "track",
+      "title": "森林清晨",
+      "path": "/audio/toddler/t5_森林清晨_toddler_212.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.749Z"
+    },
+    "video:be1": {
+      "uid": "76a56282-f408-4a46-a5ac-9df00c331aaf",
+      "slug": "be1",
+      "kind": "video",
+      "title": "趴一趴，练抬头",
+      "path": "/video/baby/be1_趴一趴，练抬头_baby_150.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.752Z"
+    },
+    "video:be2": {
+      "uid": "3b632773-578b-4695-8f9f-d7e167d615b5",
+      "slug": "be2",
+      "kind": "video",
+      "title": "翻身小练习",
+      "path": "/video/baby/be2_翻身小练习_baby_120.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.752Z"
+    },
+    "video:be3": {
+      "uid": "d707d1f8-f69b-4546-9ec8-51312cd5447f",
+      "slug": "be3",
+      "kind": "video",
+      "title": "追视小游戏",
+      "path": "/video/baby/be3_追视小游戏_baby_100.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.753Z"
+    },
+    "video:ke1": {
+      "uid": "3f438203-51b3-4de0-bdce-714d2191f1c8",
+      "slug": "ke1",
+      "kind": "video",
+      "title": "火山喷发小实验",
+      "path": "/video/kid/ke1_火山喷发小实验_kid_240.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.754Z"
+    },
+    "video:ke2": {
+      "uid": "9240116d-537b-4a59-89a1-c788dbbaee0f",
+      "slug": "ke2",
+      "kind": "video",
+      "title": "静电魔法",
+      "path": "/video/kid/ke2_静电魔法_kid_210.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.755Z"
+    },
+    "video:ke3": {
+      "uid": "3fd6fdc3-3f90-41a6-b6bc-374a4ea18173",
+      "slug": "ke3",
+      "kind": "video",
+      "title": "彩虹牛奶",
+      "path": "/video/kid/ke3_彩虹牛奶_kid_220.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.755Z"
+    },
+    "video:ke4": {
+      "uid": "f536e3d4-6611-4a25-bb98-8672513ea756",
+      "slug": "ke4",
+      "kind": "video",
+      "title": "纸桥大力士",
+      "path": "/video/kid/ke4_纸桥大力士_kid_200.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.763Z"
+    },
+    "video:pe1": {
+      "uid": "40e3c91b-3c34-458c-a3ec-86a677c60477",
+      "slug": "pe1",
+      "kind": "video",
+      "title": "小种子旅行记",
+      "path": "/video/preschool/pe1_小种子旅行记_preschool_252.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.764Z"
+    },
+    "video:pe2": {
+      "uid": "4c12d4cc-473b-4b8b-b88c-0e38a0dd2154",
+      "slug": "pe2",
+      "kind": "video",
+      "title": "下雨啦，喝饱水",
+      "path": "/video/preschool/pe2_下雨啦，喝饱水_preschool_236.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.765Z"
+    },
+    "video:pe3": {
+      "uid": "7ef93e47-578a-4a0c-aa6b-9aaf75c13713",
+      "slug": "pe3",
+      "kind": "video",
+      "title": "我变成一朵小花",
+      "path": "/video/preschool/pe3_我变成一朵小花_preschool_228.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.765Z"
+    },
+    "video:pe4": {
+      "uid": "22f8d937-caa7-435e-8419-048c8556999a",
+      "slug": "pe4",
+      "kind": "video",
+      "title": "蝴蝶来做客",
+      "path": "/video/preschool/pe4_蝴蝶来做客_preschool_244.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.766Z"
+    },
+    "video:pe5": {
+      "uid": "b6a99495-4339-48cc-a16d-6b6898590b28",
+      "slug": "pe5",
+      "kind": "video",
+      "title": "秋天的礼物",
+      "path": "/video/preschool/pe5_秋天的礼物_preschool_218.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.766Z"
+    },
+    "video:pe6": {
+      "uid": "435bc03b-0112-4cca-9194-49e1b824f0bc",
+      "slug": "pe6",
+      "kind": "video",
+      "title": "小种子又出发",
+      "path": "/video/preschool/pe6_小种子又出发_preschool_231.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.767Z"
+    },
+    "video:te1": {
+      "uid": "c029af21-bdb5-4374-83aa-276c1b586bdf",
+      "slug": "te1",
+      "kind": "video",
+      "title": "两只老虎",
+      "path": "/video/toddler/te1_两只老虎_toddler_130.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.768Z"
+    },
+    "video:te2": {
+      "uid": "77887f32-f4b1-452e-bbea-2409178a4ca2",
+      "slug": "te2",
+      "kind": "video",
+      "title": "小星星",
+      "path": "/video/toddler/te2_小星星_toddler_160.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.768Z"
+    },
+    "video:te3": {
+      "uid": "5eb2c8d5-f5a9-4662-bd01-437667ec3a86",
+      "slug": "te3",
+      "kind": "video",
+      "title": "数鸭子",
+      "path": "/video/toddler/te3_数鸭子_toddler_145.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.768Z"
+    },
+    "video:te4": {
+      "uid": "05e47739-2d47-4a60-8eb1-8b63684b253c",
+      "slug": "te4",
+      "kind": "video",
+      "title": "找朋友",
+      "path": "/video/toddler/te4_找朋友_toddler_125.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.769Z"
+    },
+    "topic:bw": {
+      "uid": "e2f0999d-ce35-41d4-b480-15675e4d26fb",
+      "slug": "bw",
+      "kind": "topic",
+      "title": "bw",
+      "path": "",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.771Z"
+    },
+    "topic:science": {
+      "uid": "894025d9-05ac-4aa9-b3b9-945d4dd89641",
+      "slug": "science",
+      "kind": "topic",
+      "title": "science",
+      "path": "",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.774Z"
+    },
+    "topic:spring": {
+      "uid": "4eaac424-71b1-496a-9d31-6d39678fbdfe",
+      "slug": "spring",
+      "kind": "topic",
+      "title": "spring",
+      "path": "",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.775Z"
+    },
+    "topic:animals": {
+      "uid": "acf6c7fe-b9a2-46fe-9d51-21cd278718e6",
+      "slug": "animals",
+      "kind": "topic",
+      "title": "animals",
+      "path": "",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.776Z"
+    },
+    "topic:life": {
+      "uid": "a13840ae-5b8b-4e87-b5dd-fc3cc530995a",
+      "slug": "life",
+      "kind": "topic",
+      "title": "life",
+      "path": "",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.779Z"
+    },
+    "topic:nature": {
+      "uid": "cd0e054b-66d4-4db2-8f7c-1986b40d56f2",
+      "slug": "nature",
+      "kind": "topic",
+      "title": "nature",
+      "path": "",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.780Z"
+    },
+    "topic:animal": {
+      "uid": "eb340cf7-88f7-411e-845c-c2c9672bf1a0",
+      "slug": "animal",
+      "kind": "topic",
+      "title": "animal",
+      "path": "",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.781Z"
+    },
+    "topic:color": {
+      "uid": "6a13bfe9-913d-43b5-b982-742c2f4190e0",
+      "slug": "color",
+      "kind": "topic",
+      "title": "color",
+      "path": "",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.782Z"
+    },
+    "topic:fruit": {
+      "uid": "6baf9ae7-1938-4a7b-b158-05c1418bd332",
+      "slug": "fruit",
+      "kind": "topic",
+      "title": "fruit",
+      "path": "",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.782Z"
+    },
+    "topic:vehicle": {
+      "uid": "b192859d-5a64-4e52-8922-17f067df2a7a",
+      "slug": "vehicle",
+      "kind": "topic",
+      "title": "vehicle",
+      "path": "",
+      "aliases": [],
+      "createdAt": "2026-11-10T07:12:06.783Z"
+    },
+    "track:p5b": {
+      "uid": "c36cc010-1345-4495-ab83-127ffbca2d2e",
+      "slug": "p5b",
+      "kind": "track",
+      "title": "月亮船",
+      "path": "/audio/pregnancy/p5b_月亮船_pregnancy_178.json",
+      "aliases": [
+        "p5"
+      ],
+      "createdAt": "2026-11-10T07:12:06.736Z"
+    },
+    "course:c-birth-01": {
+      "uid": "ea6c141e-8ea5-435f-a5e6-e1a89a1455c3",
+      "slug": "c-birth-01",
+      "kind": "course",
+      "title": "待产包：真正用得上的清单",
+      "path": "/courses/c-birth-01_待产包：真正用得上的清单_birth_05.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.408Z"
+    },
+    "chapter:ea6c141e-8ea5-435f-a5e6-e1a89a1455c3/ch1": {
+      "uid": "1aa9e8bf-f194-4003-b9cd-7029d4b7783c",
+      "slug": "ea6c141e-8ea5-435f-a5e6-e1a89a1455c3/ch1",
+      "kind": "chapter",
+      "title": "产房袋",
+      "path": "/courses/c-birth-01_待产包：真正用得上的清单_birth_05.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.409Z"
+    },
+    "chapter:ea6c141e-8ea5-435f-a5e6-e1a89a1455c3/ch2": {
+      "uid": "1c329084-14b9-4184-a486-ed080d12519d",
+      "slug": "ea6c141e-8ea5-435f-a5e6-e1a89a1455c3/ch2",
+      "kind": "chapter",
+      "title": "住院袋",
+      "path": "/courses/c-birth-01_待产包：真正用得上的清单_birth_05.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.409Z"
+    },
+    "chapter:ea6c141e-8ea5-435f-a5e6-e1a89a1455c3/ch3": {
+      "uid": "aea63cbc-fea0-491d-ab4d-151f0ee9d009",
+      "slug": "ea6c141e-8ea5-435f-a5e6-e1a89a1455c3/ch3",
+      "kind": "chapter",
+      "title": "出院与回家",
+      "path": "/courses/c-birth-01_待产包：真正用得上的清单_birth_05.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.409Z"
+    },
+    "course:c-birth-02": {
+      "uid": "27fee040-72e8-4435-8b1f-8f0673ca5d5e",
+      "slug": "c-birth-02",
+      "kind": "course",
+      "title": "分娩呼吸法跟练",
+      "path": "/courses/c-birth-02_分娩呼吸法跟练_birth_06.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.410Z"
+    },
+    "chapter:27fee040-72e8-4435-8b1f-8f0673ca5d5e/ch1": {
+      "uid": "6c79deb8-ff89-4891-9171-4ec8739b20d2",
+      "slug": "27fee040-72e8-4435-8b1f-8f0673ca5d5e/ch1",
+      "kind": "chapter",
+      "title": "宫缩间歇呼吸",
+      "path": "/courses/c-birth-02_分娩呼吸法跟练_birth_06.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.410Z"
+    },
+    "chapter:27fee040-72e8-4435-8b1f-8f0673ca5d5e/ch2": {
+      "uid": "7722a737-7ff8-4a96-9709-97fc7005e955",
+      "slug": "27fee040-72e8-4435-8b1f-8f0673ca5d5e/ch2",
+      "kind": "chapter",
+      "title": "用力阶段怎么呼吸",
+      "path": "/courses/c-birth-02_分娩呼吸法跟练_birth_06.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.410Z"
+    },
+    "chapter:27fee040-72e8-4435-8b1f-8f0673ca5d5e/ch3": {
+      "uid": "1d3cf864-6cc5-4ae6-a175-9b3a0817ff40",
+      "slug": "27fee040-72e8-4435-8b1f-8f0673ca5d5e/ch3",
+      "kind": "chapter",
+      "title": "伴侣配合提示",
+      "path": "/courses/c-birth-02_分娩呼吸法跟练_birth_06.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.410Z"
+    },
+    "course:c-checkup-01": {
+      "uid": "64a03bfa-fe29-47c9-8add-2902b5540a29",
+      "slug": "c-checkup-01",
+      "kind": "course",
+      "title": "产检时间表与准备清单",
+      "path": "/courses/c-checkup-01_产检时间表与准备清单_checkup_03.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.412Z"
+    },
+    "chapter:64a03bfa-fe29-47c9-8add-2902b5540a29/ch1": {
+      "uid": "5dcf6cc8-3782-46c2-b60e-b2725f3cd232",
+      "slug": "64a03bfa-fe29-47c9-8add-2902b5540a29/ch1",
+      "kind": "chapter",
+      "title": "孕早期：建档与基础检查",
+      "path": "/courses/c-checkup-01_产检时间表与准备清单_checkup_03.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.412Z"
+    },
+    "chapter:64a03bfa-fe29-47c9-8add-2902b5540a29/ch2": {
+      "uid": "6cec5c25-3a63-4c90-9caf-30539352fbff",
+      "slug": "64a03bfa-fe29-47c9-8add-2902b5540a29/ch2",
+      "kind": "chapter",
+      "title": "孕中期：筛查与排畸",
+      "path": "/courses/c-checkup-01_产检时间表与准备清单_checkup_03.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.412Z"
+    },
+    "chapter:64a03bfa-fe29-47c9-8add-2902b5540a29/ch3": {
+      "uid": "98f0c0ed-53d0-464a-95f9-548ee93959d2",
+      "slug": "64a03bfa-fe29-47c9-8add-2902b5540a29/ch3",
+      "kind": "chapter",
+      "title": "孕晚期：胎心监护与待产评估",
+      "path": "/courses/c-checkup-01_产检时间表与准备清单_checkup_03.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.412Z"
+    },
+    "chapter:64a03bfa-fe29-47c9-8add-2902b5540a29/ch4": {
+      "uid": "37db8b2f-6d25-4fa7-bb42-6fc5147382b3",
+      "slug": "64a03bfa-fe29-47c9-8add-2902b5540a29/ch4",
+      "kind": "chapter",
+      "title": "产检包里放什么",
+      "path": "/courses/c-checkup-01_产检时间表与准备清单_checkup_03.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.412Z"
+    },
+    "course:c-mind-01": {
+      "uid": "edaccdb6-4f1a-4253-b3aa-532bc0e1b71d",
+      "slug": "c-mind-01",
+      "kind": "course",
+      "title": "孕晚期情绪安放练习",
+      "path": "/courses/c-mind-01_孕晚期情绪安放练习_mind_04.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.413Z"
+    },
+    "chapter:edaccdb6-4f1a-4253-b3aa-532bc0e1b71d/ch1": {
+      "uid": "44a2429d-834e-4760-9d41-08b07e79b35a",
+      "slug": "edaccdb6-4f1a-4253-b3aa-532bc0e1b71d/ch1",
+      "kind": "chapter",
+      "title": "三分钟身体扫描",
+      "path": "/courses/c-mind-01_孕晚期情绪安放练习_mind_04.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.413Z"
+    },
+    "chapter:edaccdb6-4f1a-4253-b3aa-532bc0e1b71d/ch2": {
+      "uid": "7bc70923-f106-4db1-9365-5087124ba6b5",
+      "slug": "edaccdb6-4f1a-4253-b3aa-532bc0e1b71d/ch2",
+      "kind": "chapter",
+      "title": "把担心写成清单",
+      "path": "/courses/c-mind-01_孕晚期情绪安放练习_mind_04.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.413Z"
+    },
+    "chapter:edaccdb6-4f1a-4253-b3aa-532bc0e1b71d/ch3": {
+      "uid": "747d2766-91d5-4d6c-8aa0-b5fe0747ed5d",
+      "slug": "edaccdb6-4f1a-4253-b3aa-532bc0e1b71d/ch3",
+      "kind": "chapter",
+      "title": "睡前降速",
+      "path": "/courses/c-mind-01_孕晚期情绪安放练习_mind_04.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.413Z"
+    },
+    "course:c-nutrition-01": {
+      "uid": "fecba4fa-2135-4686-b6be-c5e393392290",
+      "slug": "c-nutrition-01",
+      "kind": "course",
+      "title": "孕期三餐怎么吃更稳",
+      "path": "/courses/c-nutrition-01_孕期三餐怎么吃更稳_nutrition_02.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.414Z"
+    },
+    "chapter:fecba4fa-2135-4686-b6be-c5e393392290/ch1": {
+      "uid": "f66d34ac-087a-4f4b-94ca-4942d544c96c",
+      "slug": "fecba4fa-2135-4686-b6be-c5e393392290/ch1",
+      "kind": "chapter",
+      "title": "一餐的四个格子",
+      "path": "/courses/c-nutrition-01_孕期三餐怎么吃更稳_nutrition_02.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.414Z"
+    },
+    "chapter:fecba4fa-2135-4686-b6be-c5e393392290/ch2": {
+      "uid": "92c94a0e-7d07-4ff2-bd15-f192c1fdb9b4",
+      "slug": "fecba4fa-2135-4686-b6be-c5e393392290/ch2",
+      "kind": "chapter",
+      "title": "加餐不是零食自由",
+      "path": "/courses/c-nutrition-01_孕期三餐怎么吃更稳_nutrition_02.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.414Z"
+    },
+    "chapter:fecba4fa-2135-4686-b6be-c5e393392290/ch3": {
+      "uid": "568a96ff-d0bd-4ab1-8a58-83de2d6d0ae4",
+      "slug": "fecba4fa-2135-4686-b6be-c5e393392290/ch3",
+      "kind": "chapter",
+      "title": "这些情况要问医生",
+      "path": "/courses/c-nutrition-01_孕期三餐怎么吃更稳_nutrition_02.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.414Z"
+    },
+    "chapter:5ec55264-e96d-4563-9986-a0d9cc3600a6/ch1": {
+      "uid": "39fee931-09dd-4268-8556-5c1ea933d59b",
+      "slug": "5ec55264-e96d-4563-9986-a0d9cc3600a6/ch1",
+      "kind": "chapter",
+      "title": "宝宝什么时候能听见",
+      "path": "/courses/c-taijiao-01_胎教音乐怎么听才有效_taijiao_01.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.416Z"
+    },
+    "chapter:5ec55264-e96d-4563-9986-a0d9cc3600a6/ch2": {
+      "uid": "2741434a-ef38-47d0-b485-90570b10e877",
+      "slug": "5ec55264-e96d-4563-9986-a0d9cc3600a6/ch2",
+      "kind": "chapter",
+      "title": "每天什么时候听",
+      "path": "/courses/c-taijiao-01_胎教音乐怎么听才有效_taijiao_01.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.416Z"
+    },
+    "chapter:5ec55264-e96d-4563-9986-a0d9cc3600a6/ch3": {
+      "uid": "255d3e24-774c-4982-a6fd-f62fc95bb068",
+      "slug": "5ec55264-e96d-4563-9986-a0d9cc3600a6/ch3",
+      "kind": "chapter",
+      "title": "选曲：慢一点、简单一点",
+      "path": "/courses/c-taijiao-01_胎教音乐怎么听才有效_taijiao_01.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.416Z"
+    },
+    "chapter:5ec55264-e96d-4563-9986-a0d9cc3600a6/ch4": {
+      "uid": "a7002e7f-1790-4c74-8a8d-5066b991c317",
+      "slug": "5ec55264-e96d-4563-9986-a0d9cc3600a6/ch4",
+      "kind": "chapter",
+      "title": "音频精讲：三段式胎教流程",
+      "path": "/courses/c-taijiao-01_胎教音乐怎么听才有效_taijiao_01.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.416Z"
+    },
+    "chapter:5ec55264-e96d-4563-9986-a0d9cc3600a6/ch5": {
+      "uid": "cc4557ba-278b-465e-93cb-847355a781fc",
+      "slug": "5ec55264-e96d-4563-9986-a0d9cc3600a6/ch5",
+      "kind": "chapter",
+      "title": "视频跟练：胎教实操示范",
+      "path": "/courses/c-taijiao-01_胎教音乐怎么听才有效_taijiao_01.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T08:02:27.416Z"
+    },
+    "course:c-taijiao-01": {
+      "uid": "5ec55264-e96d-4563-9986-a0d9cc3600a6",
+      "slug": "c-taijiao-01",
+      "kind": "course",
+      "title": "胎教音乐怎么听才有效",
+      "path": "/courses/c-taijiao-01_胎教音乐怎么听才有效_taijiao_01.json",
+      "aliases": [
+        "c-taijiao-01",
+        "c-taijiao-01b"
+      ],
+      "createdAt": "2026-11-10T08:02:27.416Z"
+    },
+    "story:s-moon": {
+      "uid": "7636330b-91af-4715-b474-38b32b6aace8",
+      "slug": "s-moon",
+      "kind": "story",
+      "title": "月亮船",
+      "path": "/stories/s-moon_月亮船_pregnancy_180_1.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T12:38:21.627Z"
+    },
+    "story:s-seed": {
+      "uid": "eca925b5-a295-4bc8-a923-ff23541d355c",
+      "slug": "s-seed",
+      "kind": "story",
+      "title": "小种子的一生",
+      "path": "/stories/s-seed_小种子的一生_pregnancy_240_2.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T12:38:21.628Z"
+    },
+    "story:s-star": {
+      "uid": "495bd6d4-1c51-495f-8d45-3ec5206aea45",
+      "slug": "s-star",
+      "kind": "story",
+      "title": "星星的晚安吻",
+      "path": "/stories/s-star_星星的晚安吻_pregnancy_180_3.json",
+      "aliases": [],
+      "createdAt": "2026-11-10T12:38:21.629Z"
+    }
+  }
+}

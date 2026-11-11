@@ -1,0 +1,46 @@
+{
+  "id": "c-birth-02",
+  "category": "birth",
+  "categoryLabel": "分娩准备",
+  "title": "分娩呼吸法跟练",
+  "subtitle": "课程制作中，可先收藏",
+  "coverEmoji": "🫁",
+  "coverColor": "#B4745A",
+  "coverBg": "#FBF1E9",
+  "lessons": 3,
+  "duration": "约 20 分钟",
+  "intro": "包含宫缩间歇呼吸、用力阶段呼吸和伴侣配合提示。音频与跟练视频正在制作，上线后可在这里直接练习。",
+  "status": "coming",
+  "chapters": [
+    {
+      "id": "ch1",
+      "title": "宫缩间歇呼吸",
+      "kind": "audio",
+      "duration": "7 分钟",
+      "locked": true,
+      "lockText": "课程制作中，暂未解锁",
+      "type": "audio",
+      "body": "课程制作中：音频上线后可跟着练习宫缩间歇的缓慢呼吸节奏。"
+    },
+    {
+      "id": "ch2",
+      "title": "用力阶段怎么呼吸",
+      "kind": "video",
+      "duration": "7 分钟",
+      "locked": true,
+      "lockText": "课程制作中，暂未解锁",
+      "type": "video",
+      "body": "课程制作中：跟练视频上线后可在本节观看用力阶段的呼吸示范。"
+    },
+    {
+      "id": "ch3",
+      "title": "伴侣配合提示",
+      "kind": "article",
+      "duration": "6 分钟",
+      "locked": true,
+      "lockText": "课程制作中，暂未解锁",
+      "type": "article",
+      "body": "课程制作中：本节会整理伴侣在产程各阶段的配合方式与提醒话术。"
+    }
+  ]
+}

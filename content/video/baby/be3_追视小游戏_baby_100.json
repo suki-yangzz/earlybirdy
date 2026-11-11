@@ -1,0 +1,29 @@
+{
+  "id": "be3",
+  "title": "追视小游戏",
+  "emoji": "👀",
+  "sec": 100,
+  "value": 10,
+  "line": "“小眼睛跟着卡片走”",
+  "scenes": [
+    {
+      "emoji": "👀",
+      "line": "“妈妈把卡片举在眼前”"
+    },
+    {
+      "emoji": "🎴",
+      "line": "“慢慢往左边移”"
+    },
+    {
+      "emoji": "🎴",
+      "line": "“再慢慢往右边移”"
+    },
+    {
+      "emoji": "😊",
+      "line": "“宝宝的眼光跟上来啦”"
+    }
+  ],
+  "src": "https://media.w3.org/2010/05/bunny/trailer.mp4",
+  "stage": "baby",
+  "order": 3
+}

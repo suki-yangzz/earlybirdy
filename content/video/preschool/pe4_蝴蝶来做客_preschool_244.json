@@ -1,0 +1,39 @@
+{
+  "id": "pe4",
+  "title": "蝴蝶来做客",
+  "emoji": "🦋",
+  "sec": 244,
+  "value": 15,
+  "line": "“你好呀，小蝴蝶，来喝点花蜜吧”",
+  "scenes": [
+    {
+      "emoji": "🌻",
+      "line": "“小花在风里摇”"
+    },
+    {
+      "emoji": "🦋",
+      "line": "“蝴蝶飞过来啦”"
+    },
+    {
+      "emoji": "🍯",
+      "line": "“一起喝甜甜的花蜜”"
+    },
+    {
+      "emoji": "🌸",
+      "line": "“蝴蝶说：谢谢你”"
+    }
+  ],
+  "quiz": {
+    "q": "谁来找小花玩？",
+    "options": [
+      "小蝴蝶",
+      "小螃蟹",
+      "小蚂蚁",
+      "小乌龟"
+    ],
+    "answer": 0
+  },
+  "src": "https://media.w3.org/2010/05/bunny/trailer.mp4",
+  "stage": "preschool",
+  "order": 4
+}
