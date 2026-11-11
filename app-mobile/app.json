@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "app-mobile",
+    "slug": "app-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.app-mobile",
+      "buildNumber": "12",
+      "infoPlist": {
+        "UIBackgroundModes": ["audio"]
+      }
+    },
+    "android": {
+      "versionCode": 12,
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "plugins": [
+      [
+        "expo-audio",
+        {
+          "enableBackgroundPlayback": true
+        }
+      ]
+    ],
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "buildNumber": "12"
+    }
+  }
+}
