@@ -1,0 +1,469 @@
+{
+  "STAGES": {
+    "pregnancy": {
+      "id": "pregnancy",
+      "label": "孕期",
+      "chip": "🤰 孕期",
+      "emoji": "🤰",
+      "note": "当前阶段：孕期 · 给肚子里的小宝宝听的温柔时光",
+      "interaction": "audio",
+      "theme": {
+        "accent": "#8B6BE0",
+        "accentInk": "#6F4FC4",
+        "soft": "#F1EBFF",
+        "page": "#FBF7FF",
+        "gradient": [
+          "#9B7BEA",
+          "#B18FF0",
+          "#E27FC0"
+        ]
+      },
+      "homeEntryTitle": "孕期 · 温柔陪伴",
+      "hero": {
+        "title": "给宝宝听的第一首<br>胎教音乐",
+        "desc": "12首舒缓胎教曲，每天听 15 分钟",
+        "emoji": "🎧",
+        "cta": "去听一听"
+      },
+      "entries": [
+        {
+          "icon": "music",
+          "title": "胎教音乐",
+          "sub": "安抚 · 12 首",
+          "color": "#8B6BE0",
+          "bg": "#F1EBFF",
+          "target": "audio"
+        },
+        {
+          "icon": "heart",
+          "title": "孕妈小课堂",
+          "sub": "每周 3 课",
+          "color": "#FF6B4A",
+          "bg": "#FFEFE8",
+          "target": "tasks"
+        },
+        {
+          "icon": "moon",
+          "title": "睡前故事",
+          "sub": "爸爸的声音",
+          "color": "#5AA9F8",
+          "bg": "#E9F3FF",
+          "target": "audio"
+        },
+        {
+          "icon": "shop",
+          "title": "待产好物",
+          "sub": "成长值兑换",
+          "color": "#3FC1A0",
+          "bg": "#E7F8F3",
+          "target": "shop"
+        }
+      ],
+      "tips": [
+        {
+          "icon": "speaker",
+          "bg": "#F1EBFF",
+          "color": "#8B6BE0",
+          "title": "声音别开太大",
+          "text": "放在离肚子 1 米左右，音量像平常聊天就好。"
+        },
+        {
+          "icon": "timer",
+          "bg": "#FFF1D6",
+          "color": "#E8A22A",
+          "title": "每天固定时间听",
+          "text": "晚饭后或睡前，宝宝更容易记住这个节奏。"
+        }
+      ],
+      "audioTitle": "胎教音乐",
+      "audioSub": "给小宝宝听的温柔时光",
+      "audioTagline": "胎教 · 舒缓安抚",
+      "audioSuitable": "适合孕中期到临产",
+      "audioNote": "孕 24 周建议：每天固定时间听 15 分钟，音量像平常聊天就好",
+      "audioTip": "播放时手机放在离肚子 1 米左右，不要直接贴腹部；每天听 15 分钟就够了，时间太长宝宝也会“听累”。",
+      "cardsTitle": "图片认知卡",
+      "cardsSub": "点一点听发音",
+      "videoTitle": "成长动画",
+      "videoSub": "亲子共看"
+    },
+    "baby": {
+      "id": "baby",
+      "label": "0-6 个月",
+      "chip": "👶 0-6个月",
+      "emoji": "👶",
+      "note": "当前阶段：0-6个月 · 看黑白卡、追视小玩具",
+      "interaction": "flashcards",
+      "theme": {
+        "accent": "#4E9EF5",
+        "accentInk": "#2F77C7",
+        "soft": "#E9F3FF",
+        "page": "#F7FBFF",
+        "gradient": [
+          "#5AA9F8",
+          "#6FC5F5",
+          "#3FC1A0"
+        ]
+      },
+      "homeEntryTitle": "0-6个月 · 感官启蒙",
+      "hero": {
+        "title": "黑白卡追视<br>眼睛动起来",
+        "desc": "高对比卡片，练追视和注视",
+        "emoji": "👶",
+        "cta": "开始认卡片"
+      },
+      "entries": [
+        {
+          "icon": "cards",
+          "title": "黑白卡",
+          "sub": "追视练习",
+          "color": "#5AA9F8",
+          "bg": "#E9F3FF",
+          "target": "flashcards"
+        },
+        {
+          "icon": "music",
+          "title": "白噪音摇篮曲",
+          "sub": "哄睡神器",
+          "color": "#8B6BE0",
+          "bg": "#F1EBFF",
+          "target": "audio"
+        },
+        {
+          "icon": "hand",
+          "title": "翻身小练习",
+          "sub": "每天 3 次",
+          "color": "#FF8A4C",
+          "bg": "#FFEFE8",
+          "target": "video"
+        },
+        {
+          "icon": "shop",
+          "title": "安抚好物",
+          "sub": "成长值兑换",
+          "color": "#3FC1A0",
+          "bg": "#E7F8F3",
+          "target": "shop"
+        }
+      ],
+      "tips": [
+        {
+          "icon": "eye",
+          "bg": "#E9F3FF",
+          "color": "#5AA9F8",
+          "title": "距离 20-30 厘米",
+          "text": "这个距离宝宝看得最清楚，慢慢左右移动卡片。"
+        },
+        {
+          "icon": "timer",
+          "bg": "#FFF1D6",
+          "color": "#E8A22A",
+          "title": "一次别超过 3 分钟",
+          "text": "宝宝转头或打哈欠，就说明想休息啦。"
+        }
+      ],
+      "audioTitle": "白噪音摇篮曲",
+      "audioSub": "哄睡与安抚的声音",
+      "audioTagline": "安抚 · 哄睡",
+      "audioSuitable": "适合 0-6 个月",
+      "audioNote": "宝宝困了就放一首固定的摇篮曲，音量调低一点，帮助建立睡前信号",
+      "audioTip": "不要一直开着白噪音，睡着后可以调小或关掉；每天使用不超过 1 小时。",
+      "cardsTitle": "黑白卡追视",
+      "cardsSub": "点一点，说出名称",
+      "videoTitle": "成长小动画",
+      "videoSub": "每天几分钟，陪宝宝一起看"
+    },
+    "toddler": {
+      "id": "toddler",
+      "label": "6 个月-3 岁",
+      "chip": "🧸 6个月-3岁",
+      "emoji": "🧸",
+      "note": "当前阶段：6个月-3岁 · 正在学认图、学发音",
+      "interaction": "flashcards",
+      "theme": {
+        "accent": "#FF6B4A",
+        "accentInk": "#E85A38",
+        "soft": "#FFEFE8",
+        "page": "#FFF8EE",
+        "gradient": [
+          "#FFB347",
+          "#FF8A4C",
+          "#FF6B4A"
+        ]
+      },
+      "homeEntryTitle": "6个月-3岁 · 玩中学",
+      "hero": {
+        "title": "认一认小动物<br>亲子卡片时间",
+        "desc": "20张高频认知卡，点一下就有声音",
+        "emoji": "🧸",
+        "cta": "开始认卡片"
+      },
+      "entries": [
+        {
+          "icon": "cards",
+          "title": "图片认物卡",
+          "sub": "动物 · 水果 · 颜色",
+          "color": "#FF6B4A",
+          "bg": "#FFEFE8",
+          "target": "flashcards"
+        },
+        {
+          "icon": "video",
+          "title": "儿歌动画",
+          "sub": "8 分钟一集",
+          "color": "#5AA9F8",
+          "bg": "#E9F3FF",
+          "target": "video"
+        },
+        {
+          "icon": "music",
+          "title": "亲子律动",
+          "sub": "跟着拍手",
+          "color": "#8B6BE0",
+          "bg": "#F1EBFF",
+          "target": "audio"
+        },
+        {
+          "icon": "shop",
+          "title": "成长商城",
+          "sub": "积分换礼",
+          "color": "#3FC1A0",
+          "bg": "#E7F8F3",
+          "target": "shop"
+        }
+      ],
+      "tips": [
+        {
+          "icon": "hand",
+          "bg": "#FFEFE8",
+          "color": "#FF6B4A",
+          "title": "先指再读",
+          "text": "手指着卡片，说一遍名称，等 3 秒再让宝宝跟。"
+        },
+        {
+          "icon": "sparkle",
+          "bg": "#FFF1D6",
+          "color": "#E8A22A",
+          "title": "答错也没关系",
+          "text": "说“我们再看一次”，别急着纠正，保护小兴趣。"
+        }
+      ],
+      "audioTitle": "亲子律动",
+      "audioSub": "边唱边拍手的小时光",
+      "audioTagline": "儿歌 · 亲子律动",
+      "audioSuitable": "适合 6 个月-3 岁",
+      "audioNote": "每天一首固定的儿歌，边唱边拍手，宝宝会慢慢跟着哼",
+      "audioTip": "陪宝宝一起唱、一起动，比单纯播放效果好；每次 10-15 分钟就够。",
+      "cardsTitle": "图片认知卡",
+      "cardsSub": "点一点听发音",
+      "videoTitle": "儿歌动画",
+      "videoSub": "每集几分钟，边看边唱"
+    },
+    "preschool": {
+      "id": "preschool",
+      "label": "3-6 岁",
+      "chip": "🎨 3-6岁",
+      "emoji": "🎨",
+      "note": "当前阶段：3-6岁 · 看动画、听故事、学表达",
+      "interaction": "video",
+      "theme": {
+        "accent": "#2E9E82",
+        "accentInk": "#237C66",
+        "soft": "#E7F8F3",
+        "page": "#F7FCFB",
+        "gradient": [
+          "#3FC1A0",
+          "#4FCBAE",
+          "#2F9E9B"
+        ]
+      },
+      "homeEntryTitle": "3-6岁 · 探索小世界",
+      "hero": {
+        "title": "动画小剧场<br>今天讲小种子",
+        "desc": "每集 8 分钟，看完还能复述故事",
+        "emoji": "🎨",
+        "cta": "去看动画"
+      },
+      "entries": [
+        {
+          "icon": "video",
+          "title": "成长动画",
+          "sub": "每集 8 分钟",
+          "color": "#3FC1A0",
+          "bg": "#E7F8F3",
+          "target": "video"
+        },
+        {
+          "icon": "cards",
+          "title": "字词认知卡",
+          "sub": "带拼音 · 会读",
+          "color": "#FF6B4A",
+          "bg": "#FFEFE8",
+          "target": "flashcards"
+        },
+        {
+          "icon": "book",
+          "title": "睡前故事",
+          "sub": "主播朗读",
+          "color": "#8B6BE0",
+          "bg": "#F1EBFF",
+          "target": "audio"
+        },
+        {
+          "icon": "shop",
+          "title": "文具兑换",
+          "sub": "积分换礼",
+          "color": "#F5A623",
+          "bg": "#FFF1D6",
+          "target": "shop"
+        }
+      ],
+      "tips": [
+        {
+          "icon": "users",
+          "bg": "#E7F8F3",
+          "color": "#3FC1A0",
+          "title": "看完聊三句",
+          "text": "问问“故事里谁最勇敢”，锻炼表达能力。"
+        },
+        {
+          "icon": "eye",
+          "bg": "#E9F3FF",
+          "color": "#5AA9F8",
+          "title": "屏幕时间守住",
+          "text": "一天不超过 30 分钟，看完远眺窗外。"
+        }
+      ],
+      "audioTitle": "睡前故事",
+      "audioSub": "主播朗读的温柔时光",
+      "audioTagline": "故事 · 睡前",
+      "audioSuitable": "适合 3-6 岁",
+      "audioNote": "睡前选一个固定的故事音频，听完就关灯，帮助建立入睡仪式",
+      "audioTip": "故事音频不能替代亲子共读。有时间的话，家长读一遍，孩子会记得更牢。",
+      "cardsTitle": "字词认知卡",
+      "cardsSub": "点一点，跟着读",
+      "videoTitle": "成长动画",
+      "videoSub": "每集几分钟，看完聊一聊",
+      "videoNote": "今天看动画时，记得每 20 分钟让孩子望望远处；看完可以问一句“故事里谁最勇敢”，锻炼表达。"
+    },
+    "kid": {
+      "id": "kid",
+      "label": "6 岁以上",
+      "chip": "🚀 6岁以上",
+      "emoji": "🚀",
+      "note": "当前阶段：6岁以上 · 科学小实验与自主阅读",
+      "interaction": "video",
+      "theme": {
+        "accent": "#6C7BEA",
+        "accentInk": "#4C5BCB",
+        "soft": "#EDF1FF",
+        "page": "#F8FAFF",
+        "gradient": [
+          "#5AA9F8",
+          "#6E8BF5",
+          "#9B7BEA"
+        ]
+      },
+      "homeEntryTitle": "6岁以上 · 自己也能玩",
+      "hero": {
+        "title": "小小科学家<br>火山喷发实验",
+        "desc": "4 分钟看懂，材料家里都有",
+        "emoji": "🚀",
+        "cta": "去看动画"
+      },
+      "entries": [
+        {
+          "icon": "flask",
+          "title": "科学小实验",
+          "sub": "每周 2 个",
+          "color": "#5AA9F8",
+          "bg": "#E9F3FF",
+          "target": "video"
+        },
+        {
+          "icon": "cards",
+          "title": "识字闯关",
+          "sub": "100 张字卡",
+          "color": "#FF6B4A",
+          "bg": "#FFEFE8",
+          "target": "flashcards"
+        },
+        {
+          "icon": "headphones",
+          "title": "百科音频",
+          "sub": "每天 1 集",
+          "color": "#8B6BE0",
+          "bg": "#F1EBFF",
+          "target": "audio"
+        },
+        {
+          "icon": "gift",
+          "title": "心愿商店",
+          "sub": "自己攒积分",
+          "color": "#3FC1A0",
+          "bg": "#E7F8F3",
+          "target": "shop"
+        }
+      ],
+      "tips": [
+        {
+          "icon": "tasks",
+          "bg": "#E9F3FF",
+          "color": "#5AA9F8",
+          "title": "让孩子自己排任务",
+          "text": "家长只做提醒，自主感更容易坚持。"
+        },
+        {
+          "icon": "flask",
+          "bg": "#FFF1D6",
+          "color": "#E8A22A",
+          "title": "实验要有大人陪",
+          "text": "涉及热水和小苏打，记得陪着一起做。"
+        }
+      ],
+      "audioTitle": "百科音频",
+      "audioSub": "每天一集，自己也能听",
+      "audioTagline": "百科 · 自主收听",
+      "audioSuitable": "适合 6 岁以上",
+      "audioNote": "每天固定一集百科音频，听完可以让孩子用自己的话讲一遍",
+      "audioTip": "鼓励孩子听前提一个问题，听完自己找答案，比被动收听更有收获。",
+      "cardsTitle": "识字闯关",
+      "cardsSub": "点一点，认一认",
+      "videoTitle": "科学小剧场",
+      "videoSub": "每集几分钟，动手试一试",
+      "videoNote": "实验类内容需要大人陪同，涉及小苏打、白醋等材料；看完可以一起动手做一遍。"
+    }
+  },
+  "INTERACTIONS": {
+    "audio": {
+      "id": "audio",
+      "route": "/music",
+      "icon": "music",
+      "navLabel": "听一听",
+      "cta": "去听一听",
+      "empty": "这个阶段还没有音频内容"
+    },
+    "flashcards": {
+      "id": "flashcards",
+      "route": "/cards",
+      "icon": "cards",
+      "navLabel": "认卡片",
+      "cta": "开始认卡片",
+      "empty": "这个阶段还没有卡片内容"
+    },
+    "video": {
+      "id": "video",
+      "route": "/video",
+      "icon": "video",
+      "navLabel": "看动画",
+      "cta": "去看动画",
+      "empty": "这个阶段还没有动画内容"
+    }
+  },
+  "STAGE_ORDER": [
+    "pregnancy",
+    "baby",
+    "toddler",
+    "preschool",
+    "kid"
+  ]
+}

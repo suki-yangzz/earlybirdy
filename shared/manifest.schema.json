@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Yaya Content Manifest",
+  "description": "远端内容清单：版本号 + 内容分片地址与 sha256 校验信息。",
+  "type": "object",
+  "required": ["schemaVersion", "version", "shards"],
+  "properties": {
+    "schemaVersion": { "type": "integer", "const": 1 },
+    "version": {
+      "type": "string",
+      "description": "内容版本号，建议使用日期序列或语义化版本；与本地缓存一致时不重复下载。"
+    },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "minAppVersion": {
+      "type": "string",
+      "description": "可选：低于此版本号的客户端应提示升级。"
+    },
+    "shards": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name", "url", "sha256"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "enum": ["stages", "tracks", "decks", "videos", "tasks", "catalog"],
+            "description": "分片名；stages 含阶段配置，catalog 含分类与商品。"
+          },
+          "url": {
+            "type": "string",
+            "description": "相对 manifest 地址（或绝对 URL）的分片地址。"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "description": "分片原始文本的 SHA-256，用于校验与增量判断。"
+          },
+          "bytes": { "type": "integer", "minimum": 0 }
+        }
+      }
+    }
+  }
+}

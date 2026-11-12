@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "version": "2026.11.04.2",
+  "updatedAt": "2026-11-04T13:59:15.049Z",
+  "shards": [
+    {
+      "name": "stages",
+      "url": "assets/v1/stages.json",
+      "sha256": "389ae4e71814475429ae098041277ac0b8a986132f56507888d990e8458c6f69",
+      "bytes": 14137
+    },
+    {
+      "name": "tracks",
+      "url": "assets/v1/tracks.json",
+      "sha256": "876064e302b2003e036ecc17fc19a1dd82ec7fd4ee748e93a501863090fa74ec",
+      "bytes": 6715
+    },
+    {
+      "name": "decks",
+      "url": "assets/v1/decks.json",
+      "sha256": "c25170535bd93a2caafa01008877c4b3879ddd095c6febc5e6cb57dd12aee48f",
+      "bytes": 20330
+    },
+    {
+      "name": "videos",
+      "url": "assets/v1/videos.json",
+      "sha256": "520e55a2fd55fa9bbc7967752c1106033c855e1f30f1b4edcd2111510850071c",
+      "bytes": 14228
+    },
+    {
+      "name": "tasks",
+      "url": "assets/v2/tasks.json",
+      "sha256": "36c5cf08047f9e3c066fa027b3aa989a44c17755914edb6558cc82158475805e",
+      "bytes": 4559
+    },
+    {
+      "name": "catalog",
+      "url": "assets/v1/catalog.json",
+      "sha256": "d98b4e04902f02585e8a02940bd406490e4a5224f74598b6e5126c30afd47043",
+      "bytes": 4737
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "@yaya/content-core",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Stage config, content data, business rules and remote content sync shared by H5 and React Native.",
+  "main": "index.js",
+  "scripts": {
+    "extract": "node scripts/extract-from-h5.js",
+    "build:mock": "node scripts/build-mock.js",
+    "mock": "node mock/server.js",
+    "test": "node test/rules.test.js && node test/sync.test.js && node test/profile.test.js && node test/features.test.js && node test/notify.test.js && node test/babies.test.js && node test/profileSync.test.js && node test/courses.test.js && node test/ids.test.js"
+  }
+}

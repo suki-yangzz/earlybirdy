@@ -51,6 +51,7 @@ export type SyncResult = {
   changed: boolean;
   source: SyncSource;
   conflicts?: any[];
+  serverStale?: boolean;
   error?: string;
 };
 
@@ -213,6 +214,7 @@ function adopt(
     changed: merged.changedFromClient === true,
     source: source,
     conflicts: merged.conflicts,
+    serverStale: merged.changedFromServer === true,
   };
 }
 
@@ -264,5 +266,11 @@ export async function syncProfileFromServer(localStore: ProfileStore): Promise<S
     return { store: localStore, changed: false, source: 'offline', error: 'HTTP ' + res.status };
   }
 
-  return adopt(res.data.profile, localStore, meta, 'server');
+  const adopted = adopt(res.data.profile, localStore, meta, 'server');
+  /* 本地比服务端新（例如 pending 标记丢失）：把合并结果补推回服务端 */
+  if (adopted.serverStale) {
+    const pushed = await pushProfile(adopted.store);
+    if (pushed.ok && pushed.profile) return adopt(pushed.profile, localStore, await readSyncMeta(), 'server');
+  }
+  return adopted;
 }

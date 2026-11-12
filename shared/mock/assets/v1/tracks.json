@@ -1,0 +1,237 @@
+{
+  "pregnancy": [
+    {
+      "id": "p1",
+      "title": "小星星摇篮曲",
+      "artist": "钢琴版 · 3:24 · 舒缓 60 拍",
+      "emoji": "⭐",
+      "sec": 204,
+      "mood": "舒缓安抚",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+    },
+    {
+      "id": "p2",
+      "title": "摇篮曲 · 勃拉姆斯",
+      "artist": "弦乐版 · 3:10 · 温柔入睡",
+      "emoji": "🌙",
+      "sec": 190,
+      "mood": "温柔入睡",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+    },
+    {
+      "id": "p3",
+      "title": "雨滴与妈妈的呼吸",
+      "artist": "白噪音 · 4:05 · 安抚情绪",
+      "emoji": "🌧️",
+      "sec": 245,
+      "mood": "白噪音",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+    },
+    {
+      "id": "p4",
+      "title": "森林清晨",
+      "artist": "轻音乐 · 3:32 · 放松心情",
+      "emoji": "🌿",
+      "sec": 212,
+      "mood": "轻音乐",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+    },
+    {
+      "id": "p5",
+      "title": "月亮船",
+      "artist": "童声哼唱 · 2:58 · 爸妈一起听",
+      "emoji": "🚢",
+      "sec": 178,
+      "mood": "亲子共听",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+    },
+    {
+      "id": "p6",
+      "title": "海浪轻轻摇",
+      "artist": "纯音乐 · 2:50 · 睡前固定曲",
+      "emoji": "🌊",
+      "sec": 170,
+      "mood": "睡前固定",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+    }
+  ],
+  "baby": [
+    {
+      "id": "b1",
+      "title": "白噪音 · 小雨",
+      "artist": "白噪音 · 5:00 · 哄睡神器",
+      "emoji": "🌧️",
+      "sec": 300,
+      "mood": "哄睡",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+    },
+    {
+      "id": "b2",
+      "title": "摇篮曲 · 勃拉姆斯",
+      "artist": "弦乐版 · 3:10 · 温柔入睡",
+      "emoji": "🌙",
+      "sec": 190,
+      "mood": "安抚",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+    },
+    {
+      "id": "b3",
+      "title": "小星星摇篮曲",
+      "artist": "钢琴版 · 3:24 · 舒缓 60 拍",
+      "emoji": "⭐",
+      "sec": 204,
+      "mood": "安抚",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+    },
+    {
+      "id": "b4",
+      "title": "心跳与呼吸",
+      "artist": "模拟宫内声音 · 4:20 · 安全感",
+      "emoji": "💓",
+      "sec": 260,
+      "mood": "安全感",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+    }
+  ],
+  "toddler": [
+    {
+      "id": "t1",
+      "title": "两只老虎",
+      "artist": "儿歌 · 2:10 · 跟着拍手",
+      "emoji": "🐯",
+      "sec": 130,
+      "mood": "亲子律动",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+    },
+    {
+      "id": "t2",
+      "title": "小星星",
+      "artist": "童声 · 2:40 · 一起哼唱",
+      "emoji": "⭐",
+      "sec": 160,
+      "mood": "亲子律动",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+    },
+    {
+      "id": "t3",
+      "title": "拍手律动",
+      "artist": "节奏游戏 · 3:05 · 大动作",
+      "emoji": "👏",
+      "sec": 185,
+      "mood": "节奏游戏",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+    },
+    {
+      "id": "t4",
+      "title": "摇篮曲 · 晚安",
+      "artist": "弦乐版 · 3:10 · 睡前固定",
+      "emoji": "🌙",
+      "sec": 190,
+      "mood": "睡前",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+    },
+    {
+      "id": "t5",
+      "title": "森林清晨",
+      "artist": "轻音乐 · 3:32 · 放松心情",
+      "emoji": "🌿",
+      "sec": 212,
+      "mood": "轻音乐",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+    }
+  ],
+  "preschool": [
+    {
+      "id": "k1",
+      "title": "睡前故事 · 小熊宝宝",
+      "artist": "主播朗读 · 6:20 · 亲子共听",
+      "emoji": "🐻",
+      "sec": 380,
+      "mood": "故事",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+    },
+    {
+      "id": "k2",
+      "title": "三只小猪",
+      "artist": "故事音频 · 5:40 · 经典童话",
+      "emoji": "🐷",
+      "sec": 340,
+      "mood": "故事",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+    },
+    {
+      "id": "k3",
+      "title": "小雨滴答",
+      "artist": "自然声音 · 4:05 · 安静下来",
+      "emoji": "🌧️",
+      "sec": 245,
+      "mood": "安静",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+    },
+    {
+      "id": "k4",
+      "title": "月亮船",
+      "artist": "童声哼唱 · 2:58 · 睡前一首",
+      "emoji": "🚢",
+      "sec": 178,
+      "mood": "睡前",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+    },
+    {
+      "id": "k5",
+      "title": "森林音乐会",
+      "artist": "轻音乐 · 3:45 · 认识乐器",
+      "emoji": "🌿",
+      "sec": 225,
+      "mood": "轻音乐",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+    }
+  ],
+  "kid": [
+    {
+      "id": "g1",
+      "title": "恐龙时代",
+      "artist": "百科音频 · 7:10 · 每天一集",
+      "emoji": "🦕",
+      "sec": 430,
+      "mood": "百科",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+    },
+    {
+      "id": "g2",
+      "title": "星星为什么会发光",
+      "artist": "十万个为什么 · 5:30",
+      "emoji": "⭐",
+      "sec": 330,
+      "mood": "百科",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+    },
+    {
+      "id": "g3",
+      "title": "古诗吟唱 · 静夜思",
+      "artist": "吟诵 · 3:20 · 跟读打卡",
+      "emoji": "🌕",
+      "sec": 200,
+      "mood": "古诗",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+    },
+    {
+      "id": "g4",
+      "title": "森林探险日记",
+      "artist": "故事音频 · 6:15 · 自主收听",
+      "emoji": "🌲",
+      "sec": 375,
+      "mood": "故事",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+    },
+    {
+      "id": "g5",
+      "title": "宇宙的声音",
+      "artist": "科普音频 · 4:40 · 想象力",
+      "emoji": "🪐",
+      "sec": 280,
+      "mood": "科普",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+    }
+  ]
+}

@@ -24,7 +24,7 @@ function emptyRegistry() {
   return {
     version: 1,
     updatedAt: '',
-    note: '素材稳定 id 注册表：由 content/server.js 自动维护；重命名请用 node content/registry.js rename <kind:old> <new>',
+    note: '素材稳定 id 注册表：由 content/server.js 自动维护；新增/改名/删除请用 /admin 管理页（或 node content/registry.js）',
     items: {},
   };
 }

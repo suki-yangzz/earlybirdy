@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
+<title>内容注册表管理 · 芽芽</title>
+<style>
+  :root{
+    --cream:#FFF8EE; --ink:#3B2B22; --sub:#A08876; --coral:#FF6B4A;
+    --yellow:#FFC53D; --white:#FFFFFF; --line:#F2E5D7; --muted:#B6A18E;
+    --ok:#2E9E6B; --warn:#D98400; --bad:#D64545;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+    font-size:14px;line-height:1.5}
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 20px 64px}
+  header{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:18px}
+  h1{font-size:22px;margin:0;letter-spacing:.5px}
+  .sub{color:var(--sub);font-size:12px}
+  .spacer{flex:1}
+  .pill{background:var(--white);border:1px solid var(--line);border-radius:999px;
+    padding:6px 12px;font-size:12px;color:var(--sub)}
+  .card{background:var(--white);border:1px solid var(--line);border-radius:20px;
+    padding:18px 20px;margin-bottom:16px;box-shadow:0 6px 20px rgba(59,43,34,.04)}
+  .card h2{font-size:15px;margin:0 0 12px}
+  .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  input,select,button{font:inherit;border-radius:12px;border:1px solid var(--line);
+    background:#FFFDF9;color:var(--ink);padding:9px 12px;outline:none}
+  input:focus,select:focus{border-color:var(--coral);box-shadow:0 0 0 3px rgba(255,107,74,.12)}
+  button{cursor:pointer;background:var(--white);transition:.15s}
+  button:hover{border-color:var(--coral);color:var(--coral)}
+  button.primary{background:var(--coral);border-color:var(--coral);color:#fff;font-weight:600}
+  button.primary:hover{filter:brightness(.96);color:#fff}
+  button.ghost{background:transparent}
+  button:disabled{opacity:.5;cursor:not-allowed}
+  .grow{flex:1;min-width:160px}
+  .msg{font-size:12px;padding:8px 12px;border-radius:10px;display:none}
+  .msg.show{display:block}
+  .msg.ok{background:#EAF7F0;color:var(--ok)}
+  .msg.err{background:#FDECEC;color:var(--bad)}
+  .msg.info{background:#FFF4E5;color:var(--warn)}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--sub);font-weight:600;font-size:11.5px;white-space:nowrap}
+  td.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--sub)}
+  .tag{display:inline-block;padding:2px 8px;border-radius:999px;background:#FFF1EA;
+    color:var(--coral);font-size:11px;margin-right:4px;white-space:nowrap}
+  .badge{display:inline-block;padding:1px 7px;border-radius:999px;font-size:10.5px;margin-left:6px}
+  .badge.ok{background:#EAF7F0;color:var(--ok)}
+  .badge.bad{background:#FDECEC;color:var(--bad)}
+  .alias{color:var(--muted);font-size:10.5px}
+  .empty{color:var(--muted);padding:18px 4px;text-align:center}
+  .checkGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+  .checkBox{background:#FFFDF9;border:1px dashed var(--line);border-radius:14px;padding:12px}
+  .checkBox h3{font-size:12px;margin:0 0 8px;color:var(--sub)}
+  .checkBox ul{margin:0;padding-left:16px}
+  .checkBox li{margin:2px 0;font-family:ui-monospace,Menlo,monospace;font-size:11px;word-break:break-all}
+  .gate{max-width:440px;margin:12vh auto;text-align:center}
+  .gate h1{margin-bottom:8px}
+  .gate p{color:var(--sub);font-size:13px}
+  .gate .row{justify-content:center;margin-top:16px}
+  .hidden{display:none!important}
+  .hint{color:var(--muted);font-size:11.5px;margin-top:8px}
+  a{color:var(--coral)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div id="gate" class="gate hidden">
+    <h1>内容注册表管理</h1>
+    <p>该页面需要 ADMIN_TOKEN。输入后仅保存在本标签页（sessionStorage）。</p>
+    <div class="row">
+      <input id="gateToken" type="password" class="grow" placeholder="ADMIN_TOKEN" autocomplete="off">
+      <button class="primary" id="gateBtn">进入</button>
+    </div>
+    <div id="gateMsg" class="hint"></div>
+  </div>
+
+  <div id="app" class="hidden">
+    <header>
+      <div>
+        <h1>内容注册表管理</h1>
+        <div class="sub">音乐 / 课程 / 故事 / 认知卡 / 视频 的稳定 id；客户端仍通过 manifest 动态获取内容</div>
+      </div>
+      <div class="spacer"></div>
+      <span class="pill" id="statEntries">条目 —</span>
+      <span class="pill" id="statVersion">manifest —</span>
+      <button class="ghost" id="logoutBtn">退出</button>
+    </header>
+
+    <div class="card">
+      <div class="row">
+        <button class="primary" id="refreshBtn">刷新列表</button>
+        <button id="checkBtn">一致性校验</button>
+        <div class="spacer"></div>
+        <select id="kindFilter">
+          <option value="">全部 kind</option>
+          <option value="track">track 音频</option>
+          <option value="video">video 视频</option>
+          <option value="topic">topic 认知卡</option>
+          <option value="course">course 课程</option>
+          <option value="chapter">chapter 章节</option>
+          <option value="story">story 故事</option>
+        </select>
+        <input id="search" class="grow" placeholder="搜索 slug / 标题 / uid / 路径">
+      </div>
+      <div id="msg" class="msg"></div>
+      <div class="hint">改名会保留 uid 与旧 slug（aliases），并尽量同步重命名文件；topic（目录名）和 chapter（课程 JSON）不支持在此改名。</div>
+    </div>
+
+    <div class="card">
+      <h2>新增注册条目</h2>
+      <div class="row">
+        <select id="addKind">
+          <option value="track">track</option>
+          <option value="video">video</option>
+          <option value="story">story</option>
+          <option value="course">course</option>
+          <option value="topic">topic</option>
+          <option value="chapter">chapter</option>
+        </select>
+        <input id="addSlug" class="grow" placeholder="slug（小写字母/数字/短横线）" autocomplete="off">
+        <input id="addTitle" class="grow" placeholder="标题（可选）" autocomplete="off">
+        <input id="addPath" class="grow" placeholder="文件路径（可选，如 /audio/pregnancy/x.json）" autocomplete="off">
+        <button id="addBtn">新增</button>
+      </div>
+      <div class="hint">chapter 的 slug 形如 &lt;courseUid&gt;/&lt;chapterSlug&gt;。新增已存在的 slug 会返回 409。</div>
+    </div>
+
+    <div id="checkCard" class="card hidden">
+      <div class="row"><h2 style="margin:0">一致性校验</h2><div class="spacer"></div><span id="checkSummary" class="pill">—</span></div>
+      <div class="checkGrid" style="margin-top:12px">
+        <div class="checkBox"><h3>未注册（0）</h3><ul id="checkUnregistered"></ul></div>
+        <div class="checkBox"><h3>文件已不在（0）</h3><ul id="checkMissing"></ul></div>
+        <div class="checkBox"><h3>uid 重复（0）</h3><ul id="checkDuplicate"></ul></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>注册条目 <span id="listCount" class="sub"></span></h2>
+      <div id="tableWrap">
+        <table>
+          <thead><tr><th>kind</th><th>slug / 标题</th><th>uid</th><th>文件</th><th style="width:220px">操作</th></tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+        <div id="empty" class="empty hidden">暂无条目</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var TOKEN_KEY = 'yy.adminToken';
+  var token = '';
+  var entries = [];
+  var filter = '';
+  var search = '';
+
+  var $ = function (id) { return document.getElementById(id); };
+
+  function getQueryToken() {
+    try {
+      var p = new URLSearchParams(location.search);
+      return p.get('token') || '';
+    } catch (err) { return ''; }
+  }
+
+  function stripTokenFromUrl() {
+    if (!location.search) return;
+    try {
+      var p = new URLSearchParams(location.search);
+      p.delete('token');
+      var next = location.pathname + (p.toString() ? '?' + p.toString() : '') + location.hash;
+      history.replaceState(null, '', next);
+    } catch (err) { /* 忽略 */ }
+  }
+
+  function setMsg(text, kind) {
+    var el = $('msg');
+    el.className = 'msg show ' + (kind || 'info');
+    el.textContent = text;
+  }
+
+  function clearMsg() {
+    var el = $('msg');
+    el.className = 'msg';
+    el.textContent = '';
+  }
+
+  function api(path, options) {
+    options = options || {};
+    var headers = Object.assign({ 'Accept': 'application/json' }, options.headers || {});
+    headers['Authorization'] = 'Bearer ' + token;
+    if (options.body) headers['Content-Type'] = 'application/json';
+    return fetch(path, {
+      method: options.method || 'GET',
+      headers: headers,
+      body: options.body ? JSON.stringify(options.body) : undefined,
+      cache: 'no-store',
+    }).then(function (res) {
+      return res.text().then(function (text) {
+        var data = null;
+        try { data = text ? JSON.parse(text) : null; } catch (err) { data = { raw: text }; }
+        if (res.status === 401) {
+          token = '';
+          sessionStorage.removeItem(TOKEN_KEY);
+          showGate('登录已失效，请重新输入 token');
+          throw new Error('unauthorized');
+        }
+        if (!res.ok) {
+          var msg = (data && (data.message || data.error)) || ('HTTP ' + res.status);
+          throw new Error(msg);
+        }
+        return data;
+      });
+    });
+  }
+
+  function showGate(message) {
+    $('app').classList.add('hidden');
+    $('gate').classList.remove('hidden');
+    $('gateMsg').textContent = message || '';
+  }
+
+  function showApp() {
+    $('gate').classList.add('hidden');
+    $('app').classList.remove('hidden');
+  }
+
+  function loadStats() {
+    fetch('/__content/stats', { cache: 'no-store' })
+      .then(function (r) { return r.json(); })
+      .then(function (s) {
+        $('statEntries').textContent = '条目 ' + (s.registry != null ? s.registry : '—');
+        $('statVersion').textContent = 'manifest ' + (s.version || '—');
+      })
+      .catch(function () {});
+  }
+
+  function loadList() {
+    return api('/api/admin/registry').then(function (data) {
+      entries = data.entries || [];
+      $('statEntries').textContent = '条目 ' + (data.total || 0);
+      render();
+      loadStats();
+    });
+  }
+
+  function render() {
+    var tbody = $('tbody');
+    tbody.textContent = '';
+    var needle = search.trim().toLowerCase();
+    var list = entries.filter(function (e) {
+      if (filter && e.kind !== filter) return false;
+      if (!needle) return true;
+      return [e.slug, e.title, e.uid, e.path, e.key].join(' ').toLowerCase().indexOf(needle) !== -1;
+    });
+    $('listCount').textContent = '（' + list.length + ' / ' + entries.length + '）';
+    $('empty').classList.toggle('hidden', list.length > 0);
+
+    list.forEach(function (e) {
+      var tr = document.createElement('tr');
+
+      var tdKind = document.createElement('td');
+      var tag = document.createElement('span');
+      tag.className = 'tag';
+      tag.textContent = e.kind;
+      tdKind.appendChild(tag);
+      tr.appendChild(tdKind);
+
+      var tdName = document.createElement('td');
+      var slugLine = document.createElement('div');
+      var strong = document.createElement('strong');
+      strong.textContent = e.slug;
+      slugLine.appendChild(strong);
+      if (!e.fileExists) {
+        var missingBadge = document.createElement('span');
+        missingBadge.className = 'badge bad';
+        missingBadge.textContent = '文件缺失';
+        slugLine.appendChild(missingBadge);
+      }
+      tdName.appendChild(slugLine);
+      var titleLine = document.createElement('div');
+      titleLine.className = 'alias';
+      titleLine.textContent = e.title || '';
+      tdName.appendChild(titleLine);
+      if (e.aliases && e.aliases.length) {
+        var aliasLine = document.createElement('div');
+        aliasLine.className = 'alias';
+        aliasLine.textContent = 'aliases: ' + e.aliases.join(', ');
+        tdName.appendChild(aliasLine);
+      }
+      tr.appendChild(tdName);
+
+      var tdUid = document.createElement('td');
+      tdUid.className = 'mono';
+      tdUid.textContent = e.uid;
+      tr.appendChild(tdUid);
+
+      var tdPath = document.createElement('td');
+      tdPath.className = 'mono';
+      tdPath.textContent = e.path || '（未绑定文件）';
+      tr.appendChild(tdPath);
+
+      var tdOps = document.createElement('td');
+      if (e.canRename) {
+        var renameBtn = document.createElement('button');
+        renameBtn.textContent = '改名';
+        renameBtn.addEventListener('click', function () { startRename(tdOps, e); });
+        tdOps.appendChild(renameBtn);
+      } else {
+        var noRename = document.createElement('span');
+        noRename.className = 'hint';
+        noRename.textContent = '不支持改名';
+        tdOps.appendChild(noRename);
+      }
+      if (!e.fileExists) {
+        var delBtn = document.createElement('button');
+        delBtn.textContent = '删除';
+        delBtn.style.marginLeft = '6px';
+        delBtn.addEventListener('click', function () { removeEntry(e); });
+        tdOps.appendChild(delBtn);
+      }
+      tr.appendChild(tdOps);
+      tbody.appendChild(tr);
+    });
+  }
+
+  function startRename(td, entry) {
+    td.textContent = '';
+    var input = document.createElement('input');
+    input.value = entry.slug;
+    input.style.width = '110px';
+    var save = document.createElement('button');
+    save.className = 'primary';
+    save.textContent = '保存';
+    save.style.marginLeft = '6px';
+    var cancel = document.createElement('button');
+    cancel.textContent = '取消';
+    cancel.style.marginLeft = '6px';
+    td.appendChild(input);
+    td.appendChild(save);
+    td.appendChild(cancel);
+    input.focus();
+    input.select();
+    cancel.addEventListener('click', function () { render(); });
+    save.addEventListener('click', function () {
+      var next = input.value.trim();
+      if (!next || next === entry.slug) { render(); return; }
+      save.disabled = true;
+      setMsg('正在改名 ' + entry.kind + ':' + entry.slug + ' → ' + next + ' …', 'info');
+      api('/api/admin/registry/' + encodeURIComponent(entry.kind) + '/' + encodeURIComponent(entry.slug), {
+        method: 'PATCH',
+        body: { slug: next },
+      }).then(function (out) {
+        clearMsg();
+        setMsg('已改名 ' + out.oldKey + ' → ' + out.newKey + '；uid 不变：' + out.entry.uid +
+          (out.fileRenamed ? '；文件已同步重命名' : '') + (out.warning ? '；' + out.warning : ''), 'ok');
+        return loadList();
+      }).catch(function (err) {
+        setMsg('改名失败：' + err.message, 'err');
+        save.disabled = false;
+      });
+    });
+    input.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Enter') save.click();
+      if (ev.key === 'Escape') render();
+    });
+  }
+
+  function removeEntry(entry) {
+    if (!confirm('删除注册条目 ' + entry.key + '？\n仅用于文件已不存在的条目。')) return;
+    api('/api/admin/registry/' + encodeURIComponent(entry.kind) + '/' + encodeURIComponent(entry.slug), {
+      method: 'DELETE',
+    }).then(function (out) {
+      setMsg('已删除 ' + out.deleted, 'ok');
+      return loadList();
+    }).catch(function (err) {
+      setMsg('删除失败：' + err.message, 'err');
+    });
+  }
+
+  function runCheck() {
+    $('checkBtn').disabled = true;
+    api('/api/admin/registry/check').then(function (result) {
+      $('checkCard').classList.remove('hidden');
+      $('checkSummary').textContent = result.ok ? '全部一致' :
+        ('未注册 ' + result.unregistered.length + ' · 缺失 ' + result.missing.length + ' · uid 重复 ' + result.duplicateUids.length);
+      function fill(id, items, fmt) {
+        var ul = $(id);
+        ul.textContent = '';
+        items.forEach(function (item) {
+          var li = document.createElement('li');
+          li.textContent = fmt(item);
+          ul.appendChild(li);
+        });
+        if (!items.length) {
+          var li = document.createElement('li');
+          li.textContent = '无';
+          ul.appendChild(li);
+        }
+      }
+      $('checkUnregistered').parentNode.querySelector('h3').textContent = '未注册（' + result.unregistered.length + '）';
+      $('checkMissing').parentNode.querySelector('h3').textContent = '文件已不在（' + result.missing.length + '）';
+      $('checkDuplicate').parentNode.querySelector('h3').textContent = 'uid 重复（' + result.duplicateUids.length + '）';
+      fill('checkUnregistered', result.unregistered, function (x) { return x.kind + ':' + x.slug + '  ' + x.path; });
+      fill('checkMissing', result.missing, function (x) { return x.key + '  ' + x.path; });
+      fill('checkDuplicate', result.duplicateUids, function (x) { return x.uid + ' -> ' + x.keys.join(', '); });
+      setMsg(result.ok ? '校验通过：注册表与目录一致' : '校验发现问题，见下方结果', result.ok ? 'ok' : 'err');
+    }).catch(function (err) {
+      setMsg('校验失败：' + err.message, 'err');
+    }).then(function () {
+      $('checkBtn').disabled = false;
+    });
+  }
+
+  function addEntry() {
+    var body = {
+      kind: $('addKind').value,
+      slug: $('addSlug').value.trim(),
+      title: $('addTitle').value.trim(),
+      path: $('addPath').value.trim(),
+    };
+    if (!body.slug) { setMsg('请填写 slug', 'err'); return; }
+    $('addBtn').disabled = true;
+    api('/api/admin/registry', { method: 'POST', body: body }).then(function (out) {
+      setMsg('已新增 ' + out.key + '（uid ' + out.entry.uid + '）', 'ok');
+      $('addSlug').value = '';
+      $('addTitle').value = '';
+      $('addPath').value = '';
+      return loadList();
+    }).catch(function (err) {
+      setMsg('新增失败：' + err.message, 'err');
+    }).then(function () {
+      $('addBtn').disabled = false;
+    });
+  }
+
+  function enter(tokenValue) {
+    token = tokenValue;
+    sessionStorage.setItem(TOKEN_KEY, token);
+    stripTokenFromUrl();
+    showApp();
+    clearMsg();
+    loadList().catch(function (err) {
+      if (err.message !== 'unauthorized') setMsg('加载失败：' + err.message, 'err');
+    });
+  }
+
+  $('gateBtn').addEventListener('click', function () { enter($('gateToken').value.trim()); });
+  $('gateToken').addEventListener('keydown', function (ev) { if (ev.key === 'Enter') $('gateBtn').click(); });
+  $('logoutBtn').addEventListener('click', function () {
+    token = '';
+    sessionStorage.removeItem(TOKEN_KEY);
+    showGate('已退出');
+  });
+  $('refreshBtn').addEventListener('click', function () {
+    clearMsg();
+    loadList().catch(function (err) { if (err.message !== 'unauthorized') setMsg('刷新失败：' + err.message, 'err'); });
+  });
+  $('checkBtn').addEventListener('click', runCheck);
+  $('addBtn').addEventListener('click', addEntry);
+  $('kindFilter').addEventListener('change', function (ev) { filter = ev.target.value; render(); });
+  $('search').addEventListener('input', function (ev) { search = ev.target.value; render(); });
+
+  var urlToken = getQueryToken();
+  var saved = sessionStorage.getItem(TOKEN_KEY) || '';
+  if (urlToken) enter(urlToken);
+  else if (saved) enter(saved);
+  else showGate();
+})();
+</script>
+</body>
+</html>

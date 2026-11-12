@@ -28,6 +28,9 @@ const STORY_CATEGORY_LABEL = STORY_CATEGORIES.reduce((map, item) => {
   return map;
 }, {});
 const registryLib = require('./registry-lib');
+const profileSync = require(path.join(REPO, 'shared', 'profileSync.js'));
+const { createProfileStore } = require('./profile-store');
+const { createRegistryAdmin } = require('./registry-admin');
 
 /* 稳定 id：注册表在启动时读取，扫描到新 slug 自动写入，对外发布 uid */
 const registry = registryLib.loadRegistry();
@@ -45,6 +48,9 @@ const STAGE_IDS = Object.keys(STAGES.STAGES || {});
 const AUDIO_EXT = ['.mp3', '.m4a', '.wav', '.aac', '.ogg'];
 const VIDEO_EXT = ['.mp4', '.webm', '.mov', '.m4v'];
 const IMAGE_EXT = ['.png', '.jpg', '.jpeg', '.webp', '.gif'];
+const ADMIN_TOKEN = String(process.env.ADMIN_TOKEN || '').trim();
+const ADMIN_FILE = path.join(__dirname, 'admin.html');
+const MAX_BODY = 512 * 1024;
 const CATEGORY_LABEL = {};
 COURSE_CATEGORIES.forEach((c) => { CATEGORY_LABEL[c.id] = c.label; });
 
@@ -373,15 +379,36 @@ function counts(shards) {
   };
 }
 
-const shards = buildShards();
-if (registryDirty) {
-  registryLib.saveRegistry(registry);
-  console.log('[content] registry.json 已更新：' + Object.keys(registry.items).length + ' 条稳定 id');
+let shards = null;
+let manifest = null;
+let stats = null;
+
+/** 注册表变化后重建分片与 manifest（管理接口改名/新增/删除时调用） */
+function rebuildContent() {
+  shards = buildShards();
+  if (registryDirty) {
+    registryLib.saveRegistry(registry);
+    registryDirty = false;
+    console.log('[content] registry.json 已更新：' + Object.keys(registry.items).length + ' 条稳定 id');
+  }
+  manifest = buildManifest(shards);
+  stats = counts(shards);
+  stats.version = manifest.version;
+  stats.registry = Object.keys(registry.items).length;
+  return stats;
 }
-const manifest = buildManifest(shards);
-const stats = counts(shards);
-stats.version = manifest.version;
-stats.registry = Object.keys(registry.items).length;
+
+rebuildContent();
+
+const profileStore = createProfileStore();
+const registryAdmin = createRegistryAdmin({
+  registry: registry,
+  persist: () => {
+    registryLib.saveRegistry(registry);
+    registryDirty = false;
+  },
+  rebuild: rebuildContent,
+});
 
 const MIME = {
   '.json': 'application/json; charset=utf-8',
@@ -403,9 +430,65 @@ function send(res, status, body, type) {
   res.writeHead(status, {
     'Content-Type': type || 'application/json; charset=utf-8',
     'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE, OPTIONS',
     'Cache-Control': 'no-store',
   });
   res.end(body);
+}
+
+function sendJson(res, status, value) {
+  return send(res, status, JSON.stringify(value, null, 2));
+}
+
+function readJsonBody(req) {
+  return new Promise((resolve, reject) => {
+    let size = 0;
+    const chunks = [];
+    req.on('data', (chunk) => {
+      size += chunk.length;
+      if (size > MAX_BODY) {
+        const err = new Error('请求体过大');
+        err.status = 413;
+        err.code = 'payload_too_large';
+        reject(err);
+        req.destroy();
+        return;
+      }
+      chunks.push(chunk);
+    });
+    req.on('end', () => {
+      const text = Buffer.concat(chunks).toString('utf8').trim();
+      if (!text) return resolve({});
+      try {
+        resolve(JSON.parse(text));
+      } catch (err) {
+        const bad = new Error('请求体不是合法 JSON');
+        bad.status = 400;
+        bad.code = 'invalid_json';
+        reject(bad);
+      }
+    });
+    req.on('error', reject);
+  });
+}
+
+function adminTokenOf(req, urlObj) {
+  const header = String(req.headers.authorization || '');
+  const bearer = /^Bearer\s+(.+)$/i.exec(header);
+  if (bearer) return bearer[1].trim();
+  return String(urlObj.searchParams.get('token') || '').trim();
+}
+
+function adminAllowed(req, urlObj) {
+  return !!ADMIN_TOKEN && adminTokenOf(req, urlObj) === ADMIN_TOKEN;
+}
+
+function sendError(res, err) {
+  return sendJson(res, err && err.status ? err.status : 500, {
+    error: (err && err.code) || 'internal',
+    message: (err && err.message) || '服务端错误',
+  });
 }
 
 /* 二进制素材支持 Range（206）：浏览器 / expo-video 需要它才能 seek */
@@ -449,30 +532,135 @@ function sendFile(req, res, filePath, type) {
   stream.pipe(res);
 }
 
-const server = http.createServer((req, res) => {
-  const url = decodeURIComponent((req.url || '/').split('?')[0]);
-
-  if (req.method === 'OPTIONS') return send(res, 204, '', 'text/plain');
-
-  if (url === '/manifest.json') {
-    const { _bodies, ...plain } = manifest;
-    return send(res, 200, JSON.stringify(plain));
+const server = http.createServer(async (req, res) => {
+  let urlObj;
+  try {
+    urlObj = new URL(req.url || '/', 'http://127.0.0.1');
+  } catch (err) {
+    return sendJson(res, 400, { error: 'bad_url' });
   }
+  const url = decodeURIComponent(urlObj.pathname);
+  const method = req.method || 'GET';
 
-  if (url === '/__content/stats') {
-    return send(res, 200, JSON.stringify(stats, null, 2));
-  }
+  if (method === 'OPTIONS') return send(res, 204, '', 'text/plain');
 
-  const shardMatch = /^\/shards\/([a-zA-Z0-9_-]+)\.json$/.exec(url);
-  if (shardMatch) {
-    const name = shardMatch[1];
-    if (!manifest._bodies[name]) return send(res, 404, JSON.stringify({ error: 'shard not found' }));
-    return send(res, 200, manifest._bodies[name]);
+  try {
+    if (url === '/manifest.json') {
+      const { _bodies, ...plain } = manifest;
+      return send(res, 200, JSON.stringify(plain));
+    }
+
+    if (url === '/__content/stats') {
+      return sendJson(res, 200, Object.assign({}, stats, { profiles: profileStore.stats() }));
+    }
+
+    const shardMatch = /^\/shards\/([a-zA-Z0-9_-]+)\.json$/.exec(url);
+    if (shardMatch) {
+      const name = shardMatch[1];
+      if (!manifest._bodies[name]) return sendJson(res, 404, { error: 'shard not found' });
+      return send(res, 200, manifest._bodies[name]);
+    }
+
+    /* ---------------- 管理页面（token 保护） ---------------- */
+    if (url === '/admin' || url === '/admin/') {
+      if (!adminAllowed(req, urlObj)) {
+        return send(res, 401,
+          '<!doctype html><meta charset="utf-8"><title>401</title>' +
+          '<body style="font-family:-apple-system,sans-serif;background:#FFF8EE;color:#3B2B22;padding:48px">' +
+          '<h1 style="font-size:20px">401 未授权</h1>' +
+          '<p style="color:#A08876">访问 /admin 需要有效的 ADMIN_TOKEN。用法：/admin?token=&lt;ADMIN_TOKEN&gt;</p>' +
+          (ADMIN_TOKEN ? '' : '<p style="color:#FF6B4A">服务端未配置 ADMIN_TOKEN，请以 ADMIN_TOKEN=... 启动。</p>') +
+          '</body>', 'text/html; charset=utf-8');
+      }
+      if (!fs.existsSync(ADMIN_FILE)) return send(res, 500, 'admin.html missing', 'text/plain; charset=utf-8');
+      return send(res, 200, fs.readFileSync(ADMIN_FILE), 'text/html; charset=utf-8');
+    }
+    /* 管理页本身只允许走 /admin 的 token 校验，禁止直接静态访问 */
+    if (url === '/admin.html') return sendJson(res, 404, { error: 'not_found' });
+
+    /* ---------------- 注册表管理 API ---------------- */
+    if (url === '/api/admin' || url.startsWith('/api/admin/')) {
+      if (!adminAllowed(req, urlObj)) {
+        return sendJson(res, 401, {
+          error: 'unauthorized',
+          message: ADMIN_TOKEN ? 'token 不正确或缺失' : '服务端未配置 ADMIN_TOKEN',
+        });
+      }
+      if (method === 'GET' && url === '/api/admin/registry') return sendJson(res, 200, registryAdmin.list());
+      if (method === 'GET' && url === '/api/admin/registry/check') return sendJson(res, 200, registryAdmin.check());
+      if (method === 'POST' && url === '/api/admin/registry') {
+        const body = await readJsonBody(req);
+        return sendJson(res, 201, registryAdmin.add(body));
+      }
+      const renameMatch = /^\/api\/admin\/registry\/([^/]+)\/(.+)$/.exec(url);
+      if (renameMatch) {
+        const kind = renameMatch[1];
+        const slug = renameMatch[2];
+        if (method === 'PATCH') {
+          const body = await readJsonBody(req);
+          return sendJson(res, 200, registryAdmin.rename({ kind: kind, from: slug, to: body && body.slug }));
+        }
+        if (method === 'DELETE') {
+          return sendJson(res, 200, registryAdmin.remove({ kind: kind, slug: slug }));
+        }
+      }
+      return sendJson(res, 405, { error: 'method_not_allowed' });
+    }
+
+    /* ---------------- 设备档案 API ---------------- */
+    if (url.startsWith('/api/devices/')) {
+      const profileMatch = /^\/api\/devices\/([^/]+)\/profile$/.exec(url);
+      if (profileMatch) {
+        const deviceId = profileMatch[1];
+        if (!profileSync.isValidDeviceId(deviceId)) return sendJson(res, 400, { error: 'invalid_device_id' });
+        if (method === 'GET') {
+          const profile = profileStore.get(deviceId);
+          if (!profile) return sendJson(res, 404, { error: 'not_found' });
+          return sendJson(res, 200, { profile: profile });
+        }
+        if (method === 'PUT') {
+          const body = await readJsonBody(req);
+          const out = profileStore.applySnapshot(deviceId, body);
+          return sendJson(res, out.created ? 201 : 200, out);
+        }
+        return sendJson(res, 405, { error: 'method_not_allowed' });
+      }
+
+      const babiesMatch = /^\/api\/devices\/([^/]+)\/babies$/.exec(url);
+      if (babiesMatch) {
+        const deviceId = babiesMatch[1];
+        if (!profileSync.isValidDeviceId(deviceId)) return sendJson(res, 400, { error: 'invalid_device_id' });
+        if (method === 'POST') {
+          const body = await readJsonBody(req);
+          return sendJson(res, 201, profileStore.upsertBaby(deviceId, body));
+        }
+        return sendJson(res, 405, { error: 'method_not_allowed' });
+      }
+
+      const babyMatch = /^\/api\/devices\/([^/]+)\/babies\/([^/]+)$/.exec(url);
+      if (babyMatch) {
+        const deviceId = babyMatch[1];
+        const babyId = babyMatch[2];
+        if (!profileSync.isValidDeviceId(deviceId)) return sendJson(res, 400, { error: 'invalid_device_id' });
+        if (method === 'PATCH') {
+          const body = await readJsonBody(req);
+          return sendJson(res, 200, profileStore.patchBaby(deviceId, babyId, body));
+        }
+        if (method === 'DELETE') {
+          const at = urlObj.searchParams.get('updatedAt') || undefined;
+          return sendJson(res, 200, profileStore.deleteBaby(deviceId, babyId, at));
+        }
+        return sendJson(res, 405, { error: 'method_not_allowed' });
+      }
+      return sendJson(res, 404, { error: 'not_found' });
+    }
+  } catch (err) {
+    return sendError(res, err);
   }
 
   const filePath = path.join(ROOT, path.normalize(url).replace(/^([/\\])+/, ''));
   if (!filePath.startsWith(ROOT) || !fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) {
-    return send(res, 404, JSON.stringify({ error: 'not found', url }));
+    return sendJson(res, 404, { error: 'not found', url: url });
   }
   const ext = extOf(filePath);
   return sendFile(req, res, filePath, MIME[ext] || 'application/octet-stream');
@@ -481,5 +669,8 @@ const server = http.createServer((req, res) => {
 server.listen(PORT, () => {
   console.log('[content] 扫描完成: ' + JSON.stringify(stats));
   console.log('[content] manifest: http://127.0.0.1:' + PORT + '/manifest.json');
+  console.log('[content] 档案 API: /api/devices/:deviceId/profile（存储 ' + profileStore.filePath + '）');
+  console.log('[content] 管理页面: http://127.0.0.1:' + PORT + '/admin?token=***' +
+    (ADMIN_TOKEN ? '' : '（未配置 ADMIN_TOKEN，管理接口将一律 401）'));
   console.log('[content] 静态素材: /audio /images /video /courses；新增文件后重启服务生效');
 });
