@@ -23,7 +23,7 @@ shared/                     # 阶段 1 产物，H5 与 RN 共用（UMD，Node/Me
 ├── manifest.schema.json    # manifest 的 JSON Schema（draft-07）
 ├── scripts/extract-from-h5.js   # 从 app/js/data 生成 stages.js / content.js
 ├── scripts/build-mock.js        # 生成 mock 静态分片 + v1/v2 manifest（含 sha256/bytes）
-├── mock/server.js               # 本地 mock 内容服务（默认 8787）
+├── mock/server.js               # legacy 本地 mock（仅 shared 单测；真机请用 content/server.js）
 ├── mock/assets/v1|v2/*.json     # 6 个内容分片 + 两版 manifest
 └── test/{rules,sync}.test.js    # 11 个自动化用例
 
@@ -129,10 +129,11 @@ PASS 5 无缓存回落内置兜底 — offline=true, source=builtin, tasks.toddl
 ## 五、运行命令
 
 ```bash
-# 1) 内容 mock 服务（端口 8787，默认返回 assets/v1/manifest.json）
+# 1) 统一内容服务（默认端口 8788，读取 content/ 素材）
 cd /Users/zhenzhenyang/Workspace/earlybirdy
-node shared/mock/server.js
-#    切到 v2 验证增量：MANIFEST=assets/v2/manifest.json node shared/mock/server.js
+node content/server.js
+#    仅验证 v1→v2 增量同步时，可用 legacy mock（不要用于真机）：
+#    cd shared && MANIFEST=assets/v2/manifest.json PORT=8791 node mock/server.js
 
 # 2) shared 测试
 cd shared && npm test
@@ -146,7 +147,7 @@ npx expo start --web    # 浏览器 8081（本次验证所用）
 cd app && python3 -m http.server 8123   # 打开 http://127.0.0.1:8123/index.html
 ```
 
-`SERVICE_URL` 默认 `http://127.0.0.1:8787/manifest.json`，可用 `EXPO_PUBLIC_CONTENT_URL` 覆盖：
+`SERVICE_URL` 默认 `http://127.0.0.1:8788/manifest.json`（端口已统一为 8788），可用 `EXPO_PUBLIC_CONTENT_URL` 覆盖：
 Android 模拟器需改 `10.0.2.2`，真机需改局域网 IP；上线前必须换 HTTPS（目前是明文 HTTP）。
 
 ## 六、环境限制与阻塞点（如实说明）

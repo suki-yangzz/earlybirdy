@@ -8,7 +8,7 @@
    新增文件后重启服务即可被 App 发现。
 
    运行：node content/server.js
-   端口：CONTENT_PORT（默认 8787）
+   端口：CONTENT_PORT（默认 8788，统一内容 + 档案 + 管理服务）
    ============================================================ */
 'use strict';
 
@@ -43,7 +43,7 @@ function stableUid(kind, slug, meta) {
   return result.entry.uid;
 }
 
-const PORT = Number(process.env.CONTENT_PORT || 8787);
+const PORT = Number(process.env.CONTENT_PORT || 8788);
 const STAGE_IDS = Object.keys(STAGES.STAGES || {});
 const AUDIO_EXT = ['.mp3', '.m4a', '.wav', '.aac', '.ogg'];
 const VIDEO_EXT = ['.mp4', '.webm', '.mov', '.m4v'];
@@ -614,9 +614,9 @@ const server = http.createServer(async (req, res) => {
         const deviceId = profileMatch[1];
         if (!profileSync.isValidDeviceId(deviceId)) return sendJson(res, 400, { error: 'invalid_device_id' });
         if (method === 'GET') {
+          /* 未知设备返回 200 + profile:null：新设备首次启动不应产生 404 噪声 */
           const profile = profileStore.get(deviceId);
-          if (!profile) return sendJson(res, 404, { error: 'not_found' });
-          return sendJson(res, 200, { profile: profile });
+          return sendJson(res, 200, { profile: profile || null });
         }
         if (method === 'PUT') {
           const body = await readJsonBody(req);

@@ -5,9 +5,9 @@ const shared = require('../../shared/index');
 // @ts-ignore Expo 会把 EXPO_PUBLIC_ 前缀变量注入到 process.env
 const envUrl = typeof process !== 'undefined' && process.env ? process.env.EXPO_PUBLIC_CONTENT_URL : '';
 
-const DEFAULT_MANIFEST_URL = 'http://127.0.0.1:8787/manifest.json';
+const DEFAULT_MANIFEST_URL = 'http://127.0.0.1:8788/manifest.json';
 
-/** 允许填写基础地址（http://<IP>:8787）或完整清单地址（.../manifest.json） */
+/** 允许填写基础地址（http://<IP>:8788）或完整清单地址（.../manifest.json） */
 function normalizeManifestUrl(value: string): string {
   const trimmed = String(value || '').trim();
   if (!trimmed) return '';
@@ -18,8 +18,8 @@ function normalizeManifestUrl(value: string): string {
 /**
  * mock 内容服务地址：
  * - 真机（Expo Go）必须用 Mac 的局域网 IP，见 scripts/dev-iphone.sh
- * - 兜底默认 http://127.0.0.1:8787/manifest.json（Expo Web / iOS 模拟器可用）
- * - Android 模拟器如需手动填写，用 http://10.0.2.2:8787
+ * - 兜底默认 http://127.0.0.1:8788/manifest.json（统一服务；Expo Web / iOS 模拟器可用）
+ * - Android 模拟器如需手动填写，用 http://10.0.2.2:8788
  */
 export const SERVICE_URL: string = normalizeManifestUrl(envUrl) || DEFAULT_MANIFEST_URL;
 

@@ -10,6 +10,7 @@
 - 客户端取内容方式未变：仍通过 `/manifest.json` 动态获取。
 - 注册表最终 82 条（chapter 21 / course 6 / story 3 / topic 10 / track 25 / video 17），`check` 全绿。
 - `shared` 测试全部通过、`app-mobile` `tsc --noEmit` 通过、正常入口 `consoleErrors` 为空。
+- 端口已全仓库统一为 **8788**（`CONTENT_PORT` 默认值、客户端兜底、脚本与文档一致；旧 mock 仅保留给单测），详见 `PORT-8788-DELIVERY.md`。
 
 ## 2. 架构与存储选型
 
@@ -46,13 +47,13 @@
 
 | 方法 | 路径 | 请求体 | 成功响应 |
 | --- | --- | --- | --- |
-| GET | `/api/devices/:deviceId/profile` | — | `200 { profile: { deviceId, accountId, babies, currentId, currentIdUpdatedAt, deletedBabies, createdAt, updatedAt } }`；不存在 `404 {error:"not_found"}` |
+| GET | `/api/devices/:deviceId/profile` | — | `200 { profile: {...} \| null }`（未知设备返回 `profile:null`，不产生 404 噪声） |
 | PUT | `/api/devices/:deviceId/profile` | `{ babies, currentId, currentIdUpdatedAt, deletedBabies, updatedAt }` | 首次 `201`，否则 `200`；`{ profile, conflicts, dropped, created }` |
 | POST | `/api/devices/:deviceId/babies` | 宝宝对象（`id` 可省略，服务端生成 `baby-N`） | `201 { profile, baby, created }` |
 | PATCH | `/api/devices/:deviceId/babies/:babyId` | 局部字段 `{ name?, nickname?, pregnant?, dueDate?, birthDate?, updatedAt? }` | `200 { profile, baby }`；更旧时间戳 `409 stale` |
 | DELETE | `/api/devices/:deviceId/babies/:babyId?updatedAt=<ISO>` | — | `200 { profile, deleted: { id, updatedAt } }`；更旧时间戳 `409 stale` |
 
-`deviceId` 校验为 8–128 位 `[A-Za-z0-9_-]`；未知设备返回 404。`babies` 上限 20。
+`deviceId` 校验为 8–128 位 `[A-Za-z0-9_-]`；未知设备返回 `200 { profile: null }`。`babies` 上限 20。
 
 ### 3.2 内容注册表（需 token）
 
@@ -77,7 +78,7 @@ token 读取顺序：`Authorization: Bearer <ADMIN_TOKEN>` 或 `?token=<ADMIN_TO
 2. 所有档案写操作先写本地 AsyncStorage，再 `queueProfileChange()` 串行 PUT（2500ms 超时）。
 3. 推送失败：`yy.v1.sync.pending = true`，记录 `lastError`；界面保持已写入的本地数据。
 4. 补推触发：下次启动、Web `window online`、原生 `AppState` 回到 active。
-5. 首次升级（本地已有档案、从未注册）：发现 `registered=false` 且本地有宝宝，直接整包 PUT 注册，避免先 GET 造成 404；成功后置 `registered=true`，二次启动不会重复上传。
+5. 首次升级（本地已有档案、从未注册）：发现 `registered=false` 且本地有宝宝，直接整包 PUT 注册，避免先 GET；成功后置 `registered=true`，二次启动不会重复上传。
 6. 新设备：不写服务端，等用户第一次添加宝宝时创建。
 7. 清空本地缓存但保留 `yy.v1.deviceId`：启动 GET 从服务端恢复；若连设备 ID 一起清空，则视为全新设备，旧档案无法找回（见第 7 节）。
 
@@ -125,7 +126,7 @@ tsc_exit=0
 ### 6.2 档案 API（真实 HTTP）
 
 ```json
-"1_get_unknown":            { "status": 404, "body": { "error": "not_found" } },
+"1_get_unknown":            { "status": 200, "body": { "profile": null } },
 "2_put_snapshot":           { "status": 201, "created": true, "profile": { "accountId": null, "currentId": "baby-1", "babies": ["baby-1 满满", "baby-2 禾禾"] } },
 "4_post_baby":              { "status": 201, "created": true, "babyCount": 3 },
 "5_patch_baby":             { "status": 200, "baby": { "id": "baby-3", "nickname": "芽芽Plus", "updatedAt": "2026-11-11T09:20:00.000Z" } },
@@ -228,7 +229,7 @@ tsc_exit=0
 # 1) 服务端（内容 + 档案 + 管理）
 cd /Users/zhenzhenyang/Workspace/earlybirdy
 cp .env.example .env            # 至少把 ADMIN_TOKEN 改成随机长串
-CONTENT_PORT=8788 node --env-file=.env content/server.js
+node --env-file=.env content/server.js   # 默认端口 8788，无需写 CONTENT_PORT
 
 # 2) Expo Web
 cd app-mobile

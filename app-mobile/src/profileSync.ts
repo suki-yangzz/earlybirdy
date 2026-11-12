@@ -255,7 +255,8 @@ export async function syncProfileFromServer(localStore: ProfileStore): Promise<S
     return { store: localStore, changed: false, source: 'offline', error: errorText(err) };
   }
 
-  if (res.status === 404) {
+  if (res.status === 404 || (res.ok && res.data && res.data.profile === null)) {
+    /* 服务端没有该设备档案（新旧服务端两种表达）：本地有档案就一次性注册上传 */
     if (!localStore.babies.length) return { store: localStore, changed: false, source: 'local' };
     const pushed = await pushProfile(localStore);
     if (!pushed.ok) return { store: localStore, changed: false, source: 'offline', error: pushed.error };

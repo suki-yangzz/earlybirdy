@@ -252,7 +252,7 @@ node content/registry.js list
 ## 7. 运行与验收
 
 ```bash
-# 启动服务（默认 8787；端口被占用时指定其他端口）
+# 启动统一服务（默认 8788：manifest + 档案 API + 注册表 + /admin；端口被占用时指定其他端口）
 CONTENT_PORT=8788 node content/server.js
 
 # 查看自动统计
@@ -276,4 +276,4 @@ GET /manifest.json
 }
 ```
 
-App 默认读取 8787；验证新服务时可设置 `EXPO_PUBLIC_CONTENT_URL=http://127.0.0.1:8788/manifest.json` 后重启 Expo Web。
+App 默认读取 8788（统一服务端口）；如需临时指向别的地址，设置 `EXPO_PUBLIC_CONTENT_URL=http://127.0.0.1:8788/manifest.json` 后重启 Expo Web。

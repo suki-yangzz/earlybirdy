@@ -255,8 +255,8 @@ react-native-safe-area-context: ~5.11.1
 2. 手机与 Mac 连同一个 Wi-Fi，然后：
 
 ```bash
-# 启动内容 mock 服务（终端 1）
-cd /Users/zhenzhenyang/Workspace/earlybirdy/shared && npm run mock
+# 启动统一内容服务（终端 1，默认 8788：manifest + 档案 API + 注册表 + /admin）
+cd /Users/zhenzhenyang/Workspace/earlybirdy && node content/server.js
 
 # 启动 Expo（终端 2）
 cd /Users/zhenzhenyang/Workspace/earlybirdy/app-mobile && npx expo start
@@ -376,8 +376,10 @@ emulator -avd Pixel_API35
 ## 7. 复现命令（当前可用，与本轮环境诊断无关，供联调）
 
 ```bash
-# 内容 mock 服务（端口 8787，PORT 环境变量可覆盖）
-cd /Users/zhenzhenyang/Workspace/earlybirdy/shared && npm run mock
+# 统一内容服务（默认端口 8788：manifest + 档案 API + 注册表 + /admin）
+cd /Users/zhenzhenyang/Workspace/earlybirdy && node content/server.js
+
+# 旧 shared/mock 仅保留给 shared 单测（随机端口），不要用于真机/联调
 
 # 业务规则 + 同步测试
 cd /Users/zhenzhenyang/Workspace/earlybirdy/shared && npm test

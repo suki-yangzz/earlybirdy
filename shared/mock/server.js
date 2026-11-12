@@ -1,7 +1,9 @@
 /* ============================================================
-   shared/mock/server.js —— 本地 mock 内容服务（静态 JSON）
+   shared/mock/server.js —— legacy 本地 mock 内容服务（静态 JSON）
+   ⚠ 仅用于 shared 单测；真机 / 联调请用 content/server.js（统一服务，默认 8788）。
+     本 mock 只提供静态 manifest，不含档案 API / 注册表 API / /admin。
    启动：node shared/mock/server.js
-   端口：默认 8787（可用 PORT 环境变量覆盖）
+   端口：默认 8787（可用 PORT 环境变量覆盖；单测以随机端口启动）
    清单：默认 assets/v1/manifest.json（可用 MANIFEST 环境变量覆盖）
    ============================================================ */
 'use strict';
@@ -96,9 +98,10 @@ if (require.main === module) {
   var manifestFile = process.env.MANIFEST || 'assets/v1/manifest.json';
   var s = createMockServer({ manifestFile: manifestFile });
   s.listen(port, host).then(function (p) {
+    console.warn('[mock][legacy] 仅用于 shared 单测；真机/联调请用 content/server.js（默认 8788）');
     console.log('mock content server: http://' + (host === '0.0.0.0' ? '127.0.0.1' : host) + ':' + p + '/manifest.json');
     if (host === '0.0.0.0') {
-      console.log('bound to 0.0.0.0 — 真机可用「Mac 局域网 IP:' + p + '」访问');
+      console.log('bound to 0.0.0.0 — 本 mock 不含档案/注册表 API，不要用于真机');
     }
     console.log('manifest file: ' + manifestFile);
     console.log('press Ctrl+C to stop');
